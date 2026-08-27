@@ -18,7 +18,8 @@ const normalizeName = (name: string) => {
     .toLowerCase()
     .trim();
   
-  if (normalized.includes("bogota") || normalized.includes("cundinamarca")) return "bogota"; 
+  if (normalized.includes("bogota")) return "bogota";
+  if (normalized.includes("cundinamarca")) return "cundinamarca";
   if (normalized.includes("valle")) return "valle del cauca";
   if (normalized.includes("nari")) return "narino";
   if (normalized.includes("san andr")) return "san andres";
