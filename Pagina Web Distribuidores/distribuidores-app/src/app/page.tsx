@@ -173,12 +173,12 @@ export default function Home() {
   };
 
   return (
-    <main className="flex h-screen flex-col md:flex-row bg-[#FAF8FC]">
+    <main className="flex h-screen flex-col md:flex-row bg-[#FAF8FC] overflow-hidden">
       {/* Sidebar para filtros y lista */}
-      <aside className="w-full md:w-1/3 p-6 bg-white border-r border-[#E5E7EB] overflow-y-auto flex flex-col gap-5 shadow-2xl z-10 relative">
+      <aside className="w-full h-1/2 md:h-full md:w-1/3 p-4 md:p-6 bg-white border-r md:border-b-0 border-b border-[#E5E7EB] flex flex-col gap-4 md:gap-5 shadow-2xl z-10 relative">
         <div className="flex flex-col items-center gap-2 mb-2">
           {/* Logo */}
-          <img src="/distribuidores/logo.png" onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'logo.png'; }} alt="Genius Farole Logo" className="w-48 h-auto object-contain drop-shadow-md" />
+          <img src="/distribuidores/logo.png" onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'logo.png'; }} alt="Genius Farole Logo" className="w-40 md:w-48 h-auto object-contain drop-shadow-md" />
           
           <h1 className="text-4xl font-bold text-[#7A3089] tracking-tight mt-2" style={{fontFamily: 'var(--font-playfair)'}}>
             Genius <span className="text-[#DB0462] font-normal" style={{fontFamily: 'var(--font-great-vibes)', fontSize: '1.4em', marginLeft: '-5px'}}>Farole</span>
