@@ -1,0 +1,639 @@
+[
+    {
+        "name": "Sebastián Sánchez Rojas",
+        "address": "Calle 50 # 49-08",
+        "city": "Rionegro, Antioquia",
+        "phone": "3152206577",
+        "total_purchased": 202.0
+    },
+    {
+        "name": "LORENA DEL PILAR SALAS LOZANO",
+        "address": "Cra. 8 sur # 48-40 Condominio Solarium, Torre PArque Apto 904",
+        "city": "Ibagué",
+        "phone": "3015141553",
+        "total_purchased": 120.0
+    },
+    {
+        "name": "PARROQUIA INMACULADA CONCEPCION",
+        "address": "CRA 10 N° 6-39",
+        "city": "PRADERA VALLE",
+        "phone": "3167431005",
+        "total_purchased": 100.0
+    },
+    {
+        "name": "Catarin Cervera",
+        "address": "Calle 52a # 9-30",
+        "city": "balcones de marly, Apto 504",
+        "phone": "3117966692",
+        "total_purchased": 100.0
+    },
+    {
+        "name": "Natalia Valencia",
+        "address": "Cl. 98a #68D-35",
+        "city": "Suba, Bogotá",
+        "phone": "3174009013",
+        "total_purchased": 100.0
+    },
+    {
+        "name": "Jenny medina",
+        "address": "",
+        "city": "",
+        "phone": "320 2805932",
+        "total_purchased": 100.0
+    },
+    {
+        "name": "Yerly hurtado",
+        "address": "Calle 17b # 9n10",
+        "city": "Cartago valle",
+        "phone": "3144558027",
+        "total_purchased": 89.0
+    },
+    {
+        "name": "Teresa Leiton/ isabel Henao",
+        "address": "calle 13#24-19",
+        "city": "tulua",
+        "phone": "3166965881",
+        "total_purchased": 76.0
+    },
+    {
+        "name": "Angela Clavijo Gonzalez",
+        "address": "Calle 52 #13-13",
+        "city": "Bogotá",
+        "phone": "320279727",
+        "total_purchased": 75.0
+    },
+    {
+        "name": "Alejandra González Silva",
+        "address": "Cra 34# 12c 22",
+        "city": "Cali, Valle del Cauca",
+        "phone": "3005321104",
+        "total_purchased": 72.0
+    },
+    {
+        "name": "Rubén Tasamá",
+        "address": "Calle 7 # 17-06 esquina",
+        "city": "Zarzal Valle del Cauca",
+        "phone": "318 761 2248",
+        "total_purchased": 72.0
+    },
+    {
+        "name": "Diana de la Ossa vides",
+        "address": "Calle 29B#8A-06 al frente de la plazoleta",
+        "city": "Sincelejo-Sucre",
+        "phone": "3216550402",
+        "total_purchased": 62.0
+    },
+    {
+        "name": "María Alejandra Collazos",
+        "address": "Calle 44 Norte # 6A 66 casa 112 Conjunto Portal de la Vega",
+        "city": "Popayán",
+        "phone": "3014314303",
+        "total_purchased": 60.0
+    },
+    {
+        "name": "Aissé Carpio",
+        "address": "Cr15#15-105. Club campestre río frio. Casa guayacan 5",
+        "city": "Chia Cundinamarca",
+        "phone": "3173670481",
+        "total_purchased": 60.0
+    },
+    {
+        "name": "Patricia Lañas R",
+        "address": "calle 10 norte #10-12, edificio palmar de Juanambu, apto 102",
+        "city": "cali",
+        "phone": "3164447076",
+        "total_purchased": 60.0
+    },
+    {
+        "name": "Diana Carolina Muñoz Méndez",
+        "address": "Carrera 11 Número 52 N 70 Bloque 10 Apto 203",
+        "city": "Popayan, Cauca",
+        "phone": "3015410668",
+        "total_purchased": 51.0
+    },
+    {
+        "name": "Marcela",
+        "address": "MZ 29 c16 Jordan 3 etapa",
+        "city": "Ibague Tolima",
+        "phone": "317 4904682",
+        "total_purchased": 50.0
+    },
+    {
+        "name": "GLadys Diaz Pinto",
+        "address": "Calle 55 9a 13 Bulevar 2 casa de 2 pisos",
+        "city": "GRANADA- META",
+        "phone": "3144431435",
+        "total_purchased": 50.0
+    },
+    {
+        "name": "Diana Marulanda",
+        "address": "Cra 30 # 7A-227",
+        "city": "Medellin",
+        "phone": "3123972876",
+        "total_purchased": 48.0
+    },
+    {
+        "name": "Tania Del Carmen Uribe Duran",
+        "address": "Carrera 34 #22 - 18",
+        "city": "Sincelejo, Sucre",
+        "phone": "300 425 3611",
+        "total_purchased": 48.0
+    },
+    {
+        "name": "Johana Mercedes barragan correa",
+        "address": "cra 3 entre calle 10 y 11 Edificio Gobernación del Tolima piso 10 oficina  asuntos Jurídicos",
+        "city": "Ibague, Tolima",
+        "phone": "3182862772",
+        "total_purchased": 45.0
+    },
+    {
+        "name": "Andréa Uribe",
+        "address": "calle 42N # 8-119, casa  80",
+        "city": "popayán, cauca",
+        "phone": "3215782188",
+        "total_purchased": 44.0
+    },
+    {
+        "name": "Estela Escobar Zuluaga",
+        "address": "Cra24#58-62 casa #26",
+        "city": "Palmira, Valle del Cauca",
+        "phone": "317 4419354",
+        "total_purchased": 42.0
+    },
+    {
+        "name": "Diana Milena Gil Arias",
+        "address": "Calle 48 28 145",
+        "city": "Copacabana / Antioquia",
+        "phone": "311 307 47 50",
+        "total_purchased": 42.0
+    },
+    {
+        "name": "Jimmhy Salazar",
+        "address": "av 5c 3-16",
+        "city": "Cucuta, Santander",
+        "phone": "3156799316",
+        "total_purchased": 42.0
+    },
+    {
+        "name": "Sandra Peñaranda",
+        "address": "Cll 29 # 6-12",
+        "city": "cucuta norte de Santander",
+        "phone": "3106874422",
+        "total_purchased": 40.0
+    },
+    {
+        "name": "Duper Ramírez Caicedo",
+        "address": "calle 10# 10-48",
+        "city": "Cartago Valle",
+        "phone": "3025687809",
+        "total_purchased": 40.0
+    },
+    {
+        "name": "María Fernanda Chate Prado",
+        "address": "Kra 43B # 26-46",
+        "city": "Cali",
+        "phone": "3115560038",
+        "total_purchased": 39.0
+    },
+    {
+        "name": "Claudia Inés Patiño Rodriguez",
+        "address": "cra 35 #12a39",
+        "city": "Villavicencio",
+        "phone": "3132617260",
+        "total_purchased": 38.0
+    },
+    {
+        "name": "Diana Diaz Certo",
+        "address": "Cra 54 # 152 60 Conjunto acacia real dos Torre 3, apto 503",
+        "city": "Bogota",
+        "phone": "301 2322266",
+        "total_purchased": 38.0
+    },
+    {
+        "name": "Derly Charry Angel",
+        "address": "Carrera 55 No 11-49",
+        "city": "Neiva Huila",
+        "phone": "3204895714",
+        "total_purchased": 36.0
+    },
+    {
+        "name": "Wendy Valentina Zambrano Garay",
+        "address": "Carrera 78 G Bis No. 65 J 05 Sur",
+        "city": "Bogotá",
+        "phone": "3057510220",
+        "total_purchased": 34.0
+    },
+    {
+        "name": "Angela Marcela Izquierdo Martínez",
+        "address": "Transversal 82 # 83 - 84",
+        "city": "Bogotá",
+        "phone": "3102660800",
+        "total_purchased": 34.0
+    },
+    {
+        "name": "Zoe Veloza Monteiro",
+        "address": "Calle las veraneras manzana b casa 112",
+        "city": "Leticia Amazonas",
+        "phone": "3115438949",
+        "total_purchased": 30.0
+    },
+    {
+        "name": "Lina Gutiérrez",
+        "address": "Cra 13bis # 110-80 apto 401",
+        "city": "Bogota",
+        "phone": "3007285203",
+        "total_purchased": 30.0
+    },
+    {
+        "name": "Martha Lucia Lozada Moreno",
+        "address": "Calle 10 #11-57",
+        "city": "El Cerrito Valle del Cauca",
+        "phone": "3157345950",
+        "total_purchased": 30.0
+    },
+    {
+        "name": "Santiago Gaviria Londoño",
+        "address": "Calle 8 nro. 10 - 84",
+        "city": "Liborina Antioquia",
+        "phone": "3217607853",
+        "total_purchased": 30.0
+    },
+    {
+        "name": "Claudia Mejía",
+        "address": "carrera 22 # 150-03 Mz 2 Cs 10",
+        "city": "Pereira, Risaralda",
+        "phone": "3007813407",
+        "total_purchased": 29.0
+    },
+    {
+        "name": "Alejandra Molina Delgado",
+        "address": "carrera 11#11-27",
+        "city": "Guadalajara de Buga Valle del Cauca",
+        "phone": "3016405868",
+        "total_purchased": 25.0
+    },
+    {
+        "name": "John Jairo Perez Lopez",
+        "address": "Avenida sur 36 A 87",
+        "city": "Pereira",
+        "phone": "3218748326",
+        "total_purchased": 25.0
+    },
+    {
+        "name": "María Isabel Salazar Saavedra",
+        "address": "Conjunto Bosques de Cantabria Casa 12 Calle 77 No 15-03",
+        "city": "No especificado",
+        "phone": "3160416794",
+        "total_purchased": 24.0
+    },
+    {
+        "name": "Natalia Andrea Yepes Gutiérrez",
+        "address": "Carrera 24 A 19-51 casa 9",
+        "city": "Retiro Antioquia",
+        "phone": "3217643238",
+        "total_purchased": 24.0
+    },
+    {
+        "name": "Yenny Latorre Arenas",
+        "address": "Avenida 4BN # 52N 70 apto 303-3",
+        "city": "Cali Valle del Cauca",
+        "phone": "3183780532",
+        "total_purchased": 24.0
+    },
+    {
+        "name": "Mónica Gutiérrez",
+        "address": "Cll 57 # 51-51 Apto 301 Edificio Salvatore",
+        "city": "Ciudad itagui",
+        "phone": "3158871574/ 3052648141",
+        "total_purchased": 24.0
+    },
+    {
+        "name": "Mónica Lucia Gallego Restrepo",
+        "address": "cra 6 # 25-43 apto 501",
+        "city": "Pereira Risaralda",
+        "phone": "3127571222",
+        "total_purchased": 24.0
+    },
+    {
+        "name": "ELIANA DIRLEY RICO TORRES",
+        "address": "MZ 11 CASA 13 ETAPA 2 URBANIZACIÓN PORTAL DEL MIRADOR",
+        "city": "FLORENCIA, CAQUETÁ",
+        "phone": "3122225085",
+        "total_purchased": 24.0
+    },
+    {
+        "name": "Yurany Cuadros",
+        "address": "Calle 10 #24-57",
+        "city": "Aguachia Cesar",
+        "phone": "3218273644",
+        "total_purchased": 24.0
+    },
+    {
+        "name": "Yeimy Cely",
+        "address": "Calle 14b n 19a21",
+        "city": "el consuelo giron, Santander",
+        "phone": "3143645237",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "ADRIANA GIRALDO GARCIA",
+        "address": "Brr. Sesquicentenario casa 20",
+        "city": "SALAMINA CALDAS",
+        "phone": "3206895676",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "William Andrés Pinto",
+        "address": "Carrera 1 A # 59-60 Apto 403 Torre 1",
+        "city": "Cali - Valle del Cauca",
+        "phone": "3057971509",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Carlos Eduardo Cháux Sánchez",
+        "address": "calle 16#10-76",
+        "city": "Florencia, Caquetá",
+        "phone": "3124814732",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Clemencia Eugenia Gutiérrez Uribe",
+        "address": "Calle 53B #83E53",
+        "city": "Cali",
+        "phone": "3173715955",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "FELIPE.  ORTIZ",
+        "address": "Calle 29 # 8-51",
+        "city": "Girardot-Cundinamarca",
+        "phone": "3186824605",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Miriam Cristina Alzate Echeverri",
+        "address": "calle 12 # 20 - 65, primer piso",
+        "city": "La Ceja, Antioquia",
+        "phone": "3113927384",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Brayan Esneider Mosquera Morán",
+        "address": "Calle 2 No.12-70 2do piso",
+        "city": "Santander de Qulichao, Cauca",
+        "phone": "3148311196",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Patricia Fernandez L",
+        "address": "Av. belmonte 93 10",
+        "city": "Pereira - Risaralda",
+        "phone": "3104564008",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Paola becerra",
+        "address": "Cll 17a# 4-54, conjunto atalaya , casa 1",
+        "city": "Duitama ( boyaca)",
+        "phone": "3123596758",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "ANDREA RAMIREZ",
+        "address": "Carrera 8 número 2-96",
+        "city": "Roldanillo, valle del cauca",
+        "phone": "3226149931",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Claudia Andrea Alarcón Villar",
+        "address": "Carrera 16#13-59",
+        "city": "Duitama-Boyacá",
+        "phone": "3006670174",
+        "total_purchased": 20.0
+    },
+    {
+        "name": "Parroquia San Francisco de Sales",
+        "address": "",
+        "city": "San Francisco, Cundinamarca",
+        "phone": "3214076591",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Karen Villamizar",
+        "address": "Av 3#3-99",
+        "city": "Barrancabermeja, Santander",
+        "phone": "3003068655",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Olga sofia peñaloza cardona",
+        "address": "Transversal 6#13-46",
+        "city": "Florencia Caquetá",
+        "phone": "310 4815856",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Natalia Arango",
+        "address": "Calle 33 # 30B - 33",
+        "city": "",
+        "phone": "3022528562",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Carolina Alfaro",
+        "address": "Km 3 Vía Chipaya Condominio Campestre La Mercedes Casa 315. Barrio Alfaguara",
+        "city": "Jamundí",
+        "phone": "3166261389",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Faridy Amparo ordoñez",
+        "address": "Calle 35n 21-100",
+        "city": "Popayan, Cerritos de La Paz",
+        "phone": "3216102102",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Natalia Quintero",
+        "address": "Calle 27 sur # 27-55, Torre 2 , Apto 108",
+        "city": "Envigado, Antioquia",
+        "phone": "3132850539",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "EDNA GALVIZ",
+        "address": "CALLE 20 #14A SUR -80",
+        "city": "Ibagué Tolima",
+        "phone": "3102102190",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Ana Barco Florez",
+        "address": "Carrera 5#2-73",
+        "city": "Cartago - Valle",
+        "phone": "312 2273637",
+        "total_purchased": 18.0
+    },
+    {
+        "name": "Carolina Hernández Abadia",
+        "address": "Carrera 7 # 4 - 33",
+        "city": "Guacari - Valle del Cauca",
+        "phone": "311 3020385",
+        "total_purchased": 17.0
+    },
+    {
+        "name": "Juana peña",
+        "address": "Calle 21an #16be-65",
+        "city": "CUCUTA Colombia",
+        "phone": "60285152",
+        "total_purchased": 17.0
+    },
+    {
+        "name": "Paola Andrea Marín López",
+        "address": "Carrera 5 # 210",
+        "city": "Aranzazu, caldas",
+        "phone": "3113537181",
+        "total_purchased": 17.0
+    },
+    {
+        "name": "Martha Liliana Patiño Diaz",
+        "address": "Calle 19 N #10-41",
+        "city": "Armenia, Quindio",
+        "phone": "3178262381",
+        "total_purchased": 16.0
+    },
+    {
+        "name": "María Camila Ocampo Quintero",
+        "address": "Santa Mónica dosquebradas",
+        "city": "Pereira",
+        "phone": "3205011903",
+        "total_purchased": 15.0
+    },
+    {
+        "name": "Lucia Castañeda Vellogin",
+        "address": "Calle 19 No 24-468",
+        "city": "Grardot",
+        "phone": "",
+        "total_purchased": 15.0
+    },
+    {
+        "name": "Maria Constanza Castañeda",
+        "address": "Calle 19 No 24-468",
+        "city": "Bogotá",
+        "phone": "3187436169",
+        "total_purchased": 15.0
+    },
+    {
+        "name": "Saire Johana Pernett Luna",
+        "address": "Carreta 2a # 3 -69",
+        "city": "Magangue, Bolívar",
+        "phone": "3188086600",
+        "total_purchased": 14.0
+    },
+    {
+        "name": "WENDY VANESSA CHARRIS FERIAS",
+        "address": "Cra 9b # 3-81",
+        "city": "La Paz - Cesar",
+        "phone": "3004514234",
+        "total_purchased": 14.0
+    },
+    {
+        "name": "Diana Sofía Cardona Giraldo",
+        "address": "Carrera 7#2-35",
+        "city": "Cartago Valle",
+        "phone": "3025983691",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Francia Elena Botero Paniagua",
+        "address": "cra7 16 43 edificio Pikins",
+        "city": "Pereira",
+        "phone": "3116381384",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Lida moreno",
+        "address": "Carrera 17A nro 20 20",
+        "city": "LA CEJA ANTIOQUIA",
+        "phone": "3045863727",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Angela María Ruiz Grisales",
+        "address": "Cerritos, cafelia entrada 8, condominio quintas de cerritos casa 7",
+        "city": "Pereira",
+        "phone": "3206986198",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Jean pierre valencia solano",
+        "address": "Av 5c número 2-52",
+        "city": "Cucuta",
+        "phone": "3178936207",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Saudith Martinez",
+        "address": "Carrera 19 calle 11#11-05",
+        "city": "Montería Córdoba",
+        "phone": "3128127531",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Angela Maria Parra Giraldo",
+        "address": "Calle 1 # 7-20",
+        "city": "Pereira-Risaralda",
+        "phone": "3052009800",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Consuelo Barrera",
+        "address": "cra 15 #2-64",
+        "city": "Sogamoso Boyacá",
+        "phone": "3163708393",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Yormenery Uribe Gil",
+        "address": "Carrera 24c # 75-05",
+        "city": "Pereira risaralda",
+        "phone": "3108331115",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "Luz Elena Soto",
+        "address": "Calle 50b 39 51",
+        "city": "Manizales",
+        "phone": "3148909389",
+        "total_purchased": 12.0
+    },
+    {
+        "name": "María Alejandra Durán Gómez",
+        "address": "CARRERA 35 N· 67-170",
+        "city": "CONJUNTO RESIDENCIAL PARQUE ESTANCIA DE MONTELLANO, ANTIGUA VIA RESTREPO",
+        "phone": "323 321 00 41",
+        "total_purchased": 10.0
+    },
+    {
+        "name": "Bersid Cardenas Peña",
+        "address": "Oficina principal Ubate",
+        "city": "Ubate, Cundinamarca",
+        "phone": "3106627915",
+        "total_purchased": 10.0
+    },
+    {
+        "name": "Heidy Villamarin",
+        "address": "Carrera 19D # 1b - 50",
+        "city": "Valledupar / César",
+        "phone": "3213190642",
+        "total_purchased": 10.0
+    },
+    {
+        "name": "Camilo Guarin Morales",
+        "address": "Carrera 2 40 45 Edificio terrazas club House I",
+        "city": "Tunja Boyacá",
+        "phone": "3142937280",
+        "total_purchased": 10.0
+    }
+]
