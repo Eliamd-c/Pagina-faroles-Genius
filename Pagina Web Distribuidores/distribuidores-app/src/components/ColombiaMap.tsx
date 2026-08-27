@@ -5,7 +5,9 @@ import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from "re
 import { geoCentroid } from "d3-geo";
 import * as topojson from "topojson-client";
 
-const geoUrl = "/colombia_municipios.json";
+const geoUrl = typeof window !== "undefined" && window.location.pathname.includes("/distribuidores")
+  ? "/distribuidores/colombia_municipios.json"
+  : "/colombia_municipios.json";
 
 // Normalizador de nombres
 const normalizeName = (name: string) => {
