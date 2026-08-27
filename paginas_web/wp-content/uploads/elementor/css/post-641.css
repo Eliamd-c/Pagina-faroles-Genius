@@ -1,0 +1,53 @@
+.elementor-kit-641{--e-global-color-primary:#406162;--e-global-color-secondary:#4AAEAE;--e-global-color-text:#D90B61;--e-global-color-accent:#F7CF0B;--e-global-color-09afd08:#406162;--e-global-color-86cb911:#E9F0F2;--e-global-typography-primary-font-family:"aestetic";--e-global-typography-primary-font-weight:600;--e-global-typography-secondary-font-family:"Blushes";--e-global-typography-secondary-font-weight:400;--e-global-typography-text-font-family:"Roboto";--e-global-typography-text-font-weight:400;--e-global-typography-accent-font-family:"Roboto";--e-global-typography-accent-font-weight:500;--e-global-typography-47d9246-font-family:"Roboto";--e-global-typography-47d9246-font-weight:400;--e-global-typography-f8d2c93-font-family:"Roboto";--e-global-typography-f8d2c93-font-weight:400;--e-global-typography-98fce6c-font-family:"Roboto";--e-global-typography-98fce6c-font-weight:600;}.elementor-kit-641 e-page-transition{background-color:#FFBC7D;}.elementor-kit-641 button,.elementor-kit-641 input[type="button"],.elementor-kit-641 input[type="submit"],.elementor-kit-641 .elementor-button{font-family:"Blushes", Sans-serif;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1140px;}.e-con{--container-max-width:1140px;--container-default-padding-top:0px;--container-default-padding-right:0px;--container-default-padding-bottom:0px;--container-default-padding-left:0px;}.elementor-widget:not(:last-child){margin-block-end:0px;}.elementor-element{--widgets-spacing:0px 0px;--widgets-spacing-row:0px;--widgets-spacing-column:0px;}{}h1.entry-title{display:var(--page-title-display);}@media(max-width:1024px){.elementor-section.elementor-section-boxed > .elementor-container{max-width:1024px;}.e-con{--container-max-width:1024px;}}@media(max-width:767px){.elementor-kit-641 button,.elementor-kit-641 input[type="button"],.elementor-kit-641 input[type="submit"],.elementor-kit-641 .elementor-button{font-size:28px;}.elementor-section.elementor-section-boxed > .elementor-container{max-width:1500px;}.e-con{--container-max-width:1500px;--container-default-padding-top:0px;--container-default-padding-right:0px;--container-default-padding-bottom:0px;--container-default-padding-left:0px;}}/* Start custom CSS */.header-2 {
+transform: translatey(-80px);
+-moz-transition: all .3s ease!important;
+-webkit-transition: all .3s ease!important;
+transition: all .3s ease!important;
+}
+
+.elementor-sticky–effects.header-2 {
+height: auto!important;
+transform: translatey(0px);
+}
+
+.elementor-sticky–effects.header-1 {
+display: none!important;
+}/* End custom CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'aestetic';
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+	src: url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular.eot');
+	src: url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular.eot?#iefix') format('embedded-opentype'),
+		url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular.woff2') format('woff2'),
+		url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular.woff') format('woff'),
+		url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Italic.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'aestetic';
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+	src: ;
+}
+@font-face {
+	font-family: 'aestetic';
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+	src: url('https://farolesgenius.com/wp-content/uploads/2025/02/AestheticViolet-51eJv-2.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */
+/* Start Custom Fonts CSS */@font-face {
+	font-family: 'Blushes';
+	font-style: normal;
+	font-weight: normal;
+	font-display: auto;
+	src: url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular-1.eot');
+	src: url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular-1.eot?#iefix') format('embedded-opentype'),
+		url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular.woff2') format('woff2'),
+		url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Regular.woff') format('woff'),
+		url('https://farolesgenius.com/wp-content/uploads/2025/02/Blushes-Italic.ttf') format('truetype');
+}
+/* End Custom Fonts CSS */
