@@ -1,0 +1,16 @@
+{
+  "name": "pagina-faroles-genius",
+  "version": "1.0.0",
+  "description": "Gestor de Envíos PRO y Páginas Web de Faroles Genius",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "faroles-genius",
+    "envios",
+    "landing-pages"
+  ],
+  "author": "Eliamd-c",
+  "license": "ISC"
+}

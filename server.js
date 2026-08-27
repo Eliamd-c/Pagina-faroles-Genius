@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 5051;
+const PORT = process.env.PORT || 5051;
 const BASE_DIR = __dirname;
 
 const MIME_TYPES = {
@@ -19,7 +19,8 @@ const MIME_TYPES = {
   '.webp': 'image/webp',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
-  '.ttf': 'font/ttf'
+  '.ttf': 'font/ttf',
+  '.mp4': 'video/mp4'
 };
 
 const server = http.createServer((req, res) => {
@@ -74,7 +75,7 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Servidor local activo en http://localhost:${PORT}`);
+  console.log(`Servidor web activo en puerto ${PORT}`);
   console.log(`- Gestor de Envíos: http://localhost:${PORT}/`);
   console.log(`- Páginas Clonadas: http://localhost:${PORT}/paginas_web/`);
 });
