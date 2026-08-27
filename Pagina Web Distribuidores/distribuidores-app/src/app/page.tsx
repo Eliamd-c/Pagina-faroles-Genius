@@ -39,6 +39,7 @@ export default function Home() {
   const [mapCenter, setMapCenter] = useState(centerColombia);
   const [zoom, setZoom] = useState(6);
   const [viewMode, setViewMode] = useState<'national' | 'department' | 'google'>('national');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     setStores(getObfuscatedData());
@@ -173,10 +174,28 @@ export default function Home() {
   };
 
   return (
-    <main className="flex h-screen flex-col md:flex-row bg-[#FAF8FC] overflow-hidden">
+    <main className="flex h-screen flex-col md:flex-row bg-[#FAF8FC] overflow-hidden relative">
+      
+      {/* Overlay oscuro para móviles cuando el menú está abierto */}
+      {isMobileMenuOpen && (
+        <div 
+          className="md:hidden fixed inset-0 bg-black/50 z-30 transition-opacity"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+
       {/* Sidebar para filtros y lista */}
-      <aside className="w-full h-1/2 md:h-full md:w-1/3 p-4 md:p-6 bg-white border-r md:border-b-0 border-b border-[#E5E7EB] flex flex-col gap-4 md:gap-5 shadow-2xl z-10 relative">
-        <div className="flex flex-col items-center gap-2 mb-2">
+      <aside className={`fixed md:relative top-0 left-0 h-full w-[85%] sm:w-[350px] md:w-1/3 p-4 md:p-6 bg-white border-r border-[#E5E7EB] flex flex-col gap-4 md:gap-5 shadow-2xl z-40 transition-transform duration-300 ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
+        
+        {/* Botón cerrar en móvil */}
+        <button 
+          className="md:hidden absolute top-4 right-4 text-gray-500 hover:text-[#DB0462] text-3xl font-bold w-10 h-10 flex items-center justify-center rounded-full bg-gray-100"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          ×
+        </button>
+
+        <div className="flex flex-col items-center gap-2 mb-2 mt-4 md:mt-0">
           {/* Logo */}
           <img src="/distribuidores/logo.png" onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'logo.png'; }} alt="Genius Farole Logo" className="w-40 md:w-48 h-auto object-contain drop-shadow-md" />
           
@@ -302,6 +321,14 @@ export default function Home() {
 
       {/* Mapa Principal */}
       <section className="flex-1 bg-[#F3F4F6] relative overflow-hidden flex flex-col">
+        {/* Botón flotante para abrir menú en móviles */}
+        <button
+          className="md:hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-[#DB0462] hover:bg-[#A9034A] text-white px-6 py-3 rounded-full shadow-xl font-bold flex items-center gap-2 border-b-4 border-black/20"
+          onClick={() => setIsMobileMenuOpen(true)}
+        >
+          <span>🔍</span> Buscar y Filtros
+        </button>
+
         {viewMode !== 'national' && (
           <button 
             onClick={goBack}
