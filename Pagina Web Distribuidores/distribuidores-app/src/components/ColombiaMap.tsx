@@ -233,44 +233,67 @@ export default function ColombiaMap({ storesData, viewLevel, selectedDepartmentN
                   
                   const isActive = count > 0;
                   let dName = geoName.charAt(0).toUpperCase() + geoName.slice(1).toLowerCase();
+                  const centroid = geoCentroid(geo) as [number, number];
 
                   return (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      onMouseEnter={() => {
-                        if (isActive) setTooltipContent(`${dName}: ${count} distribuidor(es)`);
-                      }}
-                      onMouseLeave={() => setTooltipContent("")}
-                      onClick={() => {
-                        if (isActive) {
-                          let originalName = storesData.find(s => normalizeName(s.municipality) === activeKey)?.municipality;
-                          onSelectMunicipality(originalName || dName);
-                        }
-                      }}
-                      style={{
-                        default: {
-                          fill: isActive ? "#DB0462" : "#F3F4F6",
-                          stroke: "#FFFFFF", // Bordes blancos limpios en vez del verde menta
-                          strokeWidth: 0.1,
-                          outline: "none",
-                          cursor: isActive ? "pointer" : "default"
-                        },
-                        hover: {
-                          fill: isActive ? "#7A3089" : "#F3F4F6",
-                          stroke: "#FFFFFF",
-                          strokeWidth: 0.2,
-                          outline: "none",
-                          cursor: isActive ? "pointer" : "default"
-                        },
-                        pressed: {
-                          fill: isActive ? "#EED332" : "#F3F4F6",
-                          stroke: "#FFFFFF",
-                          strokeWidth: 0.2,
-                          outline: "none"
-                        }
-                      }}
-                    />
+                    <g key={geo.rsmKey}>
+                      <Geography
+                        geography={geo}
+                        onMouseEnter={() => {
+                          if (isActive) setTooltipContent(`${dName}: ${count} distribuidor(es)`);
+                          else setTooltipContent(dName);
+                        }}
+                        onMouseLeave={() => setTooltipContent("")}
+                        onClick={() => {
+                          if (isActive) {
+                            let originalName = storesData.find(s => normalizeName(s.municipality) === activeKey)?.municipality;
+                            onSelectMunicipality(originalName || dName);
+                          }
+                        }}
+                        style={{
+                          default: {
+                            fill: isActive ? "#DB0462" : "#F3F4F6",
+                            stroke: "#FFFFFF",
+                            strokeWidth: 0.15,
+                            outline: "none",
+                            cursor: isActive ? "pointer" : "default"
+                          },
+                          hover: {
+                            fill: isActive ? "#7A3089" : "#E2E8F0",
+                            stroke: "#FFFFFF",
+                            strokeWidth: 0.25,
+                            outline: "none",
+                            cursor: isActive ? "pointer" : "default"
+                          },
+                          pressed: {
+                            fill: isActive ? "#EED332" : "#E2E8F0",
+                            stroke: "#FFFFFF",
+                            strokeWidth: 0.25,
+                            outline: "none"
+                          }
+                        }}
+                      />
+                      {centroid && !isNaN(centroid[0]) && !isNaN(centroid[1]) && (
+                        <Marker coordinates={centroid}>
+                          <text
+                            y="0.8"
+                            fontSize={isActive ? 3.2 : 2.0}
+                            textAnchor="middle"
+                            fill={isActive ? "#FFFFFF" : "#374151"}
+                            fontWeight={isActive ? "bold" : "600"}
+                            style={{
+                              pointerEvents: 'none',
+                              letterSpacing: '0.1px',
+                              textShadow: isActive
+                                ? '0px 0px 3px rgba(122, 48, 137, 0.9), 0px 0px 6px rgba(0, 0, 0, 0.8)'
+                                : '0px 0px 2px rgba(255, 255, 255, 0.95), 0px 0px 4px rgba(255, 255, 255, 0.8)'
+                            }}
+                          >
+                            {dName}
+                          </text>
+                        </Marker>
+                      )}
+                    </g>
                   );
                 });
               }}
