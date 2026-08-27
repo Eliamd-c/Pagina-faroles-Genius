@@ -2,7 +2,7 @@
 
 import React, { useMemo, useState, useEffect } from "react";
 import { ComposableMap, Geographies, Geography, ZoomableGroup, Marker } from "react-simple-maps";
-import { geoCentroid } from "d3-geo";
+import { geoCentroid, geoArea } from "d3-geo";
 import * as topojson from "topojson-client";
 
 const geoUrl = typeof window !== "undefined" && window.location.pathname.includes("/distribuidores")
@@ -234,6 +234,11 @@ export default function ColombiaMap({ storesData, viewLevel, selectedDepartmentN
                   const isActive = count > 0;
                   let dName = geoName.charAt(0).toUpperCase() + geoName.slice(1).toLowerCase();
                   const centroid = geoCentroid(geo) as [number, number];
+                  
+                  const area = geoArea(geo) * 1000;
+                  const baseSize = Math.min(Math.max(Math.sqrt(area) * 2.5, 0.4), 2.5);
+                  const fontSize = isActive ? Math.max(baseSize * 1.5, 1.2) : baseSize;
+                  const showLabel = isActive || area > 0.08;
 
                   return (
                     <g key={geo.rsmKey}>
@@ -273,11 +278,11 @@ export default function ColombiaMap({ storesData, viewLevel, selectedDepartmentN
                           }
                         }}
                       />
-                      {centroid && !isNaN(centroid[0]) && !isNaN(centroid[1]) && (
+                      {centroid && !isNaN(centroid[0]) && !isNaN(centroid[1]) && showLabel && (
                         <Marker coordinates={centroid}>
                           <text
                             y="0.8"
-                            fontSize={isActive ? 3.2 : 2.0}
+                            fontSize={fontSize}
                             textAnchor="middle"
                             fill={isActive ? "#FFFFFF" : "#374151"}
                             fontWeight={isActive ? "bold" : "600"}
