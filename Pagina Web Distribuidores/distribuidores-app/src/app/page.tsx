@@ -31,11 +31,11 @@ const getObfuscatedData = () => {
 };
 
 export default function Home() {
-  const [stores, setStores] = useState([]);
+  const [stores, setStores] = useState<any[]>([]);
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedMunicipality, setSelectedMunicipality] = useState('');
   const [searchText, setSearchText] = useState('');
-  const [activeMarker, setActiveMarker] = useState(null);
+  const [activeMarker, setActiveMarker] = useState<any>(null);
   const [mapCenter, setMapCenter] = useState(centerColombia);
   const [zoom, setZoom] = useState(6);
   const [viewMode, setViewMode] = useState<'national' | 'department' | 'google'>('national');
