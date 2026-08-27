@@ -40,8 +40,8 @@
     "total_purchased": 100,
     "lat": 4.639381699999999,
     "lng": -74.0642493,
-    "department": "Bogotá, D.C.",
-    "municipality": "Bogotá, D.C."
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C."
   },
   {
     "name": "Natalia Valencia",
@@ -51,8 +51,8 @@
     "total_purchased": 100,
     "lat": 4.690589999999999,
     "lng": -74.0751284,
-    "department": "Bogotá",
-    "municipality": "Bogotá"
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C."
   },
   {
     "name": "Jenny medina",
@@ -95,8 +95,8 @@
     "total_purchased": 75,
     "lat": 4.6392391,
     "lng": -74.06541059999999,
-    "department": "Bogotá",
-    "municipality": "Bogotá",
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C.",
     "hidden": true
   },
   {
@@ -328,8 +328,8 @@
     "total_purchased": 38,
     "lat": 4.7381404,
     "lng": -74.05432139999999,
-    "department": "Cundinamarca",
-    "municipality": "Bogotá"
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C."
   },
   {
     "name": "Derly Charry Angel",
@@ -350,8 +350,8 @@
     "total_purchased": 34,
     "lat": 4.6025559,
     "lng": -74.1869658,
-    "department": "Bogotá",
-    "municipality": "Bogotá"
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C."
   },
   {
     "name": "Angela Marcela Izquierdo Martínez",
@@ -361,8 +361,8 @@
     "total_purchased": 34,
     "lat": 4.7046234,
     "lng": -74.0957794,
-    "department": "Bogotá",
-    "municipality": "Bogotá"
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C."
   },
   {
     "name": "Zoe Veloza Monteiro",
@@ -383,8 +383,8 @@
     "total_purchased": 30,
     "lat": 4.692527999999999,
     "lng": -74.0408436,
-    "department": "Bogotá",
-    "municipality": "Bogotá"
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C."
   },
   {
     "name": "Martha Lucia Lozada Moreno",
@@ -823,8 +823,8 @@
     "total_purchased": 15,
     "lat": 4.6106653,
     "lng": -74.0787921,
-    "department": "Bogotá",
-    "municipality": "Bogotá"
+    "department": "Bogotá D.C.",
+    "municipality": "Bogotá D.C."
   },
   {
     "name": "Saire Johana Pernett Luna",
