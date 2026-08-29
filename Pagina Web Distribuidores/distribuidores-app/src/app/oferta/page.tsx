@@ -175,53 +175,53 @@ export default function OfertaPage() {
         </div>
       </section>
 
-      {/* 03 - OCHO ADVOCACIONES (CREAM BACKGROUND) */}
-      <section className="py-24 px-8 md:px-16 bg-[#FAF7F2] text-[#081114]">
+      {/* 03 - OCHO ADVOCACIONES (DARK BACKGROUND WITH NIGHT PHOTOS) */}
+      <section className="py-24 px-8 md:px-16 bg-[#081114] text-white">
         <div className="max-w-5xl mx-auto">
           
           <div className="flex items-center gap-4 mb-8">
-            <span className="text-gray-400 tracking-[0.2em] text-xs font-semibold">01 · EL PRODUCTO</span>
+            <span className="text-[#D4AF37] tracking-[0.2em] text-xs font-semibold">01 · EL PRODUCTO</span>
           </div>
 
           <h2 className="text-6xl md:text-8xl text-[#D4AF37] font-normal leading-[0.8]" style={{fontFamily: 'var(--font-great-vibes)'}}>
             Ocho
           </h2>
-          <h3 className="text-4xl md:text-5xl text-[#081114] mt-2 mb-8 border-b-2 border-[#D4AF37] inline-block pb-4" style={{fontFamily: 'var(--font-playfair)'}}>
+          <h3 className="text-4xl md:text-5xl text-white mt-2 mb-8 border-b-2 border-[#D4AF37] inline-block pb-4" style={{fontFamily: 'var(--font-playfair)'}}>
             advocaciones
           </h3>
           
-          <p className="text-gray-600 max-w-lg text-sm md:text-base mb-16 leading-relaxed">
+          <p className="text-gray-300 max-w-lg text-sm md:text-base mb-16 leading-relaxed">
             Dos paquetes de cuatro faroles cada uno. Puedes pedir el que prefieras
-            o llevar ambos para tener la colección completa.
+            o llevar ambos para tener la colección completa iluminando tu hogar.
           </p>
 
           {/* PAQUETE 1 */}
           <div className="mb-20">
             <div className="flex items-center gap-4 mb-8">
-               <span className="bg-[#194C5C] text-white px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em]">
+               <span className="bg-[#D4AF37] text-[#081114] px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em]">
                  PAQUETE 1
                </span>
-               <span className="text-lg text-[#081114]" style={{fontFamily: 'var(--font-playfair)'}}>Devoción y Tradición</span>
-               <div className="h-px bg-[#D4AF37] flex-1 ml-4 opacity-50"></div>
+               <span className="text-lg text-[#D4AF37]" style={{fontFamily: 'var(--font-playfair)'}}>Devoción y Tradición</span>
+               <div className="h-px bg-white/10 flex-1 ml-4"></div>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
-                { img: '1Inmaculada.png', name: 'Inmaculada\nConcepción' },
-                { img: '1guadalupe.png', name: 'Virgen de\nGuadalupe' },
-                { img: '1Fatima.png', name: 'Virgen de\nFátima' },
-                { img: '1Carmen.png', name: 'Virgen del\nCarmen', altImg: '1Inmaculada.png' } // Fallback
+                { img: 'Virgen de la inmaculada Concepcion noche.jpg', name: 'Inmaculada\nConcepción' },
+                { img: 'Foto de la virgen de guadalupe en la noche.jpg', name: 'Virgen de\nGuadalupe' },
+                { img: 'Virgen de Fatima Noche.jpg', name: 'Virgen de\nFátima' },
+                { img: 'Virgen del Carmen en la noche.jpg', name: 'Virgen del\nCarmen' }
               ].map((m, i) => (
-                <div key={i} className="text-center">
-                  <div className="bg-white border border-gray-200 rounded-xl p-4 aspect-[2/3.5] mb-4 flex items-center justify-center shadow-sm">
+                <div key={i} className="text-center group">
+                  <div className="border border-white/10 rounded-xl p-1 mb-4 flex items-center justify-center shadow-lg bg-black/20 overflow-hidden relative aspect-[3/4]">
+                    <div className="absolute inset-0 bg-[#D4AF37] opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10"></div>
                     <img 
-                      src={`/distribuidores/faroles/${m.img}`} 
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = `/distribuidores/faroles/${m.altImg || '1guadalupe.png'}`; }} 
-                      alt={m.name} 
-                      className="h-full object-contain drop-shadow-md" 
+                      src={`/distribuidores/media/${m.img}`} 
+                      alt={m.name.replace('\n', ' ')} 
+                      className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-700" 
                     />
                   </div>
-                  <p className="text-xs text-gray-600 font-serif whitespace-pre-line leading-tight" style={{fontFamily: 'var(--font-playfair)'}}>{m.name}</p>
+                  <p className="text-sm text-gray-300 font-serif whitespace-pre-line leading-tight" style={{fontFamily: 'var(--font-playfair)'}}>{m.name}</p>
                 </div>
               ))}
             </div>
@@ -230,30 +230,30 @@ export default function OfertaPage() {
           {/* PAQUETE 2 */}
           <div>
             <div className="flex items-center gap-4 mb-8">
-               <span className="bg-[#194C5C] text-white px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em]">
+               <span className="bg-[#D4AF37] text-[#081114] px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em]">
                  PAQUETE 2
                </span>
-               <span className="text-lg text-[#081114]" style={{fontFamily: 'var(--font-playfair)'}}>Fe y Esperanza</span>
-               <div className="h-px bg-[#D4AF37] flex-1 ml-4 opacity-50"></div>
+               <span className="text-lg text-[#D4AF37]" style={{fontFamily: 'var(--font-playfair)'}}>Fe y Esperanza</span>
+               <div className="h-px bg-white/10 flex-1 ml-4"></div>
             </div>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
-                { img: '1Corazon.png', name: 'Sagrado Corazón\nde María', altImg: '1milagrosa.png' },
-                { img: '1Candelaria.png', name: 'Virgen de la\nCandelaria' },
-                { img: '1Lourdes.png', name: 'Virgen de\nLourdes', altImg: '1Inmaculada.png' },
-                { img: '1Chiquinquira.png', name: 'Virgen de\nChiquinquirá' }
+                { img: 'Virgen del sagrado Corazon.jpg', name: 'Sagrado Corazón\nde María' },
+                { img: 'Virgen de la candelaria en la noche.jpg', name: 'Virgen de la\nCandelaria' },
+                { img: 'Virgen de lourdes en la noche.jpg', name: 'Virgen de\nLourdes' },
+                { img: 'virgen de chiquinquira en la noche.jpg', name: 'Virgen de\nChiquinquirá' }
               ].map((m, i) => (
-                <div key={i} className="text-center">
-                  <div className="bg-white border border-gray-200 rounded-xl p-4 aspect-[2/3.5] mb-4 flex items-center justify-center shadow-sm">
+                <div key={i} className="text-center group">
+                  <div className="border border-white/10 rounded-xl p-1 mb-4 flex items-center justify-center shadow-lg bg-black/20 overflow-hidden relative aspect-[3/4]">
+                    <div className="absolute inset-0 bg-[#D4AF37] opacity-0 group-hover:opacity-10 transition-opacity duration-300 z-10"></div>
                     <img 
-                      src={`/distribuidores/faroles/${m.img}`} 
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = `/distribuidores/faroles/${m.altImg || '1guadalupe.png'}`; }} 
-                      alt={m.name} 
-                      className="h-full object-contain drop-shadow-md" 
+                      src={`/distribuidores/media/${m.img}`} 
+                      alt={m.name.replace('\n', ' ')} 
+                      className="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-700" 
                     />
                   </div>
-                  <p className="text-xs text-gray-600 font-serif whitespace-pre-line leading-tight" style={{fontFamily: 'var(--font-playfair)'}}>{m.name}</p>
+                  <p className="text-sm text-gray-300 font-serif whitespace-pre-line leading-tight" style={{fontFamily: 'var(--font-playfair)'}}>{m.name}</p>
                 </div>
               ))}
             </div>
