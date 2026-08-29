@@ -206,7 +206,7 @@ export default function OfertaPage() {
               <div className="bg-[#D4AF37]/10 backdrop-blur-md border border-[#D4AF37]/30 rounded-2xl p-6 transition-all duration-300 hover:bg-[#D4AF37]/20 hover:-translate-y-1 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
                 <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>100% Seguros</h4>
                 <p className="text-gray-300 text-sm font-light">
-                  Su diseño interior espacioso evita que la vela tradicional toque el papel. También son compatibles con luces LED a batería. <strong>Llegan armados y listos.</strong>
+                  Su diseño interior espacioso evita que la vela tradicional toque el papel. También son compatibles con luces LED a batería. <strong>Armado fácil en segundos.</strong>
                 </p>
               </div>
             </div>
@@ -217,7 +217,53 @@ export default function OfertaPage() {
 
 
       {/* =========================================
-          4. LAS ADVOCACIONES (LA COLECCIÓN)
+          4. INSTRUCCIONES DE ARMADO Y USO (VIDEOS)
+      ========================================= */}
+      <section className="py-20 px-8 md:px-16 bg-[#081114]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl text-[#D4AF37] font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Fáciles y seguros de usar
+            </h2>
+            <p className="text-gray-400">Diseñados para que cualquier miembro de la familia pueda armarlos en segundos.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Video 1: Cómo armar */}
+            <div className="space-y-4">
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_25px_rgba(212,175,55,0.15)] aspect-[9/16] relative bg-black">
+                <video 
+                  src="/distribuidores/media/como_armar.mp4" 
+                  controls 
+                  playsInline 
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <h4 className="text-xl text-[#D4AF37] font-serif text-center" style={{ fontFamily: 'var(--font-playfair)' }}>Paso 1: Armado rápido</h4>
+              <p className="text-sm text-gray-400 text-center px-4">Vienen pre-doblados. Solo necesitas desplegarlos y ajustar la base en menos de 10 segundos.</p>
+            </div>
+
+            {/* Video 2: Cómo poner la vela */}
+            <div className="space-y-4">
+              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_25px_rgba(212,175,55,0.15)] aspect-[9/16] relative bg-black">
+                <video 
+                  src="/distribuidores/media/poner_vela.mp4" 
+                  controls 
+                  playsInline 
+                  preload="metadata"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
+              <h4 className="text-xl text-[#D4AF37] font-serif text-center" style={{ fontFamily: 'var(--font-playfair)' }}>Paso 2: Colocar la vela</h4>
+              <p className="text-sm text-gray-400 text-center px-4">Sistema seguro que mantiene la llama aislada del papel, garantizando una noche tranquila.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          5. LAS ADVOCACIONES (LA COLECCIÓN)
       ========================================= */}
       <section className="relative py-24 px-8 md:px-16 bg-[#0B1518] text-white border-t border-white/5">
         <div className="max-w-5xl mx-auto relative z-10">
@@ -436,7 +482,7 @@ export default function OfertaPage() {
 
           <div className="space-y-4">
             {[
-              { q: "¿Los faroles vienen armados o tengo que pegarlos?", a: "Te enviamos los faroles completamente armados y listos para usar. Solo sácalos de la caja, ponles la luz y están listos para tu Noche de Velitas." },
+              { q: "¿Los faroles vienen armados o tengo que pegarlos?", a: "Te los enviamos pre-doblados y listos para encajar, no necesitas pegante. El armado es súper sencillo y te tomará menos de 10 segundos por farol (mira el video arriba)." },
               { q: "¿Sirven con velas de cera normales o solo luz LED?", a: "¡Con ambas! El interior es lo suficientemente amplio para que la vela tradicional no queme las paredes. Si hay mucho viento, también puedes usar luces LED a batería." },
               { q: "¿Cuánto tarda en llegar mi pedido?", a: "Los envíos tardan entre 2 a 5 días hábiles dependiendo de tu ciudad. Al ser temporada alta, te recomendamos pedir con anticipación." },
               { q: "¿Cómo funciona el Plan Separe?", a: "Abonas $2.000 COP hoy mediante transferencia (Nequi/Bancolombia) para congelar el precio y reservar tus faroles. El saldo restante lo pagas antes de que realicemos el despacho o al recibir." }
