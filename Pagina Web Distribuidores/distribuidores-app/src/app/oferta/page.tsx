@@ -139,60 +139,61 @@ export default function OfertaPage() {
         </div>
       </section>
 
-      {/* 02 - EL PRODUCTO */}
-      <section className="relative py-24 px-8 md:px-16 bg-[#081114] border-t border-white/5">
-        <div className="max-w-5xl mx-auto relative text-center md:text-left">
-          <span className="text-[#D4AF37] tracking-[0.2em] text-xs font-semibold block mb-12">01 · LA PIEZA</span>
+      {/* 02 - EL PRODUCTO (Web-Native Luxury Layout) */}
+      <section className="relative py-24 px-8 md:px-16 bg-[#0B1518] border-t border-white/5 overflow-hidden">
+        {/* Glow behind the farol */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.15)_0%,transparent_60%)] pointer-events-none"></div>
 
-          <h2 className="text-6xl md:text-7xl text-[#D4AF37] font-normal leading-[0.8]" style={{ fontFamily: 'var(--font-great-vibes)' }}>
-            Artesanía
-          </h2>
-          <h3 className="text-3xl md:text-4xl text-white mt-4 border-b border-[#D4AF37]/50 inline-block pb-3 mb-16" style={{ fontFamily: 'var(--font-playfair)' }}>
-            hecha a mano
-          </h3>
-
-          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-            <div className="w-full md:w-1/4 space-y-4 relative z-10">
-              <h4 className="text-[#D4AF37] tracking-[0.2em] text-[10px] font-semibold text-center md:text-left mb-6">MATERIALES</h4>
-              <div className="border border-white/10 rounded-2xl p-5 text-center bg-white/5 backdrop-blur-sm transition-colors hover:border-[#D4AF37]/50">
-                <p className="text-sm text-gray-300">Cartón de caña de azúcar</p>
-              </div>
-              <div className="border border-white/10 rounded-2xl p-5 text-center bg-white/5 backdrop-blur-sm transition-colors hover:border-[#D4AF37]/50">
-                <p className="text-sm text-gray-300">Papel seda translúcido</p>
-              </div>
-              <div className="border border-[#D4AF37]/50 rounded-2xl p-5 text-center bg-[#D4AF37]/10 shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-                <p className="text-sm text-[#D4AF37] font-semibold tracking-wide">Ensamblados a mano</p>
-              </div>
-            </div>
-
-            <div className="w-full md:w-2/4 flex justify-center relative z-0 py-8">
-              <div className="relative">
-                {/* Tactical Light Glow Effect */}
-                <div className="absolute inset-0 bg-[#D4AF37] opacity-20 blur-[60px] rounded-full pointer-events-none"></div>
-                <img 
-                  src="/distribuidores/media/Foto de la virgen de guadalupe en la noche.jpg" 
-                  alt="Virgen de Guadalupe" 
-                  className="relative z-10 w-full max-w-[240px] md:max-w-[280px] object-cover rounded-2xl border border-[#D4AF37]/20"
-                  style={{ filter: 'drop-shadow(0 0 35px rgba(212, 175, 55, 0.4)) drop-shadow(0 0 70px rgba(212, 175, 55, 0.15))' }}
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/distribuidores/faroles/1guadalupe.png'; }}
-                />
-              </div>
-            </div>
-
-            <div className="w-full md:w-1/4 space-y-4 relative z-10">
-              <h4 className="text-[#D4AF37] tracking-[0.2em] text-[10px] font-semibold text-center md:text-right mb-6">DIMENSIONES</h4>
-              {["17 cm de ancho", "35 cm de alto", "11 cm de fondo"].map((dim, idx) => (
-                <div key={idx} className="border border-white/10 rounded-2xl p-5 text-center md:text-right bg-white/5 backdrop-blur-sm transition-colors hover:border-[#D4AF37]/50">
-                  <p className="text-sm text-gray-300">{dim}</p>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <span className="text-[#D4AF37] tracking-[0.2em] text-xs font-semibold block mb-4 uppercase">Diseño de Autor</span>
+            <h2 className="text-5xl md:text-7xl text-[#D4AF37] font-normal leading-[0.8] mb-4" style={{ fontFamily: 'var(--font-great-vibes)' }}>
+              Artesanía
+            </h2>
+            <h3 className="text-3xl md:text-5xl text-white font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>
+              hecha a mano
+            </h3>
           </div>
 
-          <div className="mt-20 text-center max-w-2xl mx-auto pt-12">
-            <p className="text-gray-400 text-sm md:text-base font-light italic">
-              "El papel seda tamiza la luz de la vela y enciende los colores vívidamente. Diseñados para usarse con vela tradicional o con luz LED a batería."
-            </p>
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-24 mt-12">
+            
+            {/* Left Features (Materiales) */}
+            <div className="w-full lg:w-1/3 space-y-6 order-2 lg:order-1">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#D4AF37]/40 hover:-translate-y-1">
+                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Cartón de Caña de Azúcar</h4>
+                <p className="text-gray-400 text-sm font-light">Estructura firme y ecológica que soporta la intemperie y mantiene la forma perfecta de la pieza.</p>
+              </div>
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#D4AF37]/40 hover:-translate-y-1">
+                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Papel Seda Translúcido</h4>
+                <p className="text-gray-400 text-sm font-light">Tamiza la luz creando un efecto de vitral cálido y envolvente, dando vida a los colores de cada advocación.</p>
+              </div>
+            </div>
+
+            {/* Center Image (The specific isolated farol) */}
+            <div className="w-full lg:w-1/3 flex justify-center order-1 lg:order-2 relative group">
+              <div className="absolute inset-0 bg-[#D4AF37] opacity-0 group-hover:opacity-20 blur-[50px] rounded-full transition-opacity duration-700 pointer-events-none"></div>
+              <img 
+                src="/distribuidores/media/farol_caracteristicas.png" 
+                alt="Detalle del Farol" 
+                className="relative z-10 w-full max-w-[280px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+
+            {/* Right Features (Dimensiones y Armado) */}
+            <div className="w-full lg:w-1/3 space-y-6 order-3">
+              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#D4AF37]/40 hover:-translate-y-1">
+                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Proporción Perfecta</h4>
+                <p className="text-gray-400 text-sm font-light">
+                  <span className="block text-white mb-1">17 cm ancho × 35 cm alto × 11 cm fondo.</span>
+                  El tamaño ideal para destacar en andenes y antejardines sin perder estabilidad.
+                </p>
+              </div>
+              <div className="bg-[#D4AF37]/10 backdrop-blur-md border border-[#D4AF37]/30 rounded-2xl p-6 transition-all duration-300 hover:bg-[#D4AF37]/20 hover:-translate-y-1 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
+                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Listo para Iluminar</h4>
+                <p className="text-gray-300 text-sm font-light">Ensamblado a mano. Diseñado de forma segura para usarse con vela tradicional o luces LED a batería.</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
