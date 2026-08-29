@@ -3,9 +3,8 @@
 import { useState } from 'react';
 
 const OFERTAS = [
-  { id: 1, name: "Paquete 1", desc: "Devoción y Tradición", faroles: 4, price: 30000, recommended: false },
-  { id: 2, name: "Paquete 2", desc: "Fe y Esperanza", faroles: 4, price: 30000, recommended: false },
-  { id: 3, name: "Ambos Paquetes", desc: "Surtido Completo (8 Faroles)", faroles: 8, price: 56000, recommended: true },
+  { id: 1, name: "1 Paquete", desc: "4 Faroles", faroles: 4, price: 30000, recommended: false },
+  { id: 3, name: "2 Paquetes", desc: "8 Faroles", faroles: 8, price: 56000, recommended: true },
 ];
 
 export default function OfertaPage() {
@@ -13,7 +12,7 @@ export default function OfertaPage() {
   const [isContraEntrega, setIsContraEntrega] = useState(false);
   const [isPlanSepare, setIsPlanSepare] = useState(false);
 
-  const offer = OFERTAS.find((o) => o.id === selectedOffer) || OFERTAS[2];
+  const offer = OFERTAS.find((o) => o.id === selectedOffer) || OFERTAS[1];
   
   // Lógica de precios
   const basePrice = offer.price;
@@ -35,7 +34,7 @@ export default function OfertaPage() {
       message += `🚚 *Modalidad:* Pago Contra Entrega (+5%)\n`;
       message += `💵 *Total:* $${finalPrice.toLocaleString('es-CO')}\n`;
     } else {
-      message += `💳 *Modalidad:* Pago Anticipado (Nequi/DaviPlata/Bancolombia)\n`;
+      message += `💳 *Modalidad:* Pago Anticipado\n`;
       message += `💵 *Total:* $${finalPrice.toLocaleString('es-CO')}\n`;
     }
     
@@ -47,150 +46,182 @@ export default function OfertaPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#04090C] text-white font-sans overflow-x-hidden selection:bg-[#C6AD1D] selection:text-black">
+    <main className="min-h-screen text-white font-sans overflow-x-hidden selection:bg-[#D4AF37] selection:text-black">
       
-      {/* 01 - HERO SECTION WITH VIDEO BACKGROUND */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-10 text-center">
-        {/* Video Background */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
-          <video 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-40 scale-105"
-            poster="/distribuidores/media/hero_bg.jpg"
-          >
-            <source src="/distribuidores/media/hero_video.mp4" type="video/mp4" />
-          </video>
-          {/* Gradient Overlay for blending */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#04090C]/20 via-[#04090C]/50 to-[#04090C]"></div>
+      {/* 01 - HERO SECTION */}
+      <section className="relative min-h-[90vh] flex flex-col justify-center px-8 md:px-16 pt-20 pb-16 bg-[#081114]">
+        {/* Background image slightly visible */}
+        <div className="absolute inset-0 z-0">
+          <img src="/distribuidores/media/hero_bg.jpg" alt="Fondo Faroles" className="w-full h-full object-cover opacity-30 mix-blend-luminosity" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#081114]/80 via-[#081114]/90 to-[#081114]"></div>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto space-y-6 mt-16">
-          <div className="mb-8">
-            <img src="/distribuidores/logo.png" alt="Genius Farole Logo" className="w-32 md:w-48 mx-auto drop-shadow-2xl" />
+        <div className="relative z-10 max-w-5xl mx-auto w-full">
+          {/* Top Logo */}
+          <div className="absolute top-0 right-0 hidden md:block">
+            <img src="/distribuidores/logo.png" alt="Genius Faroles" className="w-24 h-auto" />
           </div>
+
+          <h3 className="text-[#D4AF37] tracking-[0.2em] text-xs uppercase mb-6 font-semibold">
+            FAROLES GENIUS
+          </h3>
           
-          <h2 className="text-sm md:text-md uppercase tracking-[0.3em] text-[#C6AD1D] font-medium mb-4">
-            Faroles Genius
-          </h2>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal leading-tight text-[#C6AD1D] drop-shadow-lg" style={{fontFamily: 'var(--font-great-vibes)'}}>
-            Faroles alusivos a la <br/>
-            <span className="text-white block mt-2" style={{fontFamily: 'var(--font-playfair)', fontWeight: 700}}>Virgen María</span>
+          <h1 className="text-6xl md:text-8xl text-[#D4AF37] font-normal leading-[0.8]" style={{fontFamily: 'var(--font-great-vibes)'}}>
+            Faroles alusivos a la
           </h1>
+          <h2 className="text-4xl md:text-6xl font-serif text-white mt-4 border-b border-[#D4AF37] inline-block pb-4 mb-8" style={{fontFamily: 'var(--font-playfair)'}}>
+            Virgen María
+          </h2>
           
-          <p className="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto mt-8 leading-relaxed border-l-2 border-[#C6AD1D] pl-6 text-left">
-            Elaborados a mano en papel seda. Encendidos, se ven como el vitral de una iglesia. Conoce el producto, el precio y asegúralos con envío gratis.
+          <p className="text-gray-300 max-w-xl text-lg font-light leading-relaxed mb-16">
+            Elaborados a mano en papel seda. Encendidos, se ven como el
+            vitral de una iglesia. Conoce el producto, el precio y asegúralos con envío gratis.
           </p>
           
-          <div className="pt-12 animate-bounce opacity-70">
-            <span className="text-sm uppercase tracking-widest text-[#C6AD1D]">Descubre más</span>
-            <div className="w-px h-16 bg-[#C6AD1D] mx-auto mt-4"></div>
+          {/* Bottom stats */}
+          <div className="grid grid-cols-3 gap-8 max-w-2xl border-t border-white/10 pt-8 mt-12">
+            <div>
+              <div className="text-[#D4AF37] font-serif text-xl md:text-2xl mb-2" style={{fontFamily: 'var(--font-playfair)'}}>$30.000–$56.000</div>
+              <div className="text-gray-500 text-[10px] tracking-widest uppercase">PRECIO AL PÚBLICO</div>
+            </div>
+            <div>
+              <div className="text-[#D4AF37] font-serif text-xl md:text-2xl mb-2" style={{fontFamily: 'var(--font-playfair)'}}>Gratis</div>
+              <div className="text-gray-500 text-[10px] tracking-widest uppercase">ENVÍO NACIONAL</div>
+            </div>
+            <div>
+              <div className="text-[#D4AF37] font-serif text-xl md:text-2xl mb-2" style={{fontFamily: 'var(--font-playfair)'}}>8</div>
+              <div className="text-gray-500 text-[10px] tracking-widest uppercase">ADVOCACIONES MARIANAS</div>
+            </div>
           </div>
         </div>
       </section>
 
 
-      {/* 02 - EL PRODUCTO (DETALLES Y MATERIALES) */}
-      <section className="relative py-24 px-6 md:px-12 bg-[#04090C]">
-        <div className="max-w-6xl mx-auto">
+      {/* 02 - EL PRODUCTO */}
+      <section className="relative py-24 px-8 md:px-16 bg-[#0B1518]">
+        <div className="max-w-5xl mx-auto relative">
           
           <div className="flex items-center gap-4 mb-16">
-            <span className="text-[#C6AD1D] tracking-widest text-sm">01 · EL PRODUCTO</span>
-            <div className="h-px bg-white/10 flex-1"></div>
+            <span className="text-[#D4AF37] tracking-[0.2em] text-xs font-semibold">01 · EL PRODUCTO</span>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
+          <h2 className="text-5xl md:text-7xl text-[#D4AF37] font-normal leading-[0.8]" style={{fontFamily: 'var(--font-great-vibes)'}}>
+            Hecho a mano,
+          </h2>
+          <h3 className="text-3xl md:text-4xl text-white mt-4 border-b border-[#D4AF37] inline-block pb-3 mb-16" style={{fontFamily: 'var(--font-playfair)'}}>
+            pieza por pieza
+          </h3>
+
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
             
-            {/* MATERIALES */}
-            <div className="space-y-6 order-2 lg:order-1 text-center lg:text-right">
-              <h3 className="text-[#C6AD1D] tracking-widest text-sm mb-8 font-bold">MATERIALES</h3>
+            {/* Left: Materiales */}
+            <div className="w-full md:w-1/4 space-y-8 relative z-10">
+              <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-semibold text-center md:text-left mb-6">MATERIALES</h4>
               
-              <div className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#C6AD1D]/50 transition-colors">
-                <p className="font-medium">Cartón de <br/>caña de azúcar</p>
+              <div className="border border-[#D4AF37]/30 rounded-lg p-4 text-center relative group">
+                <p className="text-sm text-gray-300">Cartón de<br/>caña de azúcar</p>
+                <div className="hidden md:block absolute top-1/2 -right-16 w-16 h-px bg-[#D4AF37]/50"></div>
               </div>
-              <div className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#C6AD1D]/50 transition-colors">
-                <p className="font-medium">Papel <br/>seda</p>
+              
+              <div className="border border-[#D4AF37]/30 rounded-lg p-4 text-center relative group">
+                <p className="text-sm text-gray-300">Papel<br/>seda</p>
+                <div className="hidden md:block absolute top-1/2 -right-16 w-16 h-px bg-[#D4AF37]/50"></div>
               </div>
-              <div className="p-6 rounded-xl border border-[#C6AD1D]/30 bg-[#C6AD1D]/5 backdrop-blur-sm hover:border-[#C6AD1D]/80 transition-colors">
-                <p className="font-medium text-[#C6AD1D]">Elaborados <br/>a mano</p>
+              
+              <div className="border border-[#D4AF37]/50 rounded-lg p-4 text-center relative group bg-[#D4AF37]/5">
+                <p className="text-sm text-[#D4AF37]">Elaborados<br/>a mano</p>
+                <div className="hidden md:block absolute top-1/2 -right-16 w-16 h-px bg-[#D4AF37]/50"></div>
               </div>
             </div>
 
-            {/* IMAGEN CENTRAL */}
-            <div className="order-1 lg:order-2 flex flex-col items-center">
-              <h2 className="text-4xl md:text-5xl text-[#C6AD1D] mb-2" style={{fontFamily: 'var(--font-great-vibes)'}}>Hecho a mano,</h2>
-              <h3 className="text-3xl md:text-4xl font-normal text-white mb-12" style={{fontFamily: 'var(--font-playfair)'}}>pieza por pieza</h3>
-              
-              <div className="relative group perspective-1000">
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-[#C6AD1D] opacity-20 blur-[60px] rounded-full group-hover:opacity-40 transition-opacity duration-700"></div>
-                <img src="/distribuidores/media/Foto de la virgen de guadalupe en la noche.jpg" alt="Virgen de Guadalupe Iluminada" onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/distribuidores/faroles/1guadalupe.png'; }} className="relative z-10 w-full max-w-[280px] drop-shadow-2xl object-cover rounded-xl border border-white/5" />
-              </div>
+            {/* Center Image */}
+            <div className="w-full md:w-2/4 flex justify-center relative z-0">
+               <img 
+                 src="/distribuidores/media/Foto de la virgen de guadalupe en la noche.jpg" 
+                 alt="Guadalupe" 
+                 className="w-full max-w-[260px] object-cover rounded-lg drop-shadow-[0_0_30px_rgba(212,175,55,0.15)]"
+                 onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/distribuidores/faroles/1guadalupe.png'; }}
+               />
             </div>
 
-            {/* DIMENSIONES */}
-            <div className="space-y-6 order-3 lg:order-3 text-center lg:text-left">
-              <h3 className="text-[#C6AD1D] tracking-widest text-sm mb-8 font-bold">DIMENSIONES</h3>
+            {/* Right: Dimensiones */}
+            <div className="w-full md:w-1/4 space-y-8 relative z-10">
+              <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-semibold text-center md:text-right mb-6">DIMENSIONES</h4>
               
-              <div className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#C6AD1D]/50 transition-colors">
-                <p className="font-medium">17 cm <br/><span className="text-gray-400 text-sm">de ancho</span></p>
+              <div className="border border-[#D4AF37]/30 rounded-lg p-4 text-center relative group">
+                <div className="hidden md:block absolute top-1/2 -left-16 w-16 h-px bg-[#D4AF37]/50"></div>
+                <p className="text-sm text-gray-300">17 cm<br/>de ancho</p>
               </div>
-              <div className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#C6AD1D]/50 transition-colors">
-                <p className="font-medium">35 cm <br/><span className="text-gray-400 text-sm">de alto</span></p>
+              
+              <div className="border border-[#D4AF37]/30 rounded-lg p-4 text-center relative group">
+                <div className="hidden md:block absolute top-1/2 -left-16 w-16 h-px bg-[#D4AF37]/50"></div>
+                <p className="text-sm text-gray-300">35 cm<br/>de alto</p>
               </div>
-              <div className="p-6 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm hover:border-[#C6AD1D]/50 transition-colors">
-                <p className="font-medium">11 cm <br/><span className="text-gray-400 text-sm">de fondo</span></p>
+              
+              <div className="border border-[#D4AF37]/30 rounded-lg p-4 text-center relative group">
+                <div className="hidden md:block absolute top-1/2 -left-16 w-16 h-px bg-[#D4AF37]/50"></div>
+                <p className="text-sm text-gray-300">11 cm<br/>de fondo</p>
               </div>
             </div>
-
           </div>
 
-          <div className="mt-20 text-center max-w-3xl mx-auto border-t border-white/10 pt-12">
-            <p className="text-gray-300 text-lg md:text-xl font-light">
-              El papel seda deja pasar la luz de la vela y enciende los colores. Funciona con vela tradicional o con luz LED a batería.
+          <div className="mt-20 text-center max-w-2xl mx-auto border-t border-white/10 pt-12">
+            <p className="text-gray-400 text-sm md:text-base font-light">
+              El papel seda deja pasar la luz de la vela y enciende los colores. Funciona con vela
+              tradicional o con luz LED a batería.
             </p>
           </div>
 
         </div>
       </section>
 
-      {/* 03 - ADVOCACIONES Y PAQUETES */}
-      <section className="py-24 px-6 md:px-12 bg-[#020507]">
-        <div className="max-w-6xl mx-auto">
+      {/* 03 - OCHO ADVOCACIONES (CREAM BACKGROUND) */}
+      <section className="py-24 px-8 md:px-16 bg-[#FAF7F2] text-[#081114]">
+        <div className="max-w-5xl mx-auto">
           
-          <div className="mb-16">
-             <h2 className="text-6xl md:text-7xl text-[#C6AD1D]" style={{fontFamily: 'var(--font-great-vibes)'}}>Ocho</h2>
-             <h3 className="text-4xl md:text-5xl font-normal text-white mt-2" style={{fontFamily: 'var(--font-playfair)'}}>advocaciones</h3>
-             <div className="w-24 h-1 bg-[#C6AD1D] mt-8 mb-8"></div>
-             <p className="text-gray-300 text-lg max-w-xl">
-               Dos paquetes de cuatro faroles cada uno. Puedes elegir tu preferido o pedir ambos para tener la colección completa.
-             </p>
+          <div className="flex items-center gap-4 mb-8">
+            <span className="text-gray-400 tracking-[0.2em] text-xs font-semibold">01 · EL PRODUCTO</span>
           </div>
+
+          <h2 className="text-6xl md:text-8xl text-[#D4AF37] font-normal leading-[0.8]" style={{fontFamily: 'var(--font-great-vibes)'}}>
+            Ocho
+          </h2>
+          <h3 className="text-4xl md:text-5xl text-[#081114] mt-2 mb-8 border-b-2 border-[#D4AF37] inline-block pb-4" style={{fontFamily: 'var(--font-playfair)'}}>
+            advocaciones
+          </h3>
+          
+          <p className="text-gray-600 max-w-lg text-sm md:text-base mb-16 leading-relaxed">
+            Dos paquetes de cuatro faroles cada uno. Puedes pedir el que prefieras
+            o llevar ambos para tener la colección completa.
+          </p>
 
           {/* PAQUETE 1 */}
           <div className="mb-20">
             <div className="flex items-center gap-4 mb-8">
-               <span className="bg-[#123140] text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-widest border border-white/10 shadow-[0_0_15px_rgba(18,49,64,0.5)]">
+               <span className="bg-[#194C5C] text-white px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em]">
                  PAQUETE 1
                </span>
-               <span className="text-xl text-[#C6AD1D]" style={{fontFamily: 'var(--font-playfair)'}}>Devoción y Tradición</span>
-               <div className="h-px bg-white/10 flex-1 ml-4"></div>
+               <span className="text-lg text-[#081114]" style={{fontFamily: 'var(--font-playfair)'}}>Devoción y Tradición</span>
+               <div className="h-px bg-[#D4AF37] flex-1 ml-4 opacity-50"></div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
-                { img: 'Virgen de la inmaculada Concepcion noche.jpg', name: 'Inmaculada Concepción' },
-                { img: 'Foto de la virgen de guadalupe en la noche.jpg', name: 'Virgen de Guadalupe' },
-                { img: 'Virgen de Fatima Noche.jpg', name: 'Virgen de Fátima' },
-                { img: 'Virgen del Carmen en la noche.jpg', name: 'Virgen del Carmen' }
+                { img: '1Inmaculada.png', name: 'Inmaculada\nConcepción' },
+                { img: '1guadalupe.png', name: 'Virgen de\nGuadalupe' },
+                { img: '1Fatima.png', name: 'Virgen de\nFátima' },
+                { img: '1Carmen.png', name: 'Virgen del\nCarmen', altImg: '1Inmaculada.png' } // Fallback
               ].map((m, i) => (
-                <div key={i} className="text-center group">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-4 aspect-[2/3] mb-4 flex items-center justify-center overflow-hidden hover:border-[#C6AD1D]/40 transition-colors backdrop-blur-md shadow-lg shadow-black/50">
-                    <img src={`/distribuidores/media/${m.img}`} onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/distribuidores/faroles/1Inmaculada.png'; }} alt={m.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-md" />
+                <div key={i} className="text-center">
+                  <div className="bg-white border border-gray-200 rounded-xl p-4 aspect-[2/3.5] mb-4 flex items-center justify-center shadow-sm">
+                    <img 
+                      src={`/distribuidores/faroles/${m.img}`} 
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = `/distribuidores/faroles/${m.altImg || '1guadalupe.png'}`; }} 
+                      alt={m.name} 
+                      className="h-full object-contain drop-shadow-md" 
+                    />
                   </div>
-                  <p className="text-sm text-gray-300 font-medium">{m.name}</p>
+                  <p className="text-xs text-gray-600 font-serif whitespace-pre-line leading-tight" style={{fontFamily: 'var(--font-playfair)'}}>{m.name}</p>
                 </div>
               ))}
             </div>
@@ -199,25 +230,30 @@ export default function OfertaPage() {
           {/* PAQUETE 2 */}
           <div>
             <div className="flex items-center gap-4 mb-8">
-               <span className="bg-[#123140] text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-widest border border-white/10 shadow-[0_0_15px_rgba(18,49,64,0.5)]">
+               <span className="bg-[#194C5C] text-white px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em]">
                  PAQUETE 2
                </span>
-               <span className="text-xl text-[#C6AD1D]" style={{fontFamily: 'var(--font-playfair)'}}>Fe y Esperanza</span>
-               <div className="h-px bg-white/10 flex-1 ml-4"></div>
+               <span className="text-lg text-[#081114]" style={{fontFamily: 'var(--font-playfair)'}}>Fe y Esperanza</span>
+               <div className="h-px bg-[#D4AF37] flex-1 ml-4 opacity-50"></div>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
-                { img: 'Virgen del sagrado Corazon.jpg', name: 'Sagrado Corazón de María' },
-                { img: 'Virgen de la candelaria en la noche.jpg', name: 'Virgen de la Candelaria' },
-                { img: 'Virgen de lourdes en la noche.jpg', name: 'Virgen de Lourdes' },
-                { img: 'virgen de chiquinquira en la noche.jpg', name: 'Virgen de Chiquinquirá' }
+                { img: '1Corazon.png', name: 'Sagrado Corazón\nde María', altImg: '1milagrosa.png' },
+                { img: '1Candelaria.png', name: 'Virgen de la\nCandelaria' },
+                { img: '1Lourdes.png', name: 'Virgen de\nLourdes', altImg: '1Inmaculada.png' },
+                { img: '1Chiquinquira.png', name: 'Virgen de\nChiquinquirá' }
               ].map((m, i) => (
-                <div key={i} className="text-center group">
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-4 aspect-[2/3] mb-4 flex items-center justify-center overflow-hidden hover:border-[#C6AD1D]/40 transition-colors backdrop-blur-md shadow-lg shadow-black/50">
-                    <img src={`/distribuidores/media/${m.img}`} onError={(e) => { (e.currentTarget as HTMLImageElement).src = '/distribuidores/faroles/1Chiquinquira.png'; }} alt={m.name} className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 rounded-md" />
+                <div key={i} className="text-center">
+                  <div className="bg-white border border-gray-200 rounded-xl p-4 aspect-[2/3.5] mb-4 flex items-center justify-center shadow-sm">
+                    <img 
+                      src={`/distribuidores/faroles/${m.img}`} 
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = `/distribuidores/faroles/${m.altImg || '1guadalupe.png'}`; }} 
+                      alt={m.name} 
+                      className="h-full object-contain drop-shadow-md" 
+                    />
                   </div>
-                  <p className="text-sm text-gray-300 font-medium">{m.name}</p>
+                  <p className="text-xs text-gray-600 font-serif whitespace-pre-line leading-tight" style={{fontFamily: 'var(--font-playfair)'}}>{m.name}</p>
                 </div>
               ))}
             </div>
@@ -226,183 +262,116 @@ export default function OfertaPage() {
         </div>
       </section>
 
-      {/* 04 - GLASSMORPHISM PRICING & CHECKOUT */}
-      <section className="relative py-24 px-6 bg-[#04090C] overflow-hidden">
-        {/* Decorative background glows */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#123140] rounded-full blur-[150px] opacity-40 pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#C6AD1D] rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
-
-        <div className="relative z-10 max-w-6xl mx-auto">
+      {/* 04 - PRECIO Y COMPRA (DARK) */}
+      <section className="py-24 px-8 md:px-16 bg-[#0B1518] relative">
+        <div className="max-w-5xl mx-auto">
           
           <div className="flex items-center gap-4 mb-16">
-            <span className="text-[#C6AD1D] tracking-widest text-sm">02 · EL PRECIO</span>
-            <div className="h-px bg-white/10 flex-1"></div>
+            <span className="text-[#D4AF37] tracking-[0.2em] text-xs font-semibold">02 · EL PRECIO</span>
           </div>
 
-          <div className="text-center mb-16">
-             <h2 className="text-5xl md:text-6xl font-normal text-white mb-6" style={{fontFamily: 'var(--font-playfair)'}}>Haz tu pedido</h2>
-             <p className="text-gray-400 text-lg">Envío gratuito comprando ahora mismo. Selecciona tu plan.</p>
+          <h2 className="text-4xl md:text-5xl font-serif text-white mb-2" style={{fontFamily: 'var(--font-playfair)'}}>Un paquete de 4 faroles</h2>
+          <h2 className="text-4xl md:text-5xl font-serif text-[#D4AF37] mb-12 border-b-2 border-[#D4AF37] inline-block pb-4" style={{fontFamily: 'var(--font-playfair)'}}>cuesta $30.000</h2>
+
+          {/* Pricing Box */}
+          <div className="border border-[#D4AF37]/50 rounded-xl p-8 md:p-12 mb-16 flex flex-col md:flex-row gap-8 items-center bg-[#D4AF37]/5 backdrop-blur-sm">
+             <div className="text-5xl md:text-6xl text-[#D4AF37] font-serif" style={{fontFamily: 'var(--font-playfair)'}}>
+               $56.000
+             </div>
+             <div className="text-gray-300 text-sm md:text-base leading-relaxed">
+               Precio por la <strong>colección completa (8 faroles)</strong>.<br/>
+               Llevando ambos paquetes ahorras dinero y te aseguras de tener todas las advocaciones. El envío es totalmente gratis a cualquier parte del país.
+             </div>
           </div>
 
-          {/* Pricing Cards (Glassmorphism) */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            {OFERTAS.map((o) => (
-              <div 
-                key={o.id}
-                onClick={() => { setSelectedOffer(o.id); setIsPlanSepare(false); }}
-                className={`relative cursor-pointer transition-all duration-300 rounded-2xl p-8 backdrop-blur-xl border ${selectedOffer === o.id ? 'border-[#C6AD1D] bg-[#C6AD1D]/10 shadow-[0_0_30px_rgba(198,173,29,0.15)] transform -translate-y-2' : 'border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/20'}`}
-              >
-                {o.recommended && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#C6AD1D] text-[#04090C] text-[10px] font-black uppercase tracking-widest px-4 py-1 rounded-full shadow-lg shadow-[#C6AD1D]/20">
-                    RECOMENDADO
-                  </div>
-                )}
-                
-                <div className="flex justify-between items-start mb-6">
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">{o.name}</h3>
-                    <p className="text-[#C6AD1D] text-xs uppercase tracking-wider">{o.desc}</p>
-                  </div>
-                  <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${selectedOffer === o.id ? 'border-[#C6AD1D]' : 'border-gray-500'}`}>
-                    {selectedOffer === o.id && <div className="w-2.5 h-2.5 bg-[#C6AD1D] rounded-full"></div>}
-                  </div>
-                </div>
-                
-                <div className="flex items-end gap-2 mb-4">
-                  <span className="text-4xl font-normal text-white" style={{fontFamily: 'var(--font-playfair)'}}>${o.price.toLocaleString('es-CO')}</span>
-                </div>
-                
-                <div className="text-sm text-gray-400">
-                  <span className="text-white font-medium">{o.faroles} faroles</span> en total. Envío GRATIS.
-                </div>
-              </div>
-            ))}
+          <div className="mb-12">
+            <h3 className="text-xl font-serif text-white mb-4" style={{fontFamily: 'var(--font-playfair)'}}>Selecciona tu pedido</h3>
+            <p className="text-gray-400 text-sm mb-8">Elige cuántos paquetes deseas y el método de pago que prefieres.</p>
           </div>
 
-          {/* CHECKOUT SECTION */}
-          <div className="bg-white/5 backdrop-blur-2xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] flex flex-col lg:flex-row gap-12 relative overflow-hidden">
+          {/* Selection Panels */}
+          <div className="grid md:grid-cols-2 gap-6 mb-16">
+             <div 
+               onClick={() => setSelectedOffer(1)}
+               className={`border p-8 rounded-xl cursor-pointer transition-colors ${selectedOffer === 1 ? 'border-[#D4AF37] bg-[#D4AF37]/10' : 'border-white/20 hover:border-[#D4AF37]/50'}`}
+             >
+               <div className="text-[#D4AF37] tracking-[0.2em] text-[10px] font-bold mb-4 uppercase">1 PAQUETE (4 FAROLES)</div>
+               <div className="text-4xl text-white font-serif mb-2" style={{fontFamily: 'var(--font-playfair)'}}>$30.000</div>
+               <div className="text-gray-400 text-sm">Envío gratis incluido.</div>
+             </div>
+
+             <div 
+               onClick={() => setSelectedOffer(3)}
+               className={`border p-8 rounded-xl cursor-pointer transition-colors ${selectedOffer === 3 ? 'border-[#D4AF37] bg-[#D4AF37]/10' : 'border-white/20 hover:border-[#D4AF37]/50'}`}
+             >
+               <div className="text-[#D4AF37] tracking-[0.2em] text-[10px] font-bold mb-4 uppercase">2 PAQUETES (8 FAROLES)</div>
+               <div className="text-4xl text-white font-serif mb-2" style={{fontFamily: 'var(--font-playfair)'}}>$56.000</div>
+               <div className="text-gray-400 text-sm">Mejor precio. Envío gratis incluido.</div>
+             </div>
+          </div>
+
+          {/* Payment Methods - Styled like the PDF sections */}
+          <div className="space-y-8 border-t border-white/10 pt-12">
             
-            {/* Subtle glow inside the panel */}
-            <div className="absolute -top-32 -left-32 w-64 h-64 bg-[#C6AD1D]/10 rounded-full blur-[80px] pointer-events-none"></div>
-
-            {/* Toggles */}
-            <div className="flex-1 space-y-6 relative z-10">
-              <h3 className="text-xl font-normal text-white mb-8" style={{fontFamily: 'var(--font-playfair)'}}>Opciones de pago flexibles</h3>
-              
-              <div className={`p-6 rounded-2xl border transition-all duration-300 ${isContraEntrega && !isPlanSepare ? 'border-white/40 bg-white/10 shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]' : 'border-white/5 bg-black/20 hover:bg-black/30'}`}>
-                <label className="flex items-start gap-4 cursor-pointer">
-                  <div className="relative flex-shrink-0 mt-1">
-                    <input 
-                      type="checkbox" 
-                      className="sr-only" 
-                      checked={isContraEntrega} 
-                      onChange={(e) => {
-                        setIsContraEntrega(e.target.checked);
-                        if (e.target.checked) setIsPlanSepare(false);
-                      }} 
-                    />
-                    <div className={`block w-12 h-6 rounded-full transition-colors ${isContraEntrega ? 'bg-[#C6AD1D]' : 'bg-gray-800'}`}></div>
-                    <div className={`absolute left-1 top-1 bg-[#04090C] w-4 h-4 rounded-full transition-transform ${isContraEntrega ? 'translate-x-6' : ''}`}></div>
-                  </div>
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              <div className="text-[#D4AF37] font-serif text-xl" style={{fontFamily: 'var(--font-playfair)'}}>01</div>
+              <div className="flex-1 border-b border-white/10 pb-8">
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <input type="radio" name="payment" className="w-5 h-5 accent-[#D4AF37]" checked={!isContraEntrega && !isPlanSepare} onChange={() => { setIsContraEntrega(false); setIsPlanSepare(false); }} />
                   <div>
-                    <h4 className="text-md font-bold text-white uppercase tracking-wider text-sm mb-1">Pago Contra Entrega (+5%)</h4>
-                    <p className="text-sm text-gray-400">
-                      Paga en efectivo al recibir tu pedido en la puerta de tu casa.
-                    </p>
-                  </div>
-                </label>
-              </div>
-
-              <div className={`p-6 rounded-2xl border transition-all duration-300 ${isPlanSepare ? 'border-[#C6AD1D]/60 bg-[#C6AD1D]/10 shadow-[inset_0_0_20px_rgba(198,173,29,0.1)]' : 'border-white/5 bg-black/20 hover:bg-black/30'}`}>
-                <label className="flex items-start gap-4 cursor-pointer">
-                  <div className="relative flex-shrink-0 mt-1">
-                    <input 
-                      type="checkbox" 
-                      className="sr-only" 
-                      checked={isPlanSepare} 
-                      onChange={(e) => {
-                        setIsPlanSepare(e.target.checked);
-                        if (e.target.checked) setIsContraEntrega(false);
-                      }} 
-                    />
-                    <div className={`block w-12 h-6 rounded-full transition-colors ${isPlanSepare ? 'bg-[#C6AD1D]' : 'bg-gray-800'}`}></div>
-                    <div className={`absolute left-1 top-1 bg-[#04090C] w-4 h-4 rounded-full transition-transform ${isPlanSepare ? 'translate-x-6' : ''}`}></div>
-                  </div>
-                  <div>
-                    <h4 className="text-md font-bold text-white uppercase tracking-wider text-sm mb-1">Plan Separe</h4>
-                    <p className="text-sm text-gray-400">
-                      Asegura tu pedido hoy con solo <strong>$2.000</strong> de abono. Te los recordamos después.
-                    </p>
+                    <h4 className="text-lg text-white font-serif mb-1" style={{fontFamily: 'var(--font-playfair)'}}>Pago Anticipado (Nequi/Bancolombia)</h4>
+                    <p className="text-gray-400 text-sm">Pagas el total ahora. Envío gratis garantizado y despacho prioritario.</p>
                   </div>
                 </label>
               </div>
             </div>
 
-            {/* Recibo */}
-            <div className="w-full lg:w-[400px] border-l border-white/10 lg:pl-12 flex flex-col relative z-10">
-               <h3 className="text-xl font-normal text-white mb-8" style={{fontFamily: 'var(--font-playfair)'}}>Resumen</h3>
-               
-               <div className="flex-1 space-y-4 text-sm font-medium">
-                 <div className="flex justify-between text-gray-300">
-                   <span>{offer.name} ({offer.faroles} Faroles)</span>
-                   <span>${basePrice.toLocaleString('es-CO')}</span>
-                 </div>
-                 <div className="flex justify-between text-[#C6AD1D]">
-                   <span>Envío Nacional</span>
-                   <span>GRATIS</span>
-                 </div>
-                 
-                 {isContraEntrega && (
-                   <div className="flex justify-between text-gray-400 pt-2 border-t border-white/10">
-                     <span>Recargo Contra Entrega (5%)</span>
-                     <span>+${(finalPrice - basePrice).toLocaleString('es-CO')}</span>
-                   </div>
-                 )}
-                 
-                 {isPlanSepare && (
-                   <div className="flex justify-between text-[#C6AD1D] pt-2 border-t border-white/10">
-                     <span>Abono inicial hoy</span>
-                     <span>-$2.000</span>
-                   </div>
-                 )}
-               </div>
-
-               <div className="mt-8 mb-8 border-t border-white/10 pt-6 flex justify-between items-end">
-                 <span className="text-sm text-gray-400 uppercase tracking-widest">{isPlanSepare ? 'Total a abonar hoy' : 'Total a pagar'}</span>
-                 <span className="text-4xl text-[#C6AD1D]" style={{fontFamily: 'var(--font-playfair)'}}>${isPlanSepare ? '2.000' : finalPrice.toLocaleString('es-CO')}</span>
-               </div>
-
-               <button 
-                 onClick={handleWhatsApp}
-                 className="w-full bg-[#C6AD1D] hover:bg-white text-[#04090C] font-bold uppercase tracking-widest text-sm py-5 rounded-xl transition-colors duration-300 shadow-[0_10px_20px_rgba(198,173,29,0.2)] hover:shadow-[0_15px_30px_rgba(255,255,255,0.3)]"
-               >
-                 {isPlanSepare ? 'Abonar $2.000 vía WhatsApp' : 'Comprar vía WhatsApp'}
-               </button>
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              <div className="text-[#D4AF37] font-serif text-xl" style={{fontFamily: 'var(--font-playfair)'}}>02</div>
+              <div className="flex-1 border-b border-white/10 pb-8">
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <input type="radio" name="payment" className="w-5 h-5 accent-[#D4AF37]" checked={isContraEntrega} onChange={() => { setIsContraEntrega(true); setIsPlanSepare(false); }} />
+                  <div>
+                    <h4 className="text-lg text-white font-serif mb-1" style={{fontFamily: 'var(--font-playfair)'}}>Pago Contra Entrega</h4>
+                    <p className="text-gray-400 text-sm">Pagas al recibir. Tiene un recargo del 5% sobre el valor del pedido.</p>
+                  </div>
+                </label>
+              </div>
             </div>
+
+            <div className="flex flex-col md:flex-row gap-6 items-start">
+              <div className="text-[#D4AF37] font-serif text-xl" style={{fontFamily: 'var(--font-playfair)'}}>03</div>
+              <div className="flex-1 border-b border-white/10 pb-8">
+                <label className="flex items-center gap-4 cursor-pointer">
+                  <input type="radio" name="payment" className="w-5 h-5 accent-[#D4AF37]" checked={isPlanSepare} onChange={() => { setIsPlanSepare(true); setIsContraEntrega(false); }} />
+                  <div>
+                    <h4 className="text-lg text-white font-serif mb-1" style={{fontFamily: 'var(--font-playfair)'}}>Plan Separe</h4>
+                    <p className="text-gray-400 text-sm">Abona solo $2.000 hoy para asegurar tu precio y disponibilidad.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
           </div>
+
+          <div className="mt-16 flex flex-col md:flex-row justify-between items-center bg-[#D4AF37]/10 border border-[#D4AF37]/50 rounded-xl p-8">
+             <div>
+                <div className="text-gray-400 text-xs tracking-widest uppercase mb-1">Total a pagar {isPlanSepare && 'hoy'}</div>
+                <div className="text-4xl text-[#D4AF37] font-serif" style={{fontFamily: 'var(--font-playfair)'}}>
+                  ${isPlanSepare ? '2.000' : finalPrice.toLocaleString('es-CO')}
+                </div>
+             </div>
+             <button 
+                onClick={handleWhatsApp}
+                className="mt-6 md:mt-0 bg-[#D4AF37] text-[#081114] px-12 py-4 rounded font-bold tracking-widest text-sm uppercase hover:bg-white transition-colors"
+             >
+                Pedir por WhatsApp
+             </button>
+          </div>
+
         </div>
       </section>
 
-      {/* FOOTER - MEDIOS DE PAGO */}
-      <footer className="bg-black py-16 px-6 text-center border-t border-white/5 relative">
-         <h2 className="text-[#C6AD1D] tracking-widest text-xs uppercase mb-12">Medios de Pago Autorizados</h2>
-         <div className="flex flex-col md:flex-row justify-center gap-12 items-center text-gray-400">
-            <div className="text-center">
-              <div className="text-white font-medium mb-1 tracking-wider">BANCOLOMBIA</div>
-              <div className="text-sm font-light">Ahorros 411-613736-71</div>
-            </div>
-            <div className="hidden md:block w-px h-8 bg-white/10"></div>
-            <div className="text-center">
-              <div className="text-white font-medium mb-1 tracking-wider">DAVIPLATA</div>
-              <div className="text-sm font-light">Nº 314 360 1738</div>
-            </div>
-            <div className="hidden md:block w-px h-8 bg-white/10"></div>
-            <div className="text-center">
-              <div className="text-white font-medium mb-1 tracking-wider">NEQUI</div>
-              <div className="text-sm font-light">Nº 313 328 8298</div>
-            </div>
-         </div>
-      </footer>
     </main>
   );
 }
