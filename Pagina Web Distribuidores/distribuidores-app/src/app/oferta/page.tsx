@@ -36,21 +36,21 @@ const PAYMENT_OPTIONS: { id: PaymentMethod; num: string; title: string; desc: st
     num: '01',
     title: 'Pago Anticipado',
     desc: 'Bancolombia o Nequi.',
-    extra: 'Sin recargos. Despacho prioritario el mismo día.'
+    extra: 'Despacho prioritario hoy.'
   },
   {
     id: 'contraentrega',
     num: '02',
     title: 'Pago Contra Entrega',
     desc: 'Pagas al recibir en casa.',
-    extra: '+5% de recargo logístico de la transportadora.'
+    extra: '+5% recargo de transportadora.'
   },
   {
     id: 'separe',
     num: '03',
     title: 'Plan Separe',
     desc: 'Abona solo $2.000 hoy.',
-    extra: 'Congela el precio y asegura tus faroles.'
+    extra: 'Congela el precio.'
   }
 ];
 
@@ -68,7 +68,7 @@ export default function OfertaPage() {
       ? "Colección Completa (8 Faroles)" 
       : packageSelection === 'paquete1' ? "Paquete 1: Devoción y Tradición (4 Faroles)" : "Paquete 2: Fe y Esperanza (4 Faroles)";
       
-    let message = `¡Hola! Quiero asegurar mi pedido de *${packageDesc}* para el Día de las Velitas.\n\n`;
+    let message = `¡Hola! Quiero asegurar mi pedido de *${packageDesc}*.\n\n`;
 
     if (paymentMethod === 'separe') {
       message += `💰 *Modalidad:* Plan Separe\n`;
@@ -79,7 +79,7 @@ export default function OfertaPage() {
       message += `💵 *Subtotal:* $${basePrice.toLocaleString('es-CO')}\n`;
       message += `💵 *Total a pagar:* $${finalPrice.toLocaleString('es-CO')}\n`;
     } else {
-      message += `💳 *Modalidad:* Pago Anticipado (Sin recargos)\n`;
+      message += `💳 *Modalidad:* Pago Anticipado\n`;
       message += `💵 *Total a pagar:* $${finalPrice.toLocaleString('es-CO')}\n`;
     }
 
@@ -90,29 +90,27 @@ export default function OfertaPage() {
   };
 
   return (
-    <main className="min-h-screen text-white font-sans overflow-x-hidden selection:bg-[#D4AF37] selection:text-black scroll-smooth bg-[#081114]">
+    <main className="min-h-screen text-white font-sans overflow-x-hidden selection:bg-[#D4AF37] selection:text-black scroll-smooth bg-black">
       
       {/* =========================================
-          1. HERO (ATENCIÓN E INTERÉS)
+          1. HERO (RÁPIDO Y DIRECTO)
       ========================================= */}
-      <section className="relative min-h-[90vh] flex flex-col justify-center px-8 md:px-16 pt-20 pb-16 overflow-hidden">
-        {/* Glow Radial Design */}
-        <div className="absolute inset-0 z-0 bg-[#081114]">
-          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.08)_0%,transparent_70%)] pointer-events-none"></div>
-          <img src="/distribuidores/media/hero_bg.jpg" alt="Fondo Faroles" className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#081114]/40 via-[#081114]/80 to-[#081114]" />
+      <section className="relative min-h-[85vh] flex flex-col justify-center px-6 md:px-16 pt-16 pb-12 overflow-hidden">
+        <div className="absolute inset-0 z-0 bg-black">
+          <div className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.15)_0%,transparent_70%)] pointer-events-none"></div>
+          <img src="/distribuidores/media/hero_bg.jpg" alt="Fondo Faroles" className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/80 to-black" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto w-full text-center mt-8 md:mt-0">
+        <div className="relative z-10 max-w-4xl mx-auto w-full text-center">
           <div className="flex justify-center mb-8">
-            <img src="/distribuidores/logo.png" alt="Genius Faroles" className="w-28 md:w-36 h-auto opacity-90 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]" />
+            <img src="/distribuidores/logo.png" alt="Genius Faroles" className="w-32 h-auto opacity-100 drop-shadow-[0_0_20px_rgba(212,175,55,0.5)]" />
           </div>
           
-          {/* HUGE Envío Gratis Banner */}
-          <div className="mb-8 flex justify-center">
-             <div className="bg-[#D4AF37]/10 border border-[#D4AF37] px-6 py-2 rounded-full inline-flex items-center gap-3 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+          <div className="mb-6 flex justify-center">
+             <div className="bg-[#D4AF37] text-black px-6 py-2 rounded-full inline-flex items-center gap-3 shadow-[0_0_25px_rgba(212,175,55,0.4)]">
                 <span className="text-2xl">🚚</span>
-                <span className="text-[#D4AF37] font-bold tracking-widest uppercase text-sm md:text-base">¡Envío Gratis a toda Colombia!</span>
+                <span className="font-black tracking-widest uppercase text-sm md:text-base">¡ENVÍO GRATIS A TODA COLOMBIA!</span>
              </div>
           </div>
 
@@ -120,185 +118,107 @@ export default function OfertaPage() {
             Ilumina tu 7 de Diciembre con la <span className="text-[#D4AF37] italic">Tradición más Hermosa</span>
           </h1>
           
-          <p className="text-gray-300 max-w-2xl mx-auto text-lg md:text-xl font-light leading-relaxed mb-10">
-            Faroles artesanales tipo vitral. Reúne a tu familia en oración y haz que tu hogar brille con la luz y devoción de la Virgen María.
+          <p className="text-white max-w-2xl mx-auto text-lg md:text-xl font-normal leading-relaxed mb-10">
+            Faroles artesanales tipo vitral. Reúne a tu familia en oración y haz que tu hogar brille con la devoción de la Virgen María.
           </p>
 
-          <a href="#comprar" className="inline-flex items-center justify-center gap-3 bg-[#D4AF37] text-[#081114] px-10 py-5 rounded-full font-bold tracking-widest text-sm uppercase transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:bg-[#F3E5AB] hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] hover:-translate-y-1">
+          <a href="#comprar" className="inline-flex items-center justify-center gap-3 bg-[#D4AF37] text-black px-10 py-5 rounded-full font-black tracking-widest text-sm md:text-base uppercase transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:bg-white hover:scale-105">
             <span>Asegurar Pedido</span>
-            <span className="bg-[#081114] text-[#D4AF37] px-3 py-1 rounded-full text-xs hidden md:inline-block">Pagas al recibir 🤝</span>
+            <span className="bg-black text-[#D4AF37] px-3 py-1 rounded-full text-xs hidden md:inline-block">Pagas al recibir 🤝</span>
           </a>
         </div>
       </section>
 
-
       {/* =========================================
-          2. CONEXIÓN EMOCIONAL
+          2. CARACTERÍSTICAS (BULLETS ALTO CONTRASTE)
       ========================================= */}
-      <section className="py-20 px-8 md:px-16 bg-[#0B1518] border-t border-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-5xl text-[#D4AF37] mb-6" style={{ fontFamily: 'var(--font-great-vibes)' }}>Más que un farol...</h2>
-          <h3 className="text-2xl md:text-3xl text-white font-serif mb-8 leading-snug" style={{ fontFamily: 'var(--font-playfair)' }}>
-            Es una invitación a la paz y la unión familiar.
-          </h3>
-          <p className="text-gray-400 text-base md:text-lg font-light leading-relaxed max-w-3xl mx-auto">
-            La Noche de Velitas es el momento más mágico del año. Nuestros faroles no solo decoran; 
-            <strong> transforman tu andén en un santuario de luz</strong>. Mientras otros usan faroles genéricos que se queman o se dañan con el viento, 
-            tú exhibirás verdaderas obras de arte que rinden homenaje a las devociones marianas más queridas de Colombia.
-          </p>
-        </div>
-      </section>
-
-
-      {/* =========================================
-          3. PRESENTACIÓN DEL PRODUCTO (DESEO)
-      ========================================= */}
-      <section className="relative py-24 px-8 md:px-16 bg-[#081114] border-t border-white/5 overflow-hidden">
-        {/* Glow behind the farol */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle_at_50%_50%,rgba(212,175,55,0.12)_0%,transparent_60%)] pointer-events-none"></div>
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-7xl text-[#D4AF37] font-normal leading-[0.8] mb-4" style={{ fontFamily: 'var(--font-great-vibes)' }}>
-              El secreto de
-            </h2>
-            <h3 className="text-3xl md:text-5xl text-white font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>
-              su belleza iluminada
-            </h3>
-          </div>
-
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mt-12">
-            
-            {/* Left Features (Beneficios) */}
-            <div className="w-full lg:w-1/3 space-y-6 order-2 lg:order-1">
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#D4AF37]/40 hover:-translate-y-1">
-                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Soporta la intemperie</h4>
-                <p className="text-gray-400 text-sm font-light">
-                  A diferencia de los faroles de papel delgado, usamos <strong>cartón de caña de azúcar</strong>. Su estructura firme resiste las brisas de diciembre sin deformarse.
-                </p>
-              </div>
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#D4AF37]/40 hover:-translate-y-1">
-                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>El Efecto Vitral</h4>
-                <p className="text-gray-400 text-sm font-light">
-                  El <strong>papel seda translúcido</strong> tamiza la luz perfectamente, logrando que los colores vivos de la Virgen resplandezcan en la oscuridad como en una capilla.
-                </p>
-              </div>
-            </div>
-
-            {/* Center Image */}
-            <div className="w-full lg:w-1/3 flex justify-center order-1 lg:order-2 relative group">
-              <div className="absolute inset-0 bg-[#D4AF37] opacity-0 group-hover:opacity-20 blur-[50px] rounded-full transition-opacity duration-700 pointer-events-none"></div>
-              <img 
-                src="/distribuidores/media/farol_caracteristicas.png" 
-                alt="Detalle del Farol Inmaculada" 
-                className="relative z-10 w-full max-w-[280px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-
-            {/* Right Features */}
-            <div className="w-full lg:w-1/3 space-y-6 order-3">
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:bg-white/10 hover:border-[#D4AF37]/40 hover:-translate-y-1">
-                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>Presencia Majestuosa</h4>
-                <p className="text-gray-400 text-sm font-light">
-                  Con <strong>35 cm de alto</strong> y 17 cm de ancho, tienen el tamaño perfecto para no pasar desapercibidos y lucir espectaculares frente a tu casa.
-                </p>
-              </div>
-              <div className="bg-[#D4AF37]/10 backdrop-blur-md border border-[#D4AF37]/30 rounded-2xl p-6 transition-all duration-300 hover:bg-[#D4AF37]/20 hover:-translate-y-1 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
-                <h4 className="text-[#D4AF37] text-lg font-serif mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>100% Seguros</h4>
-                <p className="text-gray-300 text-sm font-light">
-                  Su diseño interior espacioso evita que la vela tradicional toque el papel. También son compatibles con luces LED a batería. <strong>Armado fácil en segundos.</strong>
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-
-      {/* =========================================
-          4. INSTRUCCIONES DE ARMADO Y USO (VIDEOS)
-      ========================================= */}
-      <section className="py-20 px-8 md:px-16 bg-[#081114]">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl text-[#D4AF37] font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Fáciles y seguros de usar
-            </h2>
-            <p className="text-gray-400">Diseñados para que cualquier miembro de la familia pueda armarlos en segundos.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Video 1: Cómo armar */}
-            <div className="space-y-4">
-              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_25px_rgba(212,175,55,0.15)] aspect-[9/16] relative bg-black">
-                <video 
-                  src="/distribuidores/media/como_armar.mp4" 
-                  controls 
-                  playsInline 
-                  preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="text-xl text-[#D4AF37] font-serif text-center" style={{ fontFamily: 'var(--font-playfair)' }}>Paso 1: Armado rápido</h4>
-              <p className="text-sm text-gray-400 text-center px-4">Vienen pre-doblados. Solo necesitas desplegarlos y ajustar la base en menos de 10 segundos.</p>
-            </div>
-
-            {/* Video 2: Cómo poner la vela */}
-            <div className="space-y-4">
-              <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_25px_rgba(212,175,55,0.15)] aspect-[9/16] relative bg-black">
-                <video 
-                  src="/distribuidores/media/poner_vela.mp4" 
-                  controls 
-                  playsInline 
-                  preload="metadata"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </div>
-              <h4 className="text-xl text-[#D4AF37] font-serif text-center" style={{ fontFamily: 'var(--font-playfair)' }}>Paso 2: Colocar la vela</h4>
-              <p className="text-sm text-gray-400 text-center px-4">Sistema seguro que mantiene la llama aislada del papel, garantizando una noche tranquila.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================
-          5. LAS ADVOCACIONES (LA COLECCIÓN)
-      ========================================= */}
-      <section className="relative py-24 px-8 md:px-16 bg-[#0B1518] text-white border-t border-white/5">
-        <div className="max-w-5xl mx-auto relative z-10">
+      <section className="py-16 px-6 md:px-16 bg-[#0a0a0a] border-t border-white/10">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12">
           
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl text-white font-serif mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Elige las devociones de tu familia
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
-              Hemos seleccionado las 8 advocaciones marianas más queridas por los colombianos, divididas en dos colecciones perfectas.
-            </p>
+          {/* Left: Imagen destacada */}
+          <div className="w-full md:w-1/2 flex justify-center relative">
+            <div className="absolute inset-0 bg-[#D4AF37] opacity-20 blur-[60px] rounded-full pointer-events-none"></div>
+            <img 
+              src="/distribuidores/media/farol_caracteristicas.png" 
+              alt="Detalle del Farol" 
+              className="relative z-10 w-full max-w-[300px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
+            />
           </div>
 
-          <div className="space-y-24">
+          {/* Right: Viñetas rápidas */}
+          <div className="w-full md:w-1/2 space-y-6">
+            <h2 className="text-3xl md:text-5xl text-white font-serif mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Calidad que <span className="text-[#D4AF37] italic">resplandece</span>
+            </h2>
+            
+            <ul className="space-y-5">
+              <li className="flex items-start gap-4">
+                <span className="text-3xl">🛡️</span>
+                <div>
+                  <h4 className="text-xl text-white font-bold">Resistentes a la intemperie</h4>
+                  <p className="text-gray-300 text-sm mt-1">Estructura firme en cartón de caña de azúcar. No se deforman con la brisa.</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <span className="text-3xl">✨</span>
+                <div>
+                  <h4 className="text-xl text-white font-bold">Efecto Vitral</h4>
+                  <p className="text-gray-300 text-sm mt-1">Papel seda translúcido que ilumina vívidamente los colores de la Virgen.</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <span className="text-3xl">📏</span>
+                <div>
+                  <h4 className="text-xl text-white font-bold">Tamaño Majestuoso</h4>
+                  <p className="text-gray-300 text-sm mt-1">35 cm de alto x 17 cm de ancho. Destacan perfectamente en tu andén.</p>
+                </div>
+              </li>
+              <li className="flex items-start gap-4">
+                <span className="text-3xl">🕯️</span>
+                <div>
+                  <h4 className="text-xl text-white font-bold">100% Seguros</h4>
+                  <p className="text-gray-300 text-sm mt-1">Diseño amplio que evita que la vela tradicional queme el papel. (También aptos para luz LED).</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =========================================
+          3. COLECCIÓN (RÁPIDA)
+      ========================================= */}
+      <section className="py-20 px-6 md:px-16 bg-black border-t border-white/10">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl text-white font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Nuestras Colecciones
+            </h2>
+            <p className="text-white text-lg">Elige tus devociones favoritas.</p>
+          </div>
+
+          <div className="space-y-16">
             {PACKAGES.map((pkg, pIdx) => (
               <div key={pIdx}>
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-10 text-center">
-                  <span className="bg-transparent border border-[#D4AF37] text-[#D4AF37] px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] shadow-[0_0_10px_rgba(212,175,55,0.2)]">
+                <div className="flex items-center justify-center gap-4 mb-8 text-center">
+                  <span className="bg-[#D4AF37] text-black px-4 py-1.5 rounded-full text-xs font-black tracking-widest shadow-[0_0_15px_rgba(212,175,55,0.4)]">
                     {pkg.num}
                   </span>
-                  <span className="text-2xl text-white" style={{ fontFamily: 'var(--font-playfair)' }}>{pkg.subtitle}</span>
+                  <span className="text-2xl text-white font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>{pkg.subtitle}</span>
                 </div>
                 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                   {pkg.items.map((m, i) => (
-                    <div key={i} className="text-center group">
-                      <div className="border border-white/10 rounded-2xl p-1 mb-4 flex items-center justify-center bg-[#081114] overflow-hidden relative aspect-[3/4] transition-all duration-500 hover:border-[#D4AF37]/60 hover:shadow-[0_0_30px_rgba(212,175,55,0.3)]">
-                        <div className="absolute inset-0 bg-[#D4AF37] opacity-0 group-hover:opacity-10 transition-opacity duration-500 z-10" />
+                    <div key={i} className="text-center">
+                      <div className="border-2 border-white/20 rounded-xl p-1 mb-3 flex items-center justify-center bg-[#0a0a0a] overflow-hidden aspect-[3/4]">
                         <img 
                           src={`/distribuidores/media/${encodeURIComponent(m.img)}`} 
                           alt={m.name.replace('\n', ' ')} 
-                          className="w-full h-full object-cover rounded-xl group-hover:scale-[1.05] transition-transform duration-700" 
+                          className="w-full h-full object-cover rounded-lg" 
                         />
                       </div>
-                      <p className="text-base text-gray-200 whitespace-pre-line leading-tight font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>
+                      <p className="text-white font-bold whitespace-pre-line leading-tight text-sm md:text-base">
                         {m.name}
                       </p>
                     </div>
@@ -310,193 +230,186 @@ export default function OfertaPage() {
         </div>
       </section>
 
-
       {/* =========================================
-          5. GARANTÍAS Y REVERSIÓN DE RIESGO
+          4. CONFIANZA TOTAL
       ========================================= */}
-      <section className="py-16 px-8 md:px-16 bg-[#D4AF37] text-[#081114]">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-          <div>
-            <div className="text-4xl mb-4">🛡️</div>
-            <h4 className="font-bold uppercase tracking-widest text-sm mb-2">Garantía Intacta</h4>
-            <p className="text-[#081114]/80 text-sm">Empacados en cajas rígidas a medida. Si un farol llega aplastado, te lo reponemos sin costo.</p>
+      <section className="py-12 px-6 md:px-16 bg-[#D4AF37] text-black">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div className="bg-white/20 p-6 rounded-2xl">
+            <div className="text-4xl mb-3">🛡️</div>
+            <h4 className="font-black uppercase tracking-widest text-sm mb-1">Garantía Intacta</h4>
+            <p className="text-black/80 text-sm font-medium">Si un farol llega dañado, lo reponemos sin costo.</p>
           </div>
-          <div>
-            <div className="text-4xl mb-4">🚚</div>
-            <h4 className="font-bold uppercase tracking-widest text-sm mb-2">Envío Gratis</h4>
-            <p className="text-[#081114]/80 text-sm">No pagas un solo peso por el envío. Entregamos en la puerta de tu casa a nivel nacional.</p>
+          <div className="bg-white/20 p-6 rounded-2xl border-2 border-black/10 shadow-lg">
+            <div className="text-4xl mb-3">🚚</div>
+            <h4 className="font-black uppercase tracking-widest text-sm mb-1">Envío Gratis</h4>
+            <p className="text-black/80 text-sm font-medium">A la puerta de tu casa a nivel nacional.</p>
           </div>
-          <div>
-            <div className="text-4xl mb-4">🤝</div>
-            <h4 className="font-bold uppercase tracking-widest text-sm mb-2">Pago Contra Entrega</h4>
-            <p className="text-[#081114]/80 text-sm">Para tu tranquilidad, puedes pagarle en efectivo al mensajero cuando recibas tu pedido.</p>
+          <div className="bg-white/20 p-6 rounded-2xl">
+            <div className="text-4xl mb-3">🤝</div>
+            <h4 className="font-black uppercase tracking-widest text-sm mb-1">Contra Entrega</h4>
+            <p className="text-black/80 text-sm font-medium">Paga en efectivo al recibir tu pedido.</p>
           </div>
         </div>
       </section>
 
-
       {/* =========================================
-          6. OFERTA Y CHECKOUT (ACCIÓN)
+          5. OFERTA Y CHECKOUT
       ========================================= */}
-      <section id="comprar" className="relative py-24 px-8 md:px-16 bg-[#081114] scroll-mt-10">
-        <div className="max-w-5xl mx-auto relative z-10">
+      <section id="comprar" className="py-20 px-6 md:px-16 bg-black scroll-mt-10 border-b border-white/10">
+        <div className="max-w-5xl mx-auto">
           
-          <div className="text-center mb-16">
-            <span className="text-red-400 bg-red-400/10 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-[0.2em] mb-6 inline-block">
-              🚨 PRODUCCIÓN ARTESANAL LIMITADA
+          <div className="text-center mb-12">
+            <span className="text-red-500 bg-red-500/10 border border-red-500 px-4 py-2 rounded-full text-xs font-black tracking-widest mb-6 inline-block">
+              🚨 INVENTARIO ARTESANAL LIMITADO
             </span>
-            <h2 className="text-4xl md:text-6xl text-white font-serif mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Asegura los tuyos antes de que se agoten
+            <h2 className="text-4xl md:text-6xl text-white font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Elige tu paquete
             </h2>
-            <p className="text-gray-400 text-base max-w-2xl mx-auto">
-              Al ser elaborados completamente a mano, nuestro inventario es muy reducido. Elige cuántos faroles deseas para tu hogar.
-            </p>
           </div>
 
-          {/* Opciones de Paquetes */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            
+          {/* Opciones */}
+          <div className="grid md:grid-cols-3 gap-4 mb-12">
             <button
-              type="button"
               onClick={() => setPackageSelection('paquete1')}
-              className={`text-left border p-6 md:p-8 rounded-2xl transition-all duration-300 relative ${
-                packageSelection === 'paquete1' ? 'border-[#D4AF37] bg-[#D4AF37]/10 ring-1 ring-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.15)]' : 'border-white/10 hover:border-[#D4AF37]/50 bg-black/20'
+              className={`text-left border-2 p-6 rounded-xl transition-all ${
+                packageSelection === 'paquete1' ? 'border-[#D4AF37] bg-[#D4AF37]/10 scale-[1.02]' : 'border-white/20 hover:border-white/40'
               }`}
             >
-              <div className="text-[#D4AF37] tracking-[0.2em] text-[10px] font-bold mb-3 uppercase">COLECCIÓN 1</div>
-              <div className="text-gray-300 text-xs mb-4">Devoción y Tradición</div>
-              <div className="text-3xl text-white mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>$30.000</div>
-              <div className="text-gray-500 text-[10px] uppercase tracking-wider font-semibold">4 Faroles • Envío Gratis</div>
+              <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN 1</div>
+              <div className="text-white font-bold mb-4">Devoción y Tradición</div>
+              <div className="text-3xl text-white font-bold mb-1">$30.000</div>
+              <div className="text-gray-400 text-xs font-bold uppercase">4 Faroles • Envío Gratis</div>
             </button>
 
             <button
-              type="button"
               onClick={() => setPackageSelection('paquete2')}
-              className={`text-left border p-6 md:p-8 rounded-2xl transition-all duration-300 relative ${
-                packageSelection === 'paquete2' ? 'border-[#D4AF37] bg-[#D4AF37]/10 ring-1 ring-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.15)]' : 'border-white/10 hover:border-[#D4AF37]/50 bg-black/20'
+              className={`text-left border-2 p-6 rounded-xl transition-all ${
+                packageSelection === 'paquete2' ? 'border-[#D4AF37] bg-[#D4AF37]/10 scale-[1.02]' : 'border-white/20 hover:border-white/40'
               }`}
             >
-              <div className="text-[#D4AF37] tracking-[0.2em] text-[10px] font-bold mb-3 uppercase">COLECCIÓN 2</div>
-              <div className="text-gray-300 text-xs mb-4">Fe y Esperanza</div>
-              <div className="text-3xl text-white mb-2" style={{ fontFamily: 'var(--font-playfair)' }}>$30.000</div>
-              <div className="text-gray-500 text-[10px] uppercase tracking-wider font-semibold">4 Faroles • Envío Gratis</div>
+              <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN 2</div>
+              <div className="text-white font-bold mb-4">Fe y Esperanza</div>
+              <div className="text-3xl text-white font-bold mb-1">$30.000</div>
+              <div className="text-gray-400 text-xs font-bold uppercase">4 Faroles • Envío Gratis</div>
             </button>
 
             <button
-              type="button"
               onClick={() => setPackageSelection('ambos')}
-              className={`text-left border p-6 md:p-8 rounded-2xl transition-all duration-300 relative overflow-hidden ${
-                packageSelection === 'ambos' ? 'border-[#D4AF37] bg-[#D4AF37]/15 ring-2 ring-[#D4AF37] shadow-[0_0_30px_rgba(212,175,55,0.25)]' : 'border-white/10 hover:border-[#D4AF37]/50 bg-black/20'
+              className={`text-left border-2 p-6 rounded-xl transition-all relative ${
+                packageSelection === 'ambos' ? 'border-[#D4AF37] bg-[#D4AF37]/20 scale-[1.05] shadow-[0_0_20px_rgba(212,175,55,0.3)]' : 'border-[#D4AF37]/50 hover:border-[#D4AF37]'
               }`}
             >
-              <div className="absolute top-0 right-0 bg-[#D4AF37] text-[#081114] text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-lg shadow-md">
-                RECOMENDADO
-              </div>
-              <div className="text-[#D4AF37] tracking-[0.2em] text-[10px] font-bold mb-3 uppercase">COLECCIÓN COMPLETA</div>
-              <div className="text-[#D4AF37]/80 text-xs mb-4">Ahorras $4.000</div>
-              <div className="text-4xl text-[#D4AF37] mb-2 font-bold" style={{ fontFamily: 'var(--font-playfair)' }}>$56.000</div>
-              <div className="text-gray-300 text-[10px] uppercase tracking-wider font-semibold">8 Faroles • Envío Gratis</div>
+              <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-black px-3 py-1 rounded-bl-lg">RECOMENDADO</div>
+              <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN COMPLETA</div>
+              <div className="text-[#D4AF37] font-bold mb-4">¡Ahorras $4.000!</div>
+              <div className="text-4xl text-[#D4AF37] font-black mb-1">$56.000</div>
+              <div className="text-white text-xs font-bold uppercase">8 Faroles • Envío Gratis</div>
             </button>
-
           </div>
 
-          {/* Métodos de Pago */}
-          <div className="space-y-6">
-            <h3 className="text-xl text-white mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>¿Cómo prefieres pagar?</h3>
+          {/* Pagos */}
+          <div className="space-y-4 mb-12">
+            <h3 className="text-xl text-white font-bold text-center">Forma de pago</h3>
             <div className="grid md:grid-cols-3 gap-4">
               {PAYMENT_OPTIONS.map((opt) => (
                 <button
                   key={opt.id}
-                  type="button"
                   onClick={() => setPaymentMethod(opt.id)}
-                  className={`flex flex-col text-left p-6 rounded-2xl border transition-all duration-300 ${
+                  className={`flex flex-col text-left p-5 rounded-xl border-2 transition-all ${
                     paymentMethod === opt.id 
-                      ? 'border-[#D4AF37] bg-[#D4AF37]/5 ring-1 ring-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.1)]' 
-                      : 'border-white/10 hover:bg-white/5'
+                      ? 'border-[#D4AF37] bg-[#D4AF37]/10' 
+                      : 'border-white/20 hover:border-white/40'
                   }`}
                 >
-                  <div className="flex items-center justify-between w-full mb-3">
-                    <span className="text-sm font-semibold text-white uppercase tracking-wider">{opt.title}</span>
-                    <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${paymentMethod === opt.id ? 'border-[#D4AF37]' : 'border-gray-500'}`}>
+                  <div className="flex items-center justify-between w-full mb-2">
+                    <span className="text-sm font-bold text-white uppercase">{opt.title}</span>
+                    <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${paymentMethod === opt.id ? 'border-[#D4AF37]' : 'border-gray-500'}`}>
                       {paymentMethod === opt.id && <div className="w-2 h-2 bg-[#D4AF37] rounded-full"></div>}
                     </div>
                   </div>
-                  <span className="text-sm text-gray-300 leading-relaxed mb-2">{opt.desc}</span>
-                  <span className="text-xs text-[#D4AF37]/80 italic">{opt.extra}</span>
+                  <span className="text-sm text-gray-300 mb-1">{opt.desc}</span>
+                  <span className="text-xs text-[#D4AF37] font-bold">{opt.extra}</span>
                 </button>
               ))}
             </div>
           </div>
 
-          {/* Resumen Final y CTA */}
-          <div className="mt-12 bg-[#0B1518] border border-white/10 rounded-2xl p-6 md:p-10 flex flex-col lg:flex-row justify-between items-center gap-8 shadow-xl">
-            <div className="w-full lg:w-auto text-center md:text-left space-y-2">
-              <div className="text-gray-400 text-xs tracking-widest uppercase font-semibold">Resumen de tu pedido</div>
-              
-              <div className="text-2xl text-white font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>
-                {packageSelection === 'ambos' ? 'Colección Completa (8 Faroles)' : packageSelection === 'paquete1' ? 'Colección 1 (4 Faroles)' : 'Colección 2 (4 Faroles)'}
-              </div>
-              
-              <div className="flex flex-col text-sm text-gray-400 mt-2">
-                {paymentMethod === 'contraentrega' && (
-                  <span>Subtotal: ${basePrice.toLocaleString('es-CO')} + 5% recargo de transportadora</span>
-                )}
-                {paymentMethod === 'separe' && (
-                  <span>Saldo a pagar antes del envío: ${(finalPrice - 2000).toLocaleString('es-CO')}</span>
-                )}
-              </div>
-            </div>
-
-            <div className="w-full lg:w-auto flex flex-col items-center lg:items-end">
-              <div className="text-gray-400 text-[10px] tracking-widest uppercase mb-1 font-semibold">
-                {paymentMethod === 'separe' ? 'TU ABONO HOY' : 'TOTAL A PAGAR'}
-              </div>
-              <div className="text-4xl md:text-5xl text-[#D4AF37] font-bold mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
+          {/* Checkout CTA */}
+          <div className="bg-[#0a0a0a] border-2 border-white/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="text-center md:text-left">
+              <div className="text-gray-400 text-sm font-bold uppercase mb-2">Total a Pagar</div>
+              <div className="text-4xl md:text-5xl text-[#D4AF37] font-black">
                 ${paymentMethod === 'separe' ? '2.000' : finalPrice.toLocaleString('es-CO')}
               </div>
-              <button 
-                type="button"
-                onClick={handleWhatsApp}
-                className="w-full lg:w-auto bg-[#D4AF37] text-[#081114] px-10 py-5 rounded-full font-bold tracking-[0.15em] text-sm md:text-base uppercase transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:bg-white hover:shadow-[0_0_40px_rgba(255,255,255,0.6)] hover:scale-105 flex items-center justify-center gap-3"
-              >
-                <span>Generar Pedido por WhatsApp</span>
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-              </button>
+              {paymentMethod === 'contraentrega' && <div className="text-xs text-gray-400 mt-2">Incluye +5% recargo de transportadora</div>}
+              {paymentMethod === 'separe' && <div className="text-xs text-gray-400 mt-2">Abono inicial. Saldo: ${(finalPrice - 2000).toLocaleString('es-CO')}</div>}
             </div>
+
+            <button 
+              onClick={handleWhatsApp}
+              className="w-full md:w-auto bg-[#D4AF37] text-black px-10 py-5 rounded-full font-black text-lg uppercase transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 hover:bg-white flex items-center justify-center gap-3"
+            >
+              <span>Generar Pedido Aquí</span>
+              <span className="text-2xl">👉</span>
+            </button>
           </div>
 
         </div>
       </section>
 
       {/* =========================================
-          7. PREGUNTAS FRECUENTES (FAQ)
+          6. VIDEOS DE USO (MOVIDOS AL FINAL)
       ========================================= */}
-      <section className="py-24 px-8 md:px-16 bg-[#0B1518] border-t border-white/5">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl text-white font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Preguntas Frecuentes
+      <section className="py-20 px-6 md:px-16 bg-[#0a0a0a]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl text-white font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Armado en Segundos
             </h2>
-            <p className="text-gray-400">Resolvemos tus dudas antes de hacer tu pedido.</p>
           </div>
 
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-black border border-white/20 rounded-2xl p-4">
+              <h4 className="text-lg text-[#D4AF37] font-bold text-center mb-4">1. Desplegar</h4>
+              <div className="rounded-xl overflow-hidden aspect-[9/16] relative bg-black">
+                <video src="/distribuidores/media/como_armar.mp4" controls playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+            </div>
+            <div className="bg-black border border-white/20 rounded-2xl p-4">
+              <h4 className="text-lg text-[#D4AF37] font-bold text-center mb-4">2. Poner la vela</h4>
+              <div className="rounded-xl overflow-hidden aspect-[9/16] relative bg-black">
+                <video src="/distribuidores/media/poner_vela.mp4" controls playsInline preload="metadata" className="absolute inset-0 w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================
+          7. FAQ
+      ========================================= */}
+      <section className="py-16 px-6 md:px-16 bg-black border-t border-white/10">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl text-white font-serif text-center mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
+            Preguntas Frecuentes
+          </h2>
           <div className="space-y-4">
             {[
-              { q: "¿Los faroles vienen armados o tengo que pegarlos?", a: "Te los enviamos pre-doblados y listos para encajar, no necesitas pegante. El armado es súper sencillo y te tomará menos de 10 segundos por farol (mira el video arriba)." },
-              { q: "¿Sirven con velas de cera normales o solo luz LED?", a: "¡Con ambas! El interior es lo suficientemente amplio para que la vela tradicional no queme las paredes. Si hay mucho viento, también puedes usar luces LED a batería." },
-              { q: "¿Cuánto tarda en llegar mi pedido?", a: "Los envíos tardan entre 2 a 5 días hábiles dependiendo de tu ciudad. Al ser temporada alta, te recomendamos pedir con anticipación." },
-              { q: "¿Cómo funciona el Plan Separe?", a: "Abonas $2.000 COP hoy mediante transferencia (Nequi/Bancolombia) para congelar el precio y reservar tus faroles. El saldo restante lo pagas antes de que realicemos el despacho o al recibir." }
+              { q: "¿Tengo que armarlos con pegante?", a: "No. Vienen pre-doblados. Se arman en 10 segundos encajando las pestañas (ver video arriba)." },
+              { q: "¿Sirven con velas de cera normales?", a: "Sí, el espacio interior es seguro. También puedes usar luz LED." },
+              { q: "¿Cuánto tarda el envío?", a: "2 a 5 días hábiles a nivel nacional." }
             ].map((faq, index) => (
-              <div key={index} className="border border-white/10 rounded-xl bg-[#081114] overflow-hidden">
+              <div key={index} className="border-2 border-white/20 rounded-xl bg-[#0a0a0a]">
                 <button 
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
+                  className="w-full px-6 py-4 text-left flex justify-between items-center"
                 >
-                  <span className="font-serif text-lg text-white" style={{ fontFamily: 'var(--font-playfair)' }}>{faq.q}</span>
-                  <span className={`text-[#D4AF37] transform transition-transform ${openFaq === index ? 'rotate-180' : ''}`}>▼</span>
+                  <span className="font-bold text-white">{faq.q}</span>
+                  <span className="text-[#D4AF37] font-bold">{openFaq === index ? '-' : '+'}</span>
                 </button>
                 {openFaq === index && (
-                  <div className="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-white/5 pt-4">
+                  <div className="px-6 pb-4 text-gray-300 text-sm">
                     {faq.a}
                   </div>
                 )}
