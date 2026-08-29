@@ -104,10 +104,18 @@ export default function OfertaPage() {
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto w-full text-center mt-8 md:mt-0">
-          <div className="flex justify-center mb-10">
+          <div className="flex justify-center mb-8">
             <img src="/distribuidores/logo.png" alt="Genius Faroles" className="w-28 md:w-36 h-auto opacity-90 drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]" />
           </div>
           
+          {/* HUGE Envío Gratis Banner */}
+          <div className="mb-8 flex justify-center">
+             <div className="bg-[#D4AF37]/10 border border-[#D4AF37] px-6 py-2 rounded-full inline-flex items-center gap-3 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                <span className="text-2xl">🚚</span>
+                <span className="text-[#D4AF37] font-bold tracking-widest uppercase text-sm md:text-base">¡Envío Gratis a toda Colombia!</span>
+             </div>
+          </div>
+
           <h1 className="text-4xl md:text-7xl text-white font-serif mb-6 leading-tight" style={{ fontFamily: 'var(--font-playfair)' }}>
             Ilumina tu 7 de Diciembre con la <span className="text-[#D4AF37] italic">Tradición más Hermosa</span>
           </h1>
@@ -116,15 +124,10 @@ export default function OfertaPage() {
             Faroles artesanales tipo vitral. Reúne a tu familia en oración y haz que tu hogar brille con la luz y devoción de la Virgen María.
           </p>
 
-          <a href="#comprar" className="inline-block bg-[#D4AF37] text-[#081114] px-10 py-5 rounded-full font-bold tracking-widest text-sm uppercase transition-all duration-300 mb-8 shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:bg-[#F3E5AB] hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] hover:-translate-y-1">
-            Ver Colección y Asegurar Pedido
+          <a href="#comprar" className="inline-flex items-center justify-center gap-3 bg-[#D4AF37] text-[#081114] px-10 py-5 rounded-full font-bold tracking-widest text-sm uppercase transition-all duration-300 shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:bg-[#F3E5AB] hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] hover:-translate-y-1">
+            <span>Asegurar Pedido</span>
+            <span className="bg-[#081114] text-[#D4AF37] px-3 py-1 rounded-full text-xs hidden md:inline-block">Pagas al recibir 🤝</span>
           </a>
-          
-          <div className="flex items-center justify-center gap-3 text-sm text-gray-400">
-            <span className="flex items-center gap-1"><span className="text-[#D4AF37]">🚚</span> Envío Gratis</span>
-            <span>•</span>
-            <span className="flex items-center gap-1"><span className="text-[#D4AF37]">🤝</span> Pago Contra Entrega</span>
-          </div>
         </div>
       </section>
 
