@@ -74,16 +74,45 @@ export default function OfertaPage() {
           </div>
         </div>
 
-        <div className="flex-1 w-full relative z-10">
-          <div className="relative rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl shadow-black/50 aspect-[4/5] md:aspect-square">
-             <img src="/distribuidores/oferta_faroles.png" alt="Faroles Navideños Genius" className="absolute inset-0 w-full h-full object-cover" />
-             <div className="absolute inset-0 bg-gradient-to-t from-[#07131B] via-transparent to-transparent opacity-90"></div>
+        <div className="flex-1 w-full relative z-10 flex justify-center items-center">
+          <div className="relative rounded-2xl overflow-hidden drop-shadow-[0_20px_50px_rgba(219,4,98,0.3)] hover:scale-105 transition-transform duration-500">
+             <img src="/distribuidores/faroles/grupo-dos-virgenes-1-e1722462890182-1024x422.png" alt="Grupo de Faroles Navideños Genius" className="w-full max-w-lg object-contain" />
              
-             {/* Envío Gratis Badge */}
-             <div className="absolute top-4 right-4 bg-[#DB0462] text-white font-black px-6 py-2 rounded-full transform rotate-3 shadow-lg border-2 border-[#EED332]">
+             {/* Envío Gratis Badge flotante */}
+             <div className="absolute top-0 right-0 bg-[#EED332] text-[#07131B] font-black px-6 py-2 rounded-full transform rotate-3 shadow-lg border-2 border-white animate-bounce">
                ¡ENVÍO GRATIS!
              </div>
           </div>
+        </div>
+      </section>
+
+      {/* SHOWCASE DE MODELOS */}
+      <section className="py-20 px-6 max-w-6xl mx-auto border-t border-white/5">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white" style={{fontFamily: 'var(--font-playfair)'}}>Colección <span className="text-[#DB0462]">Exclusiva</span></h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">Cada farol está diseñado con devoción y detalles únicos. Elige el paquete y recibe un surtido de nuestras mejores piezas.</p>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {[
+            { img: '1guadalupe.png', name: 'Guadalupe' },
+            { img: '1Inmaculada.png', name: 'Inmaculada' },
+            { img: '1milagrosa.png', name: 'Milagrosa' },
+            { img: '1Fatima.png', name: 'Fátima' },
+            { img: '1Candelaria.png', name: 'Candelaria' },
+            { img: '1Chiquinquira.png', name: 'Chiquinquirá' }
+          ].map((modelo, i) => (
+            <div key={i} className="group flex flex-col items-center">
+              <div className="relative w-full aspect-[3/4] mb-4 bg-gradient-to-b from-white/5 to-transparent rounded-xl overflow-hidden border border-white/10 group-hover:border-[#EED332]/50 transition-colors">
+                <img 
+                  src={`/distribuidores/faroles/${modelo.img}`} 
+                  alt={`Farol ${modelo.name}`}
+                  className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <h3 className="text-white font-bold tracking-wide" style={{fontFamily: 'var(--font-playfair)'}}>{modelo.name}</h3>
+            </div>
+          ))}
         </div>
       </section>
 
