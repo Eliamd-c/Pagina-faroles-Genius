@@ -130,57 +130,71 @@ export default function OfertaPage() {
       </section>
 
       {/* =========================================
-          2. CARACTERÍSTICAS (BULLETS ALTO CONTRASTE)
+          2. MATERIALES Y DIMENSIONES
       ========================================= */}
-      <section className="py-16 px-6 md:px-16 bg-[#0a0a0a] border-t border-white/10">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12">
+      <section className="py-20 px-6 md:px-16 bg-[#0a0a0a] border-t border-white/10 overflow-hidden">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 relative">
           
-          {/* Left: Imagen destacada */}
-          <div className="w-full md:w-1/2 flex justify-center relative">
+          {/* Columna Izquierda: MATERIALES */}
+          <div className="w-full md:w-1/3 flex flex-col items-center md:items-start space-y-6 relative z-10 order-2 md:order-1">
+            <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-bold uppercase md:ml-4">MATERIALES</h4>
+            
+            <div className="w-full max-w-[220px] relative group">
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200">Cartón de<br/>caña de azúcar</p>
+              </div>
+              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-px bg-[#D4AF37]/40 z-0"></div>
+            </div>
+
+            <div className="w-full max-w-[220px] relative group">
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200">Papel<br/>seda</p>
+              </div>
+              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-px bg-[#D4AF37]/40 z-0"></div>
+            </div>
+
+            <div className="w-full max-w-[220px] relative group">
+              <div className="border border-[#D4AF37]/80 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(212,175,55,0.15)] relative z-10">
+                <p className="text-sm text-white font-bold">Elaborados<br/>a mano</p>
+              </div>
+              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-px bg-[#D4AF37]/40 z-0"></div>
+            </div>
+          </div>
+
+          {/* Centro: IMAGEN */}
+          <div className="w-full md:w-1/3 flex justify-center relative z-0 order-1 md:order-2 py-8 md:py-0">
             <div className="absolute inset-0 bg-[#D4AF37] opacity-20 blur-[60px] rounded-full pointer-events-none"></div>
             <img 
               src="/distribuidores/media/farol_caracteristicas.png" 
               alt="Detalle del Farol" 
-              className="relative z-10 w-full max-w-[300px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
+              className="relative z-10 w-full max-w-[260px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
             />
           </div>
 
-          {/* Right: Viñetas rápidas */}
-          <div className="w-full md:w-1/2 space-y-6">
-            <h2 className="text-3xl md:text-5xl text-white font-serif mb-8" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Calidad que <span className="text-[#D4AF37] italic">resplandece</span>
-            </h2>
+          {/* Columna Derecha: DIMENSIONES */}
+          <div className="w-full md:w-1/3 flex flex-col items-center md:items-end space-y-6 relative z-10 order-3 md:order-3">
+            <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-bold uppercase md:mr-4">DIMENSIONES</h4>
             
-            <ul className="space-y-5">
-              <li className="flex items-start gap-4">
-                <span className="text-3xl">🛡️</span>
-                <div>
-                  <h4 className="text-xl text-white font-bold">Resistentes a la intemperie</h4>
-                  <p className="text-gray-300 text-sm mt-1">Estructura firme en cartón de caña de azúcar. No se deforman con la brisa.</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-3xl">✨</span>
-                <div>
-                  <h4 className="text-xl text-white font-bold">Efecto Vitral</h4>
-                  <p className="text-gray-300 text-sm mt-1">Papel seda translúcido que ilumina vívidamente los colores de la Virgen.</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-3xl">📏</span>
-                <div>
-                  <h4 className="text-xl text-white font-bold">Tamaño Majestuoso</h4>
-                  <p className="text-gray-300 text-sm mt-1">35 cm de alto x 17 cm de ancho. Destacan perfectamente en tu andén.</p>
-                </div>
-              </li>
-              <li className="flex items-start gap-4">
-                <span className="text-3xl">🕯️</span>
-                <div>
-                  <h4 className="text-xl text-white font-bold">100% Seguros</h4>
-                  <p className="text-gray-300 text-sm mt-1">Diseño amplio que evita que la vela tradicional queme el papel. (También aptos para luz LED).</p>
-                </div>
-              </li>
-            </ul>
+            <div className="w-full max-w-[220px] relative group">
+              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-px bg-[#D4AF37]/40 z-0"></div>
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 font-bold">17 cm<br/><span className="font-normal text-gray-400">de ancho</span></p>
+              </div>
+            </div>
+
+            <div className="w-full max-w-[220px] relative group">
+              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-px bg-[#D4AF37]/40 z-0"></div>
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 font-bold">35 cm<br/><span className="font-normal text-gray-400">de alto</span></p>
+              </div>
+            </div>
+
+            <div className="w-full max-w-[220px] relative group">
+              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-px bg-[#D4AF37]/40 z-0"></div>
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 font-bold">11 cm<br/><span className="font-normal text-gray-400">de fondo</span></p>
+              </div>
+            </div>
           </div>
 
         </div>
