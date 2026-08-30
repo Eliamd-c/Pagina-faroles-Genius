@@ -142,7 +142,7 @@ export default function OfertaPage() {
           <div className="relative flex justify-center">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-[#D4AF37] opacity-20 blur-[80px] rounded-full pointer-events-none"></div>
             <img 
-              src="/distribuidores/media/medidas_materiales.png" 
+              src="/distribuidores/media/medidas_correctas.png" 
               alt="Dimensiones y Materiales de los Faroles" 
               className="relative z-10 w-full max-w-[350px] md:max-w-[450px] h-auto object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.9)]"
             />
