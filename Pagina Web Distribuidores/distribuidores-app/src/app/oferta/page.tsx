@@ -73,6 +73,7 @@ export default function OfertaPage() {
       (window as any).fbq('track', 'InitiateCheckout', {
         value: finalPrice,
         currency: 'COP',
+        content_category: paymentMethod
       });
     }
 
@@ -89,6 +90,7 @@ export default function OfertaPage() {
         value: finalPrice,
         currency: 'COP',
         content_name: packageSelection,
+        content_category: paymentMethod
       });
     }
 
