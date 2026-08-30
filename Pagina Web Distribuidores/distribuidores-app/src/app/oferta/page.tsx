@@ -285,22 +285,22 @@ export default function OfertaPage() {
             {/* Ambos */}
             <button
               onClick={() => setPackageSelection('ambos')}
-              className={`text-left border-2 p-5 pt-8 rounded-xl transition-all flex flex-col md:flex-row items-center justify-between overflow-hidden relative ${
+              className={`text-left border-2 p-5 rounded-xl transition-all flex items-center justify-between overflow-hidden relative ${
                 packageSelection === 'ambos' ? 'border-[#D4AF37] bg-[#D4AF37]/20 scale-[1.05] shadow-[0_0_25px_rgba(212,175,55,0.3)]' : 'border-[#D4AF37]/50 hover:border-[#D4AF37]'
               }`}
             >
               <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-bl-xl z-20">RECOMENDADO</div>
               
-              <div className="relative z-10 w-full md:w-[50%] mb-4 md:mb-0">
-                <div className="text-[#D4AF37] font-black text-[11px] md:text-xs mb-1 uppercase tracking-wider">COLECCIÓN COMPLETA</div>
+              <div className="relative z-10 w-[55%] pt-2">
+                <div className="text-[#D4AF37] font-black text-[10px] md:text-xs mb-2 uppercase">COLECCIÓN COMPLETA</div>
                 <div className="text-[#D4AF37] font-bold text-sm md:text-base mb-2 leading-tight">¡Ahorras $4.000!</div>
-                <div className="text-4xl md:text-5xl text-[#D4AF37] font-black mb-2">$56.000</div>
-                <div className="text-white text-[10px] md:text-xs font-bold uppercase tracking-wider">8 Faroles • Envío Gratis</div>
+                <div className="text-3xl md:text-4xl text-[#D4AF37] font-black mb-1">$56.000</div>
+                <div className="text-white text-[9px] md:text-xs font-bold uppercase">8 Faroles • Envío Gratis</div>
               </div>
               
-              <div className="w-full md:w-[45%] h-20 md:h-24 relative z-0 mt-2 md:mt-0 flex justify-center md:justify-end items-center">
-                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="absolute w-[50%] md:w-[70%] max-w-[160px] md:max-w-[180px] object-contain opacity-60 top-0 md:top-auto md:right-4 md:-translate-y-4 drop-shadow-xl z-0" />
-                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="absolute w-[55%] md:w-[75%] max-w-[170px] md:max-w-[200px] object-contain bottom-0 md:bottom-auto md:right-0 md:translate-y-4 drop-shadow-[0_10px_20px_rgba(212,175,55,0.4)] z-10" />
+              <div className="w-[45%] h-full flex flex-col items-center justify-center relative z-0 gap-2">
+                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="w-full max-h-12 md:max-h-16 object-contain object-right scale-[1.4] md:scale-110 origin-right drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="w-full max-h-12 md:max-h-16 object-contain object-right scale-[1.4] md:scale-110 origin-right drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
               </div>
             </button>
           </div>
