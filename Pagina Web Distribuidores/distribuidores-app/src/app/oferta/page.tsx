@@ -58,11 +58,20 @@ export default function OfertaPage() {
   const [packageSelection, setPackageSelection] = useState<PackageSelection>('ambos');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('anticipado');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [showForm, setShowForm] = useState(false);
+  const [formData, setFormData] = useState({
+    nombre: '', cedula: '', celular: '', direccion: '', ciudad: '', correo: ''
+  });
+  const [receiptImage, setReceiptImage] = useState<string | null>(null);
 
   const basePrice = packageSelection === 'ambos' ? 56000 : 30000;
   const finalPrice = paymentMethod === 'contraentrega' ? Math.round(basePrice * 1.05) : basePrice;
 
-  const handleWhatsApp = () => {
+  const handleCheckout = () => {
+    setShowForm(true);
+  };
+
+  const submitFormToWhatsApp = () => {
     const phoneNumber = "573133288298";
     const packageDesc = packageSelection === 'ambos' 
       ? "Colección Completa (8 Faroles)" 
@@ -72,21 +81,31 @@ export default function OfertaPage() {
 
     if (paymentMethod === 'separe') {
       message += `💰 *Modalidad:* Plan Separe\n`;
-      message += `💳 *Abono inicial:* $2,000\n`;
-      message += `💵 *Saldo restante al recibir:* $${(finalPrice - 2000).toLocaleString('es-CO')}\n`;
+      message += `💰 *Abono inicial:* $2,000\n`;
+      message += `💰 *Saldo restante al recibir:* $${(finalPrice - 2000).toLocaleString('es-CO')}\n`;
     } else if (paymentMethod === 'contraentrega') {
       message += `🚚 *Modalidad:* Pago Contra Entrega (+5%)\n`;
-      message += `💵 *Subtotal:* $${basePrice.toLocaleString('es-CO')}\n`;
-      message += `💵 *Total a pagar:* $${finalPrice.toLocaleString('es-CO')}\n`;
+      message += `💰 *Subtotal:* $${basePrice.toLocaleString('es-CO')}\n`;
+      message += `💰 *Total a pagar:* $${finalPrice.toLocaleString('es-CO')}\n`;
     } else {
       message += `💳 *Modalidad:* Pago Anticipado\n`;
-      message += `💵 *Total a pagar:* $${finalPrice.toLocaleString('es-CO')}\n`;
+      message += `💰 *Total a pagar:* $${finalPrice.toLocaleString('es-CO')}\n`;
     }
 
     message += `\n*Mis datos para el envío son:*\n`;
-    message += `- Nombre:\n- Cédula:\n- Celular:\n- Dirección:\n- Ciudad:\n- Correo Electrónico:`;
+    message += `- Nombre: ${formData.nombre}\n`;
+    message += `- Cédula: ${formData.cedula}\n`;
+    message += `- Celular: ${formData.celular}\n`;
+    message += `- Dirección: ${formData.direccion}\n`;
+    message += `- Ciudad: ${formData.ciudad}\n`;
+    message += `- Correo: ${formData.correo}\n`;
+
+    if (paymentMethod === 'anticipado') {
+      message += `\n*Nota:* Ya tengo el comprobante de pago, te lo envío en este chat.`;
+    }
 
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
+    setShowForm(false);
   };
 
   return (
@@ -344,7 +363,7 @@ export default function OfertaPage() {
             </div>
 
             <button 
-              onClick={handleWhatsApp}
+              onClick={handleCheckout}
               className="w-full md:w-auto bg-[#D4AF37] text-black px-10 py-5 rounded-full font-black text-lg uppercase transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 hover:bg-white flex items-center justify-center gap-3"
             >
               <span>Generar Pedido Aquí</span>
@@ -414,8 +433,71 @@ export default function OfertaPage() {
             ))}
           </div>
         </div>
-      </section>
+      {showForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-[#0a0a0a] border border-[#D4AF37]/50 rounded-2xl w-full max-w-lg p-6 relative my-8 shadow-2xl">
+            <button onClick={() => setShowForm(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
+            
+            <h3 className="text-xl md:text-2xl text-[#D4AF37] font-serif mb-6 text-center" style={{ fontFamily: 'var(--font-playfair)' }}>
+              Completa tu Pedido
+            </h3>
+            
+            <div className="space-y-4 mb-6">
+              <input type="text" placeholder="Nombre completo" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.nombre} onChange={e => setFormData({...formData, nombre: e.target.value})} />
+              
+              <div className="grid grid-cols-2 gap-3">
+                <input type="text" placeholder="Cédula" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.cedula} onChange={e => setFormData({...formData, cedula: e.target.value})} />
+                <input type="tel" placeholder="Celular" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.celular} onChange={e => setFormData({...formData, celular: e.target.value})} />
+              </div>
+              
+              <input type="text" placeholder="Dirección completa (Ej: Cra 4 # 10-20)" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.direccion} onChange={e => setFormData({...formData, direccion: e.target.value})} />
+              
+              <div className="grid grid-cols-2 gap-3">
+                <input type="text" placeholder="Ciudad / Municipio" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.ciudad} onChange={e => setFormData({...formData, ciudad: e.target.value})} />
+                <input type="email" placeholder="Correo electrónico" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.correo} onChange={e => setFormData({...formData, correo: e.target.value})} />
+              </div>
+            </div>
 
+            {paymentMethod === 'anticipado' && (
+              <div className="mb-6 bg-[#111] p-4 rounded-xl border border-[#D4AF37]/30">
+                <h4 className="text-[#D4AF37] font-bold mb-3 text-sm uppercase tracking-wider text-center">💳 Datos Bancarios</h4>
+                
+                <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-2 border border-white/10">
+                  <div>
+                    <p className="text-xs text-gray-400">Nequi</p>
+                    <p className="text-white font-mono text-sm tracking-wider">313 328 8298</p>
+                  </div>
+                  <button onClick={() => navigator.clipboard.writeText('3133288298')} className="text-[#D4AF37] text-xs font-bold px-4 py-1.5 border border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Copiar</button>
+                </div>
+
+                <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-4 border border-white/10">
+                  <div>
+                    <p className="text-xs text-gray-400">Bancolombia (Ahorros)</p>
+                    <p className="text-white font-mono text-sm tracking-wider">406-000000-00</p>
+                  </div>
+                  <button onClick={() => navigator.clipboard.writeText('40600000000')} className="text-[#D4AF37] text-xs font-bold px-4 py-1.5 border border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Copiar</button>
+                </div>
+
+                <div className="border-2 border-dashed border-[#D4AF37]/50 rounded-lg p-4 text-center cursor-pointer hover:bg-white/5 transition-colors relative overflow-hidden group">
+                  <input type="file" accept="image/*" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" onChange={(e) => setReceiptImage(e.target.files ? e.target.files[0].name : null)} />
+                  <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform">📸</span>
+                  <p className="text-sm text-gray-200 font-bold">{receiptImage ? '✅ Comprobante cargado' : 'Toca para adjuntar tu comprobante'}</p>
+                  <p className="text-xs text-[#D4AF37] mt-1">{receiptImage ? receiptImage : 'Obligatorio para pago anticipado'}</p>
+                </div>
+              </div>
+            )}
+
+            <button onClick={submitFormToWhatsApp} className="w-full bg-[#D4AF37] text-black font-black uppercase tracking-widest py-4 rounded-xl hover:scale-[1.02] hover:bg-white transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+              Enviar por WhatsApp
+            </button>
+            
+            <p className="text-xs text-gray-500 text-center mt-4">
+              Al enviar, se abrirá WhatsApp con los detalles de tu pedido para coordinar la entrega de forma segura.
+              {paymentMethod === 'anticipado' && " Recuerda enviar la foto de tu comprobante en el chat."}
+            </p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
