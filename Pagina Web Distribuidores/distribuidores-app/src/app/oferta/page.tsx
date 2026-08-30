@@ -465,10 +465,18 @@ export default function OfertaPage() {
                 
                 <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-2 border border-white/10">
                   <div>
-                    <p className="text-xs text-gray-400">Nequi / Daviplata</p>
+                    <p className="text-xs text-gray-400">Nequi / Llave Bre-B</p>
                     <p className="text-white font-mono text-sm tracking-wider">313 328 8298</p>
                   </div>
                   <button onClick={() => navigator.clipboard.writeText('3133288298')} className="text-[#D4AF37] text-xs font-bold px-4 py-1.5 border border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Copiar</button>
+                </div>
+
+                <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-2 border border-white/10">
+                  <div>
+                    <p className="text-xs text-gray-400">Daviplata</p>
+                    <p className="text-white font-mono text-sm tracking-wider">314 360 1738</p>
+                  </div>
+                  <button onClick={() => navigator.clipboard.writeText('3143601738')} className="text-[#D4AF37] text-xs font-bold px-4 py-1.5 border border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Copiar</button>
                 </div>
 
                 <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-4 border border-white/10">
