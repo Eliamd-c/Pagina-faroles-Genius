@@ -433,6 +433,7 @@ export default function OfertaPage() {
             ))}
           </div>
         </div>
+      </section>
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
           <div className="bg-[#0a0a0a] border border-[#D4AF37]/50 rounded-2xl w-full max-w-lg p-6 relative my-8 shadow-2xl">
