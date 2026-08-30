@@ -27,8 +27,17 @@ publicFiles.forEach(f => {
   const src = path.join(outDir, f);
   if (fs.existsSync(src)) {
     fs.copyFileSync(src, path.join(rootDir, f));
-    console.log(`✓ Copiado a raíz: ${f}`);
+    console.log(`=> Copiado a raíz: ${f}`);
   }
 });
 
-console.log('¡Sincronización de mapas y logos completada!');
+console.log('3. Creando ruta independiente para la Landing Page (/oferta)...');
+const ofertaRoot = path.join(rootDir, 'oferta');
+if (!fs.existsSync(ofertaRoot)) fs.mkdirSync(ofertaRoot, { recursive: true });
+const ofertaSrc = path.join(outDir, 'oferta', 'index.html');
+if (fs.existsSync(ofertaSrc)) {
+  fs.copyFileSync(ofertaSrc, path.join(ofertaRoot, 'index.html'));
+  console.log('=> Landing page copiada a /oferta');
+}
+
+console.log('¡Sincronización completada!');
