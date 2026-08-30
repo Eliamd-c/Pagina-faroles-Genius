@@ -60,7 +60,7 @@ export default function OfertaPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
-    nombre: '', cedula: '', celular: '', direccion: '', ciudad: '', correo: ''
+    nombre: '', cedula: '', celular: '', direccion: '', municipio: '', departamento: '', correo: ''
   });
   const [receiptImage, setReceiptImage] = useState<string | null>(null);
 
@@ -94,10 +94,11 @@ export default function OfertaPage() {
 
     message += `\n*Mis datos para el envío son:*\n`;
     message += `- Nombre: ${formData.nombre}\n`;
-    message += `- Cédula: ${formData.cedula}\n`;
+    if (formData.cedula) message += `- Cédula: ${formData.cedula}\n`;
     message += `- Celular: ${formData.celular}\n`;
     message += `- Dirección: ${formData.direccion}\n`;
-    message += `- Ciudad: ${formData.ciudad}\n`;
+    message += `- Municipio: ${formData.municipio}\n`;
+    message += `- Departamento: ${formData.departamento}\n`;
     message += `- Correo: ${formData.correo}\n`;
 
     if (paymentMethod === 'anticipado') {
@@ -447,16 +448,18 @@ export default function OfertaPage() {
               <input type="text" placeholder="Nombre completo" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.nombre} onChange={e => setFormData({...formData, nombre: e.target.value})} />
               
               <div className="grid grid-cols-2 gap-3">
-                <input type="text" placeholder="Cédula" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.cedula} onChange={e => setFormData({...formData, cedula: e.target.value})} />
+                <input type="text" placeholder="Cédula (Opcional)" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.cedula} onChange={e => setFormData({...formData, cedula: e.target.value})} />
                 <input type="tel" placeholder="Celular" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.celular} onChange={e => setFormData({...formData, celular: e.target.value})} />
               </div>
               
               <input type="text" placeholder="Dirección completa (Ej: Cra 4 # 10-20)" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.direccion} onChange={e => setFormData({...formData, direccion: e.target.value})} />
               
               <div className="grid grid-cols-2 gap-3">
-                <input type="text" placeholder="Ciudad / Municipio" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.ciudad} onChange={e => setFormData({...formData, ciudad: e.target.value})} />
-                <input type="email" placeholder="Correo electrónico" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.correo} onChange={e => setFormData({...formData, correo: e.target.value})} />
+                <input type="text" placeholder="Municipio" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.municipio} onChange={e => setFormData({...formData, municipio: e.target.value})} />
+                <input type="text" placeholder="Departamento" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.departamento} onChange={e => setFormData({...formData, departamento: e.target.value})} />
               </div>
+              
+              <input type="email" placeholder="Correo electrónico" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.correo} onChange={e => setFormData({...formData, correo: e.target.value})} />
             </div>
 
             {paymentMethod === 'anticipado' && (
