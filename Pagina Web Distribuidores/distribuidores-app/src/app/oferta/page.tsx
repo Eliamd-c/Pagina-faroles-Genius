@@ -35,7 +35,7 @@ const PAYMENT_OPTIONS: { id: PaymentMethod; num: string; title: string; desc: st
     id: 'anticipado',
     num: '01',
     title: 'Pago Anticipado',
-    desc: 'Transfiere por Bancolombia o Nequi. Confirmas tu pedido de inmediato y aseguramos el stock.',
+    desc: 'Transfiere por Bancolombia, Nequi o Daviplata. Confirmas tu pedido de inmediato y aseguramos el stock.',
     extra: 'Despacho prioritario hoy.'
   },
   {
@@ -465,7 +465,7 @@ export default function OfertaPage() {
                 
                 <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-2 border border-white/10">
                   <div>
-                    <p className="text-xs text-gray-400">Nequi</p>
+                    <p className="text-xs text-gray-400">Nequi / Daviplata</p>
                     <p className="text-white font-mono text-sm tracking-wider">313 328 8298</p>
                   </div>
                   <button onClick={() => navigator.clipboard.writeText('3133288298')} className="text-[#D4AF37] text-xs font-bold px-4 py-1.5 border border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Copiar</button>
@@ -474,9 +474,9 @@ export default function OfertaPage() {
                 <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-4 border border-white/10">
                   <div>
                     <p className="text-xs text-gray-400">Bancolombia (Ahorros)</p>
-                    <p className="text-white font-mono text-sm tracking-wider">406-000000-00</p>
+                    <p className="text-white font-mono text-sm tracking-wider">411-613736-71</p>
                   </div>
-                  <button onClick={() => navigator.clipboard.writeText('40600000000')} className="text-[#D4AF37] text-xs font-bold px-4 py-1.5 border border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Copiar</button>
+                  <button onClick={() => navigator.clipboard.writeText('41161373671')} className="text-[#D4AF37] text-xs font-bold px-4 py-1.5 border border-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-black transition-colors">Copiar</button>
                 </div>
 
                 <div className="border-2 border-dashed border-[#D4AF37]/50 rounded-lg p-4 text-center cursor-pointer hover:bg-white/5 transition-colors relative overflow-hidden group">
