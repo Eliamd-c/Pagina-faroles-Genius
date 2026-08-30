@@ -61,7 +61,7 @@ export default function OfertaPage() {
   const [showForm, setShowForm] = useState(false);
   const [showWarning, setShowWarning] = useState(false);
   const [formData, setFormData] = useState({
-    nombre: '', cedula: '', celular: '', direccion: '', municipio: '', departamento: '', correo: ''
+    nombre: '', cedula: '', celular: '', direccion: '', municipio: '', departamento: '', correo: '', fechaRecordatorio: ''
   });
   const [receiptImage, setReceiptImage] = useState<string | null>(null);
 
@@ -88,6 +88,9 @@ export default function OfertaPage() {
       message += `💰 *Modalidad:* Plan Separe\n`;
       message += `💰 *Abono inicial:* $2,000\n`;
       message += `💰 *Saldo restante al recibir:* $${(finalPrice - 2000).toLocaleString('es-CO')}\n`;
+      if (formData.fechaRecordatorio) {
+        message += `📅 *Fecha para recordatorio:* ${formData.fechaRecordatorio}\n`;
+      }
     } else if (paymentMethod === 'contraentrega') {
       message += `🚚 *Modalidad:* Pago Contra Entrega (+5%)\n`;
       message += `💰 *Subtotal:* $${basePrice.toLocaleString('es-CO')}\n`;
@@ -106,8 +109,8 @@ export default function OfertaPage() {
     message += `- Departamento: ${formData.departamento}\n`;
     message += `- Correo: ${formData.correo}\n`;
 
-    if (paymentMethod === 'anticipado') {
-      message += `\n*Nota:* Ya tengo el comprobante de pago, te lo envío en este chat.`;
+    if (paymentMethod === 'anticipado' || paymentMethod === 'separe') {
+      message += `\n*Nota:* Ya tengo el comprobante de ${paymentMethod === 'separe' ? 'mi abono' : 'pago'}, te lo envío en este chat.`;
     }
 
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
@@ -504,9 +507,22 @@ export default function OfertaPage() {
               <input type="email" placeholder="Correo electrónico" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.correo} onChange={e => setFormData({...formData, correo: e.target.value})} />
             </div>
 
-            {paymentMethod === 'anticipado' && (
+            {paymentMethod === 'separe' && (
+              <div className="mb-6 bg-[#111] p-4 rounded-xl border border-[#D4AF37]/30 text-center">
+                <h4 className="text-[#D4AF37] font-bold mb-3 text-sm uppercase tracking-wider">🔒 Condiciones del Plan Separe</h4>
+                <p className="text-gray-300 text-xs md:text-sm mb-4 leading-relaxed">
+                  Tu abono de <strong>$2.000</strong> de hoy garantiza que <strong>reservaremos tu(s) paquete(s) para la temporada alta</strong> y congelaremos el precio actual de la oferta.
+                </p>
+                <div className="text-left mt-2">
+                  <label className="text-white text-xs font-bold mb-2 block">¿En qué fecha deseas que te enviemos un recordatorio para completar tu compra?</label>
+                  <input type="date" className="w-full bg-black border border-white/20 rounded-lg p-3 text-white focus:border-[#D4AF37] outline-none" value={formData.fechaRecordatorio} onChange={e => setFormData({...formData, fechaRecordatorio: e.target.value})} />
+                </div>
+              </div>
+            )}
+
+            {(paymentMethod === 'anticipado' || paymentMethod === 'separe') && (
               <div className="mb-6 bg-[#111] p-4 rounded-xl border border-[#D4AF37]/30">
-                <h4 className="text-[#D4AF37] font-bold mb-3 text-sm uppercase tracking-wider text-center">💳 Datos Bancarios</h4>
+                <h4 className="text-[#D4AF37] font-bold mb-3 text-sm uppercase tracking-wider text-center">💳 Datos Bancarios {paymentMethod === 'separe' && '(Para tu abono)'}</h4>
                 
                 <div className="flex justify-between items-center bg-black p-3 rounded-lg mb-2 border border-white/10">
                   <div>
@@ -536,7 +552,7 @@ export default function OfertaPage() {
                   <input type="file" accept="image/*" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" onChange={(e) => setReceiptImage(e.target.files ? e.target.files[0].name : null)} />
                   <span className="text-3xl mb-2 block group-hover:scale-110 transition-transform">📸</span>
                   <p className="text-sm text-gray-200 font-bold">{receiptImage ? '✅ Comprobante cargado' : 'Toca para adjuntar tu comprobante'}</p>
-                  <p className="text-xs text-[#D4AF37] mt-1">{receiptImage ? receiptImage : 'Obligatorio para pago anticipado'}</p>
+                  <p className="text-xs text-[#D4AF37] mt-1">{receiptImage ? receiptImage : `Obligatorio para ${paymentMethod === 'separe' ? 'tu abono' : 'pago anticipado'}`}</p>
                 </div>
               </div>
             )}
@@ -547,7 +563,7 @@ export default function OfertaPage() {
             
             <p className="text-xs text-gray-500 text-center mt-4">
               Al enviar, se abrirá WhatsApp con los detalles de tu pedido para coordinar la entrega de forma segura.
-              {paymentMethod === 'anticipado' && " Recuerda enviar la foto de tu comprobante en el chat."}
+              {(paymentMethod === 'anticipado' || paymentMethod === 'separe') && " Recuerda enviar la foto de tu comprobante en el chat."}
             </p>
           </div>
         </div>
