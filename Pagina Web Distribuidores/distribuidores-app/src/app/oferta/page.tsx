@@ -69,6 +69,13 @@ export default function OfertaPage() {
   const finalPrice = paymentMethod === 'contraentrega' ? Math.round(basePrice * 1.05) : basePrice;
 
   const handleCheckout = () => {
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'InitiateCheckout', {
+        value: finalPrice,
+        currency: 'COP',
+      });
+    }
+
     if (paymentMethod === 'contraentrega') {
       setShowWarning(true);
     } else {
@@ -77,6 +84,14 @@ export default function OfertaPage() {
   };
 
   const submitFormToWhatsApp = () => {
+    if (typeof window !== 'undefined' && (window as any).fbq) {
+      (window as any).fbq('track', 'Purchase', {
+        value: finalPrice,
+        currency: 'COP',
+        content_name: packageSelection,
+      });
+    }
+
     const phoneNumber = "573133288298";
     const packageDesc = packageSelection === 'ambos' 
       ? "Colección Completa (8 Faroles)" 
