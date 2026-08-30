@@ -59,6 +59,7 @@ export default function OfertaPage() {
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('anticipado');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '', cedula: '', celular: '', direccion: '', municipio: '', departamento: '', correo: ''
   });
@@ -68,7 +69,11 @@ export default function OfertaPage() {
   const finalPrice = paymentMethod === 'contraentrega' ? Math.round(basePrice * 1.05) : basePrice;
 
   const handleCheckout = () => {
-    setShowForm(true);
+    if (paymentMethod === 'contraentrega') {
+      setShowWarning(true);
+    } else {
+      setShowForm(true);
+    }
   };
 
   const submitFormToWhatsApp = () => {
@@ -435,6 +440,43 @@ export default function OfertaPage() {
           </div>
         </div>
       </section>
+      
+      {showWarning && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
+          <div className="bg-[#0a0a0a] border border-[#D4AF37]/50 rounded-2xl w-full max-w-md p-6 relative my-8 shadow-2xl text-center">
+            <button onClick={() => setShowWarning(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
+            
+            <div className="text-5xl mb-4">⚠️</div>
+            <h3 className="text-xl md:text-2xl text-[#D4AF37] font-bold mb-4">Compromiso de Compra</h3>
+            
+            <p className="text-gray-300 text-sm md:text-base mb-4 leading-relaxed">
+              Al elegir <strong>Pago Contra Entrega</strong>, nosotros asumimos y pagamos los costos de envío por adelantado a la transportadora para que el paquete llegue hasta tu puerta.
+            </p>
+            <p className="text-gray-300 text-sm md:text-base mb-6 leading-relaxed">
+              Por favor, continúa con tu pedido <strong className="text-white font-bold">solo si estás 100% seguro(a)</strong> de recibirlo y cuentas con el dinero en efectivo para pagarlo al momento de la entrega.
+            </p>
+            
+            <div className="flex flex-col gap-3">
+              <button 
+                onClick={() => {
+                  setShowWarning(false);
+                  setShowForm(true);
+                }} 
+                className="w-full bg-[#D4AF37] text-black font-black uppercase tracking-widest py-4 rounded-xl hover:scale-[1.02] hover:bg-white transition-all shadow-[0_0_15px_rgba(212,175,55,0.4)]"
+              >
+                Sí, me comprometo a recibirlo
+              </button>
+              <button 
+                onClick={() => setShowWarning(false)} 
+                className="w-full text-gray-400 font-bold py-3 hover:text-white transition-colors"
+              >
+                Aún no estoy seguro
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
           <div className="bg-[#0a0a0a] border border-[#D4AF37]/50 rounded-2xl w-full max-w-lg p-6 relative my-8 shadow-2xl">
