@@ -132,71 +132,21 @@ export default function OfertaPage() {
       {/* =========================================
           2. MATERIALES Y DIMENSIONES
       ========================================= */}
-      <section className="py-12 md:py-20 px-6 md:px-16 bg-[#0a0a0a] border-t border-white/10 overflow-hidden">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 relative">
+      <section className="py-16 md:py-24 px-6 md:px-16 bg-[#0a0a0a] border-t border-white/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-5xl text-white font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+            Diseñados para <span className="text-[#D4AF37] italic">destacar</span>
+          </h2>
+          <p className="text-gray-400 mb-12 text-sm md:text-base">El tamaño perfecto para que tu hogar brille con luz propia en la Noche de Velitas.</p>
           
-          {/* Centro: IMAGEN (Aparece primero en móvil) */}
-          <div className="w-full md:w-1/3 flex justify-center relative z-0 order-1 md:order-2">
-            <div className="absolute inset-0 bg-[#D4AF37] opacity-20 blur-[40px] md:blur-[60px] rounded-full pointer-events-none"></div>
+          <div className="relative flex justify-center">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[80%] bg-[#D4AF37] opacity-20 blur-[80px] rounded-full pointer-events-none"></div>
             <img 
-              src="/distribuidores/media/farol_caracteristicas.png" 
-              alt="Detalle del Farol" 
-              className="relative z-10 w-full max-w-[200px] md:max-w-[260px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
+              src="/distribuidores/media/medidas_materiales.png" 
+              alt="Dimensiones y Materiales de los Faroles" 
+              className="relative z-10 w-full max-w-[350px] md:max-w-[450px] h-auto object-contain drop-shadow-[0_30px_50px_rgba(0,0,0,0.9)]"
             />
           </div>
-
-          {/* Columna Izquierda: MATERIALES */}
-          <div className="w-full md:w-1/3 flex flex-col items-center md:items-end space-y-4 md:space-y-8 relative z-10 order-2 md:order-1">
-            <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-bold uppercase text-center md:text-right w-full mb-2">MATERIALES</h4>
-            
-            <div className="w-full max-w-[220px] relative group">
-              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-sm text-gray-200 leading-tight">Cartón de<br/>caña</p>
-              </div>
-              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-            </div>
-
-            <div className="w-full max-w-[220px] relative group">
-              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-sm text-gray-200 leading-tight">Papel<br/>seda</p>
-              </div>
-              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-            </div>
-
-            <div className="w-full max-w-[220px] relative group">
-              <div className="border border-[#D4AF37]/80 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(212,175,55,0.15)] relative z-10">
-                <p className="text-sm text-white font-bold leading-tight">Hechos<br/>a mano</p>
-              </div>
-              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-            </div>
-          </div>
-
-          {/* Columna Derecha: DIMENSIONES */}
-          <div className="w-full md:w-1/3 flex flex-col items-center md:items-start space-y-4 md:space-y-8 relative z-10 order-3 md:order-3 pt-6 md:pt-0">
-            <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-bold uppercase text-center md:text-left w-full mb-2">DIMENSIONES</h4>
-            
-            <div className="w-full max-w-[220px] relative group">
-              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-sm text-gray-200 font-bold leading-tight">17 cm<br/><span className="font-normal text-gray-400 text-sm">ancho</span></p>
-              </div>
-            </div>
-
-            <div className="w-full max-w-[220px] relative group">
-              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-sm text-gray-200 font-bold leading-tight">35 cm<br/><span className="font-normal text-gray-400 text-sm">alto</span></p>
-              </div>
-            </div>
-
-            <div className="w-full max-w-[220px] relative group">
-              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-sm text-gray-200 font-bold leading-tight">11 cm<br/><span className="font-normal text-gray-400 text-sm">fondo</span></p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </section>
 
