@@ -135,10 +135,23 @@ export default function OfertaPage() {
   };
 
   const handleContactAdvisor = () => {
+    const packageDesc = packageSelection === 'ambos' 
+      ? "Colección Completa (8 Faroles)" 
+      : packageSelection === 'tradicional' 
+        ? "Colección Tradicional (4 Faroles)"
+        : "Colección Vitral (4 Faroles)";
+
     if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Contact');
+      (window as any).fbq('track', 'Contact', {
+        value: finalPrice,
+        currency: 'COP',
+        content_name: packageSelection,
+        content_category: paymentMethod
+      });
     }
-    window.open('https://wa.me/573133288298?text=Hola,%20necesito%20ayuda%20de%20un%20asesor%20para%20comprar%20los%20faroles.', '_blank');
+
+    const text = `Hola, necesito ayuda de un asesor para comprar los faroles. Me interesa la ${packageDesc} con pago ${paymentMethod === 'anticipado' ? 'anticipado' : paymentMethod === 'contraentrega' ? 'contra entrega' : 'plan separe'}.`;
+    window.open(`https://wa.me/573133288298?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
