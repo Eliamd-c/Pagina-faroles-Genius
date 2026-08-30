@@ -132,67 +132,67 @@ export default function OfertaPage() {
       {/* =========================================
           2. MATERIALES Y DIMENSIONES
       ========================================= */}
-      <section className="py-12 md:py-20 px-2 md:px-16 bg-[#0a0a0a] border-t border-white/10 overflow-hidden">
-        <div className="max-w-5xl mx-auto grid grid-cols-3 items-center justify-center gap-2 md:gap-8 relative">
+      <section className="py-12 md:py-20 px-6 md:px-16 bg-[#0a0a0a] border-t border-white/10 overflow-hidden">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8 relative">
           
-          {/* Columna Izquierda: MATERIALES */}
-          <div className="flex flex-col items-end space-y-6 md:space-y-8 relative z-10">
-            <h4 className="text-[#D4AF37] tracking-[0.1em] md:tracking-[0.2em] text-[8px] md:text-xs font-bold uppercase text-center w-full mb-2">MATERIALES</h4>
-            
-            <div className="w-full max-w-[100px] md:max-w-[220px] relative group">
-              <div className="border border-[#D4AF37]/40 rounded-lg md:rounded-xl p-2 md:p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-[9px] md:text-sm text-gray-200 leading-tight">Cartón de<br/>caña</p>
-              </div>
-              <div className="absolute top-1/2 -right-3 md:-right-12 w-3 md:w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-            </div>
-
-            <div className="w-full max-w-[100px] md:max-w-[220px] relative group">
-              <div className="border border-[#D4AF37]/40 rounded-lg md:rounded-xl p-2 md:p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-[9px] md:text-sm text-gray-200 leading-tight">Papel<br/>seda</p>
-              </div>
-              <div className="absolute top-1/2 -right-3 md:-right-12 w-3 md:w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-            </div>
-
-            <div className="w-full max-w-[100px] md:max-w-[220px] relative group">
-              <div className="border border-[#D4AF37]/80 rounded-lg md:rounded-xl p-2 md:p-4 text-center bg-black/40 backdrop-blur-sm shadow-[0_0_10px_rgba(212,175,55,0.15)] relative z-10">
-                <p className="text-[9px] md:text-sm text-white font-bold leading-tight">Hechos<br/>a mano</p>
-              </div>
-              <div className="absolute top-1/2 -right-3 md:-right-12 w-3 md:w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-            </div>
-          </div>
-
-          {/* Centro: IMAGEN */}
-          <div className="flex justify-center relative z-0">
-            <div className="absolute inset-0 bg-[#D4AF37] opacity-20 blur-[30px] md:blur-[60px] rounded-full pointer-events-none"></div>
+          {/* Centro: IMAGEN (Aparece primero en móvil) */}
+          <div className="w-full md:w-1/3 flex justify-center relative z-0 order-1 md:order-2">
+            <div className="absolute inset-0 bg-[#D4AF37] opacity-20 blur-[40px] md:blur-[60px] rounded-full pointer-events-none"></div>
             <img 
               src="/distribuidores/media/farol_caracteristicas.png" 
               alt="Detalle del Farol" 
-              className="relative z-10 w-full max-w-[140px] md:max-w-[260px] object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.9)] md:drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)] scale-110 md:scale-100"
+              className="relative z-10 w-full max-w-[200px] md:max-w-[260px] object-contain drop-shadow-[0_20px_40px_rgba(0,0,0,0.9)]"
             />
           </div>
 
-          {/* Columna Derecha: DIMENSIONES */}
-          <div className="flex flex-col items-start space-y-6 md:space-y-8 relative z-10">
-            <h4 className="text-[#D4AF37] tracking-[0.1em] md:tracking-[0.2em] text-[8px] md:text-xs font-bold uppercase text-center w-full mb-2">DIMENSIONES</h4>
+          {/* Columna Izquierda: MATERIALES */}
+          <div className="w-full md:w-1/3 flex flex-col items-center md:items-end space-y-4 md:space-y-8 relative z-10 order-2 md:order-1">
+            <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-bold uppercase text-center md:text-right w-full mb-2">MATERIALES</h4>
             
-            <div className="w-full max-w-[100px] md:max-w-[220px] relative group">
-              <div className="absolute top-1/2 -left-3 md:-left-12 w-3 md:w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-              <div className="border border-[#D4AF37]/40 rounded-lg md:rounded-xl p-2 md:p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-[9px] md:text-sm text-gray-200 font-bold leading-tight">17 cm<br/><span className="font-normal text-gray-400 text-[8px] md:text-sm">ancho</span></p>
+            <div className="w-full max-w-[220px] relative group">
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 leading-tight">Cartón de<br/>caña</p>
+              </div>
+              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
+            </div>
+
+            <div className="w-full max-w-[220px] relative group">
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 leading-tight">Papel<br/>seda</p>
+              </div>
+              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
+            </div>
+
+            <div className="w-full max-w-[220px] relative group">
+              <div className="border border-[#D4AF37]/80 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm shadow-[0_0_15px_rgba(212,175,55,0.15)] relative z-10">
+                <p className="text-sm text-white font-bold leading-tight">Hechos<br/>a mano</p>
+              </div>
+              <div className="hidden md:block absolute top-1/2 -right-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
+            </div>
+          </div>
+
+          {/* Columna Derecha: DIMENSIONES */}
+          <div className="w-full md:w-1/3 flex flex-col items-center md:items-start space-y-4 md:space-y-8 relative z-10 order-3 md:order-3 pt-6 md:pt-0">
+            <h4 className="text-[#D4AF37] tracking-[0.2em] text-xs font-bold uppercase text-center md:text-left w-full mb-2">DIMENSIONES</h4>
+            
+            <div className="w-full max-w-[220px] relative group">
+              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 font-bold leading-tight">17 cm<br/><span className="font-normal text-gray-400 text-sm">ancho</span></p>
               </div>
             </div>
 
-            <div className="w-full max-w-[100px] md:max-w-[220px] relative group">
-              <div className="absolute top-1/2 -left-3 md:-left-12 w-3 md:w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-              <div className="border border-[#D4AF37]/40 rounded-lg md:rounded-xl p-2 md:p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-[9px] md:text-sm text-gray-200 font-bold leading-tight">35 cm<br/><span className="font-normal text-gray-400 text-[8px] md:text-sm">alto</span></p>
+            <div className="w-full max-w-[220px] relative group">
+              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 font-bold leading-tight">35 cm<br/><span className="font-normal text-gray-400 text-sm">alto</span></p>
               </div>
             </div>
 
-            <div className="w-full max-w-[100px] md:max-w-[220px] relative group">
-              <div className="absolute top-1/2 -left-3 md:-left-12 w-3 md:w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
-              <div className="border border-[#D4AF37]/40 rounded-lg md:rounded-xl p-2 md:p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
-                <p className="text-[9px] md:text-sm text-gray-200 font-bold leading-tight">11 cm<br/><span className="font-normal text-gray-400 text-[8px] md:text-sm">fondo</span></p>
+            <div className="w-full max-w-[220px] relative group">
+              <div className="hidden md:block absolute top-1/2 -left-12 w-12 h-[1px] bg-[#D4AF37]/40 z-0"></div>
+              <div className="border border-[#D4AF37]/40 rounded-xl p-4 text-center bg-black/40 backdrop-blur-sm relative z-10">
+                <p className="text-sm text-gray-200 font-bold leading-tight">11 cm<br/><span className="font-normal text-gray-400 text-sm">fondo</span></p>
               </div>
             </div>
           </div>
