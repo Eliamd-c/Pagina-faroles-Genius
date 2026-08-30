@@ -296,41 +296,60 @@ export default function OfertaPage() {
 
           {/* Opciones */}
           <div className="grid md:grid-cols-3 gap-4 mb-12">
+            {/* Paquete 1 */}
             <button
               onClick={() => setPackageSelection('paquete1')}
-              className={`text-left border-2 p-6 rounded-xl transition-all ${
-                packageSelection === 'paquete1' ? 'border-[#D4AF37] bg-[#D4AF37]/10 scale-[1.02]' : 'border-white/20 hover:border-white/40'
+              className={`text-left border-2 p-5 rounded-xl transition-all flex items-center justify-between gap-2 overflow-hidden relative ${
+                packageSelection === 'paquete1' ? 'border-[#D4AF37] bg-[#D4AF37]/10 scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.2)]' : 'border-white/20 hover:border-white/40'
               }`}
             >
-              <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN 1</div>
-              <div className="text-white font-bold mb-4">Devoción y Tradición</div>
-              <div className="text-3xl text-white font-bold mb-1">$30.000</div>
-              <div className="text-gray-400 text-xs font-bold uppercase">4 Faroles • Envío Gratis</div>
+              <div className="relative z-10 flex-1">
+                <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN 1</div>
+                <div className="text-white font-bold mb-4 leading-tight">Devoción y Tradición</div>
+                <div className="text-2xl md:text-3xl text-white font-bold mb-1">$30.000</div>
+                <div className="text-gray-400 text-[10px] md:text-xs font-bold uppercase">4 Faroles • Envío Gratis</div>
+              </div>
+              <div className="w-24 h-24 relative z-0 flex justify-end shrink-0">
+                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="h-full w-full object-contain scale-125 md:scale-150 origin-right drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+              </div>
             </button>
 
+            {/* Paquete 2 */}
             <button
               onClick={() => setPackageSelection('paquete2')}
-              className={`text-left border-2 p-6 rounded-xl transition-all ${
-                packageSelection === 'paquete2' ? 'border-[#D4AF37] bg-[#D4AF37]/10 scale-[1.02]' : 'border-white/20 hover:border-white/40'
+              className={`text-left border-2 p-5 rounded-xl transition-all flex items-center justify-between gap-2 overflow-hidden relative ${
+                packageSelection === 'paquete2' ? 'border-[#D4AF37] bg-[#D4AF37]/10 scale-[1.02] shadow-[0_0_20px_rgba(212,175,55,0.2)]' : 'border-white/20 hover:border-white/40'
               }`}
             >
-              <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN 2</div>
-              <div className="text-white font-bold mb-4">Fe y Esperanza</div>
-              <div className="text-3xl text-white font-bold mb-1">$30.000</div>
-              <div className="text-gray-400 text-xs font-bold uppercase">4 Faroles • Envío Gratis</div>
+              <div className="relative z-10 flex-1">
+                <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN 2</div>
+                <div className="text-white font-bold mb-4 leading-tight">Fe y Esperanza</div>
+                <div className="text-2xl md:text-3xl text-white font-bold mb-1">$30.000</div>
+                <div className="text-gray-400 text-[10px] md:text-xs font-bold uppercase">4 Faroles • Envío Gratis</div>
+              </div>
+              <div className="w-24 h-24 relative z-0 flex justify-end shrink-0">
+                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="h-full w-full object-contain scale-125 md:scale-150 origin-right drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+              </div>
             </button>
 
+            {/* Ambos */}
             <button
               onClick={() => setPackageSelection('ambos')}
-              className={`text-left border-2 p-6 rounded-xl transition-all relative ${
-                packageSelection === 'ambos' ? 'border-[#D4AF37] bg-[#D4AF37]/20 scale-[1.05] shadow-[0_0_20px_rgba(212,175,55,0.3)]' : 'border-[#D4AF37]/50 hover:border-[#D4AF37]'
+              className={`text-left border-2 p-5 rounded-xl transition-all flex items-center justify-between gap-2 overflow-hidden relative ${
+                packageSelection === 'ambos' ? 'border-[#D4AF37] bg-[#D4AF37]/20 scale-[1.05] shadow-[0_0_25px_rgba(212,175,55,0.3)]' : 'border-[#D4AF37]/50 hover:border-[#D4AF37]'
               }`}
             >
-              <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-black px-3 py-1 rounded-bl-lg">RECOMENDADO</div>
-              <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN COMPLETA</div>
-              <div className="text-[#D4AF37] font-bold mb-4">¡Ahorras $4.000!</div>
-              <div className="text-4xl text-[#D4AF37] font-black mb-1">$56.000</div>
-              <div className="text-white text-xs font-bold uppercase">8 Faroles • Envío Gratis</div>
+              <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] font-black px-3 py-1 rounded-bl-lg z-20">RECOMENDADO</div>
+              <div className="relative z-10 flex-1">
+                <div className="text-[#D4AF37] font-black text-xs mb-2 uppercase">COLECCIÓN COMPLETA</div>
+                <div className="text-[#D4AF37] font-bold mb-3 leading-tight">¡Ahorras $4.000!</div>
+                <div className="text-3xl md:text-4xl text-[#D4AF37] font-black mb-1">$56.000</div>
+                <div className="text-white text-[10px] md:text-xs font-bold uppercase">8 Faroles • Envío Gratis</div>
+              </div>
+              <div className="w-24 h-24 relative z-0 flex justify-end shrink-0">
+                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="absolute h-full w-full object-contain scale-[1.15] md:scale-[1.35] origin-right right-6 opacity-60 drop-shadow-xl" />
+                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="relative h-full w-full object-contain scale-125 md:scale-150 origin-right drop-shadow-[0_0_15px_rgba(212,175,55,0.2)]" />
+              </div>
             </button>
           </div>
 
