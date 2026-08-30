@@ -291,16 +291,16 @@ export default function OfertaPage() {
             >
               <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-bl-xl z-20">RECOMENDADO</div>
               
-              <div className="relative z-10 w-[55%] pt-2">
+              <div className="relative z-10 flex-1 pt-2">
                 <div className="text-[#D4AF37] font-black text-[10px] md:text-xs mb-2 uppercase">COLECCIÓN COMPLETA</div>
                 <div className="text-[#D4AF37] font-bold text-sm md:text-base mb-2 leading-tight">¡Ahorras $4.000!</div>
                 <div className="text-3xl md:text-4xl text-[#D4AF37] font-black mb-1">$56.000</div>
                 <div className="text-white text-[9px] md:text-xs font-bold uppercase">8 Faroles • Envío Gratis</div>
               </div>
               
-              <div className="w-[45%] h-full flex flex-col items-center justify-center relative z-0 gap-2">
-                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="w-full max-h-12 md:max-h-16 object-contain object-right scale-[1.4] md:scale-110 origin-right drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
-                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="w-full max-h-12 md:max-h-16 object-contain object-right scale-[1.4] md:scale-110 origin-right drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+              <div className="w-24 relative z-0 flex flex-col items-center justify-center shrink-0 gap-1.5 md:gap-2">
+                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="w-full object-contain object-center scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="w-full object-contain object-center scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
               </div>
             </button>
           </div>
