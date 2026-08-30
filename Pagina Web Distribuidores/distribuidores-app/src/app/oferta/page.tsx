@@ -201,38 +201,50 @@ export default function OfertaPage() {
       </section>
 
       {/* =========================================
-          3. COLECCIÓN (RÁPIDA)
+          3. COLECCIÓN (PALETA CLARA / TEAL)
       ========================================= */}
-      <section className="py-20 px-6 md:px-16 bg-black border-t border-white/10">
+      <section className="py-24 px-6 md:px-16 bg-[#FDFBF7]">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl text-white font-serif mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
-              Nuestras Colecciones
+          
+          <div className="text-center md:text-left mb-16 relative">
+            <h2 className="text-6xl md:text-8xl text-[#D4AF37] font-normal leading-[0.7] mb-2" style={{ fontFamily: 'var(--font-great-vibes)' }}>
+              Ocho
             </h2>
-            <p className="text-white text-lg">Elige tus devociones favoritas.</p>
+            <h3 className="text-4xl md:text-5xl text-[#173032] font-serif mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>
+              advocaciones
+            </h3>
+            <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto md:mx-0 mb-6"></div>
+            <p className="text-[#173032]/80 max-w-xl mx-auto md:mx-0 text-sm md:text-base font-medium leading-relaxed">
+              Dos colecciones de cuatro faroles cada una. Puedes pedir el surtido que más se venda en tu región o llevar ambas para tu hogar.
+            </p>
           </div>
 
-          <div className="space-y-16">
+          <div className="space-y-20">
             {PACKAGES.map((pkg, pIdx) => (
               <div key={pIdx}>
-                <div className="flex items-center justify-center gap-4 mb-8 text-center">
-                  <span className="bg-[#D4AF37] text-black px-4 py-1.5 rounded-full text-xs font-black tracking-widest shadow-[0_0_15px_rgba(212,175,55,0.4)]">
+                {/* Cabecera del Paquete */}
+                <div className="flex flex-col md:flex-row items-center gap-4 mb-8">
+                  <span className="bg-[#173032] text-white px-6 py-2 rounded-full text-xs font-bold tracking-[0.2em] uppercase">
                     {pkg.num}
                   </span>
-                  <span className="text-2xl text-white font-serif" style={{ fontFamily: 'var(--font-playfair)' }}>{pkg.subtitle}</span>
+                  <span className="text-xl md:text-2xl text-[#173032] font-serif font-bold" style={{ fontFamily: 'var(--font-playfair)' }}>
+                    {pkg.subtitle}
+                  </span>
+                  <div className="hidden md:block h-[2px] bg-[#D4AF37]/60 flex-1 ml-4" />
                 </div>
                 
+                {/* Grid de Productos */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                   {pkg.items.map((m, i) => (
-                    <div key={i} className="text-center">
-                      <div className="border-2 border-white/20 rounded-xl p-1 mb-3 flex items-center justify-center bg-[#0a0a0a] overflow-hidden aspect-[3/4]">
+                    <div key={i} className="text-center group">
+                      <div className="border border-[#173032]/10 rounded-2xl p-2 mb-4 flex items-center justify-center bg-white overflow-hidden aspect-[3/4] shadow-sm transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-[0_15px_30px_rgba(23,48,50,0.15)] group-hover:border-[#D4AF37]/50">
                         <img 
                           src={`/distribuidores/media/${encodeURIComponent(m.img)}`} 
                           alt={m.name.replace('\n', ' ')} 
-                          className="w-full h-full object-cover rounded-lg" 
+                          className="w-full h-full object-cover rounded-xl" 
                         />
                       </div>
-                      <p className="text-white font-bold whitespace-pre-line leading-tight text-sm md:text-base">
+                      <p className="text-[#173032] font-bold whitespace-pre-line leading-tight text-sm md:text-base" style={{ fontFamily: 'var(--font-playfair)' }}>
                         {m.name}
                       </p>
                     </div>
