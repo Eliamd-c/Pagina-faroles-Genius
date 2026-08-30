@@ -298,9 +298,9 @@ export default function OfertaPage() {
                 <div className="text-white text-[9px] md:text-xs font-bold uppercase">8 Faroles • Envío Gratis</div>
               </div>
               
-              <div className="w-24 relative z-0 flex flex-col items-center justify-center shrink-0 gap-1.5 md:gap-2">
-                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="w-full object-contain object-center scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
-                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="w-full object-contain object-center scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+              <div className="w-24 h-24 relative z-0 flex flex-col items-center justify-center shrink-0 gap-1.5">
+                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="w-full h-1/2 object-contain object-center scale-125 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
+                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="w-full h-1/2 object-contain object-center scale-125 drop-shadow-[0_0_15px_rgba(255,255,255,0.15)]" />
               </div>
             </button>
           </div>
