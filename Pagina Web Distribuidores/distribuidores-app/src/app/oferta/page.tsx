@@ -35,21 +35,21 @@ const PAYMENT_OPTIONS: { id: PaymentMethod; num: string; title: string; desc: st
     id: 'anticipado',
     num: '01',
     title: 'Pago Anticipado',
-    desc: 'Bancolombia o Nequi.',
+    desc: 'Transfiere por Bancolombia o Nequi. Confirmas tu pedido de inmediato y aseguramos el stock.',
     extra: 'Despacho prioritario hoy.'
   },
   {
     id: 'contraentrega',
     num: '02',
     title: 'Pago Contra Entrega',
-    desc: 'Pagas al recibir en casa.',
+    desc: 'Pagas en efectivo al mensajero cuando recibas los faroles en la puerta de tu casa. Cero riesgos.',
     extra: '+5% recargo de transportadora.'
   },
   {
     id: 'separe',
     num: '03',
     title: 'Plan Separe',
-    desc: 'Abona solo $2.000 hoy.',
+    desc: 'Reserva hoy con solo $2.000 y paga el resto poco a poco antes del envío. Asegura tu colección.',
     extra: 'Congela el precio.'
   }
 ];
