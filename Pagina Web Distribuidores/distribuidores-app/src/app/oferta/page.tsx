@@ -291,16 +291,16 @@ export default function OfertaPage() {
             >
               <div className="absolute top-0 right-0 bg-[#D4AF37] text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-bl-xl z-20">RECOMENDADO</div>
               
-              <div className="relative z-10 w-full md:w-[45%] mb-4 md:mb-0">
+              <div className="relative z-10 w-full md:w-[50%] mb-4 md:mb-0">
                 <div className="text-[#D4AF37] font-black text-[11px] md:text-xs mb-1 uppercase tracking-wider">COLECCIÓN COMPLETA</div>
                 <div className="text-[#D4AF37] font-bold text-sm md:text-base mb-2 leading-tight">¡Ahorras $4.000!</div>
                 <div className="text-4xl md:text-5xl text-[#D4AF37] font-black mb-2">$56.000</div>
                 <div className="text-white text-[10px] md:text-xs font-bold uppercase tracking-wider">8 Faroles • Envío Gratis</div>
               </div>
               
-              <div className="w-full md:w-[55%] h-28 md:h-32 flex items-center justify-center md:justify-end relative z-0 mt-4 md:mt-0">
-                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="absolute w-[65%] md:w-[75%] max-h-full object-contain md:object-right opacity-50 -translate-y-4 -translate-x-6 md:-translate-x-8 md:right-8 drop-shadow-2xl" />
-                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="relative w-[75%] md:w-[85%] max-h-full object-contain md:object-right translate-y-2 translate-x-6 md:translate-x-0 md:right-0 drop-shadow-[0_10px_20px_rgba(212,175,55,0.3)]" />
+              <div className="w-full md:w-[45%] h-20 md:h-24 relative z-0 mt-2 md:mt-0 flex justify-center md:justify-end items-center">
+                <img src="/distribuidores/media/paquete2-alpha.png" alt="Paquete 2" className="absolute w-[50%] md:w-[70%] max-w-[160px] md:max-w-[180px] object-contain opacity-60 top-0 md:top-auto md:right-4 md:-translate-y-4 drop-shadow-xl z-0" />
+                <img src="/distribuidores/media/paquete1-alpha.png" alt="Paquete 1" className="absolute w-[55%] md:w-[75%] max-w-[170px] md:max-w-[200px] object-contain bottom-0 md:bottom-auto md:right-0 md:translate-y-4 drop-shadow-[0_10px_20px_rgba(212,175,55,0.4)] z-10" />
               </div>
             </button>
           </div>
