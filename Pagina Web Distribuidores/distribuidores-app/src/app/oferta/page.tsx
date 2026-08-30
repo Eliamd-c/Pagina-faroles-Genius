@@ -361,24 +361,33 @@ export default function OfertaPage() {
           </div>
 
           {/* Checkout CTA */}
-          <div className="bg-[#0a0a0a] border-2 border-white/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-center md:text-left">
-              <div className="text-gray-400 text-sm font-bold uppercase mb-2">Total a Pagar</div>
-              <div className="text-4xl md:text-5xl text-[#D4AF37] font-black">
-                ${paymentMethod === 'separe' ? '2.000' : finalPrice.toLocaleString('es-CO')}
+          <div className="bg-[#0a0a0a] border-2 border-white/20 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-center gap-6 mt-8">
+              <div className="text-center md:text-right">
+                <div className="text-gray-400 text-sm mb-1 uppercase tracking-widest font-bold">Total a Pagar</div>
+                <div className="text-5xl font-black text-white">
+                  ${paymentMethod === 'separe' ? '2.000' : finalPrice.toLocaleString('es-CO')}
+                </div>
+                {paymentMethod === 'contraentrega' && <div className="text-xs text-gray-400 mt-2">Incluye +5% recargo de transportadora</div>}
+                {paymentMethod === 'separe' && <div className="text-xs text-gray-400 mt-2">Abono inicial. Saldo: ${(finalPrice - 2000).toLocaleString('es-CO')}</div>}
               </div>
-              {paymentMethod === 'contraentrega' && <div className="text-xs text-gray-400 mt-2">Incluye +5% recargo de transportadora</div>}
-              {paymentMethod === 'separe' && <div className="text-xs text-gray-400 mt-2">Abono inicial. Saldo: ${(finalPrice - 2000).toLocaleString('es-CO')}</div>}
-            </div>
 
-            <button 
-              onClick={handleCheckout}
-              className="w-full md:w-auto bg-[#D4AF37] text-black px-10 py-5 rounded-full font-black text-lg uppercase transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 hover:bg-white flex items-center justify-center gap-3"
-            >
-              <span>Generar Pedido Aquí</span>
-              <span className="text-2xl">👉</span>
-            </button>
-          </div>
+              <div className="flex flex-col w-full md:w-auto gap-3">
+                <button 
+                  onClick={handleCheckout}
+                  className="w-full bg-[#D4AF37] text-black px-10 py-5 rounded-full font-black text-lg uppercase transition-all shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 hover:bg-white flex items-center justify-center gap-3"
+                >
+                  <span>Generar Pedido Aquí</span>
+                  <span className="text-2xl">👉</span>
+                </button>
+                <button 
+                  onClick={() => window.open('https://wa.me/573133288298?text=Hola,%20necesito%20hablar%20con%20un%20asesor%20para%20comprar%20los%20faroles.', '_blank')}
+                  className="w-full border-2 border-[#D4AF37] text-[#D4AF37] px-8 py-3 rounded-full font-bold uppercase transition-all hover:bg-[#D4AF37] hover:text-black flex items-center justify-center gap-2"
+                >
+                  <span className="text-lg">💬</span>
+                  <span>Contactar a un Asesor</span>
+                </button>
+              </div>
+            </div>
 
         </div>
       </section>
@@ -568,6 +577,16 @@ export default function OfertaPage() {
           </div>
         </div>
       )}
+
+      {/* Botón Flotante de WhatsApp */}
+      <a 
+        href="https://wa.me/573133288298?text=Hola,%20necesito%20ayuda%20de%20un%20asesor%20para%20comprar%20los%20faroles." 
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-6 right-6 z-40 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_15px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform flex items-center justify-center"
+      >
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964.984-3.595c-.607-1.052-.927-2.246-.926-3.468.001-5.824 4.74-10.563 10.573-10.564 5.824 0 10.564 4.74 10.564 10.564 0 5.827-4.74 10.567-10.564 10.567z"/></svg>
+      </a>
     </main>
   );
 }
