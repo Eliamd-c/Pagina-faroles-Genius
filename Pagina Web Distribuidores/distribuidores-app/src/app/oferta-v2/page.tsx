@@ -6,6 +6,8 @@ type PaymentMethod = 'anticipado' | 'contraentrega' | 'separe';
 
 export default function OfertaV2() {
   const [step, setStep] = useState(1);
+  const [storyIndex, setStoryIndex] = useState(0); // Para las "Stories" del Paso 1
+  
   const [qtyTradicional, setQtyTradicional] = useState(0);
   const [qtyVitral, setQtyVitral] = useState(0);
   
@@ -46,6 +48,21 @@ export default function OfertaV2() {
   };
 
   const nextDiscount = getNextDiscountTarget(totalQty);
+
+  // Navegación de Historias
+  const STORIES_COUNT = 3;
+  const handleNextStory = () => {
+    if (storyIndex < STORIES_COUNT - 1) {
+      setStoryIndex(prev => prev + 1);
+    } else {
+      handleNextStep();
+    }
+  };
+  const handlePrevStory = () => {
+    if (storyIndex > 0) {
+      setStoryIndex(prev => prev - 1);
+    }
+  };
 
   const handleNextStep = () => {
     if (step === 2 && totalQty === 0) {
@@ -100,55 +117,119 @@ export default function OfertaV2() {
   return (
     <main className="bg-black text-white font-sans min-h-[100dvh] w-full overflow-x-hidden md:max-w-md md:mx-auto md:border-x md:border-white/10 md:shadow-2xl relative">
       
-      {/* APP TOP BAR */}
-      <header className="fixed top-0 left-0 w-full z-50 md:max-w-md md:left-1/2 md:-translate-x-1/2 bg-gradient-to-b from-black/90 to-transparent pt-4 pb-6 px-5 pointer-events-none">
-        <div className="flex gap-2 justify-center items-center h-2 w-full max-w-[200px] mx-auto">
-          {[1, 2, 3].map(i => (
-            <div key={i} className={`h-1.5 rounded-full transition-all duration-500 ${step === i ? 'w-12 bg-[#D4AF37]' : step > i ? 'w-4 bg-[#D4AF37]/50' : 'w-4 bg-white/20'}`} />
-          ))}
-        </div>
-      </header>
+      {/* APP TOP BAR (Solo en Checkout y Configurator, no en Stories) */}
+      {step > 1 && (
+        <header className="fixed top-0 left-0 w-full z-50 md:max-w-md md:left-1/2 md:-translate-x-1/2 bg-gradient-to-b from-black/90 to-transparent pt-4 pb-6 px-5 pointer-events-none">
+          <div className="flex gap-2 justify-center items-center h-2 w-full max-w-[200px] mx-auto">
+            {[2, 3].map(i => (
+              <div key={i} className={`h-1.5 rounded-full transition-all duration-500 ${step === i ? 'w-12 bg-[#D4AF37]' : step > i ? 'w-4 bg-[#D4AF37]/50' : 'w-4 bg-white/20'}`} />
+            ))}
+          </div>
+        </header>
+      )}
 
       {/* =========================================
-          ACTO 1: SPLASH SCREEN / APP HERO (100dvh)
+          ACTO 1: SCROLLYTELLING / STORIES (100dvh)
       ========================================= */}
       {step === 1 && (
-        <div className="animate-in fade-in duration-500 h-[100dvh] flex flex-col relative">
-          {/* Vertical Video Background */}
-          <div className="absolute inset-0 w-full h-full">
-            <video 
-              autoPlay loop muted playsInline 
-              className="w-full h-full object-cover opacity-80"
-            >
-              {/* Using the vertical video for mobile */}
+        <div className="relative h-[100dvh] w-full bg-black flex flex-col">
+          
+          {/* Progress Bars (IG Style) */}
+          <div className="absolute top-0 left-0 w-full z-50 flex gap-1.5 pt-4 px-3 md:max-w-md md:left-1/2 md:-translate-x-1/2">
+            {[0, 1, 2].map(i => (
+              <div key={i} className="h-1 flex-1 bg-white/20 rounded-full overflow-hidden">
+                <div className={`h-full bg-white transition-all duration-300 ${storyIndex >= i ? 'w-full' : 'w-0'}`} />
+              </div>
+            ))}
+          </div>
+
+          {/* Tap Zones para avanzar/retroceder */}
+          <div className="absolute inset-0 z-40 flex">
+            <div className="w-1/3 h-full" onClick={handlePrevStory} />
+            <div className="w-2/3 h-full" onClick={handleNextStory} />
+          </div>
+
+          {/* STORY 0: El Problema y el Hook */}
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${storyIndex === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-80">
               <source src="/distribuidores/media/video vertical poner vela sub titulos(1).mp4" type="video/mp4" />
             </video>
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80" />
+            
+            <div className="absolute bottom-16 left-6 right-6 z-30 pointer-events-none text-center">
+              <span className="inline-block px-4 py-1.5 bg-red-600/80 backdrop-blur-md rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+                El problema de cada año
+              </span>
+              <h1 className="text-4xl font-serif text-white leading-tight drop-shadow-xl mb-4" style={{ fontFamily: 'var(--font-playfair)' }}>
+                ¿Cansado de que <br/><span className="text-[#D4AF37]">la brisa apague</span> tus velas?
+              </h1>
+              <p className="text-gray-300 mb-6 font-light">Este 7 de Diciembre, la tradición evolucionó.</p>
+              
+              <div className="animate-bounce flex justify-center">
+                <div className="bg-white/10 rounded-full p-3 backdrop-blur-sm border border-white/20">
+                  <span className="text-sm font-bold flex items-center gap-2">
+                    Toca para descubrir <span className="text-xl">👉</span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="relative z-10 flex flex-col justify-end flex-grow pb-32 px-6">
-            <span className="inline-block px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-xs font-bold tracking-widest uppercase mb-4 w-fit">
-              Colección 2026
-            </span>
-            <h1 className="text-5xl font-serif text-white leading-tight mb-4 drop-shadow-xl" style={{ fontFamily: 'var(--font-playfair)' }}>
-              La tradición <br/>
-              <span className="text-[#D4AF37]">que no se apaga.</span>
-            </h1>
-            <p className="text-gray-300 text-lg font-light mb-6">
-              Faroles premium resistentes a la brisa. Envío gratis a nivel nacional.
-            </p>
+          {/* STORY 1: La Solución y Anatomía */}
+          <div className={`absolute inset-0 w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] transition-opacity duration-500 ${storyIndex === 1 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
+            
+            <div className="relative w-full h-[60vh] mt-12">
+              <Image src="/distribuidores/media/medidas_correctas.png" alt="Diseño Genius" fill className="object-contain p-6 drop-shadow-2xl" />
+            </div>
+            
+            <div className="absolute bottom-12 left-6 right-6 z-30 pointer-events-none">
+              <h2 className="text-3xl font-serif text-[#D4AF37] mb-6" style={{ fontFamily: 'var(--font-playfair)' }}>Anatomía del Farol Genius</h2>
+              
+              <ul className="space-y-4">
+                <li className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-md">
+                  <span className="text-2xl mt-1">🌬️</span>
+                  <div>
+                    <p className="font-bold text-white text-lg">Diseño 100% Cerrado</p>
+                    <p className="text-sm text-gray-400">Protege la llama del viento. Literalmente, no se apagan.</p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-md">
+                  <span className="text-2xl mt-1">📦</span>
+                  <div>
+                    <p className="font-bold text-white text-lg">Cartón Microcorrugado</p>
+                    <p className="text-sm text-gray-400">No es cartulina endeble. Alta resistencia y durabilidad.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
 
-          {/* Sticky Bottom Action */}
-          <div className="fixed bottom-0 left-0 w-full md:max-w-md md:left-1/2 md:-translate-x-1/2 p-5 pb-8 bg-gradient-to-t from-black via-black to-transparent z-50">
-            <button 
-              onClick={handleNextStep}
-              className="w-full bg-[#D4AF37] text-black h-14 rounded-full font-black text-lg uppercase shadow-[0_4px_20px_rgba(212,175,55,0.4)] flex items-center justify-center gap-2 active:scale-95 transition-transform"
-            >
-              <span>Configurar mi pedido</span>
-              <span className="text-2xl">→</span>
-            </button>
+          {/* STORY 2: Prueba Social y CTA Final */}
+          <div className={`absolute inset-0 w-full h-full transition-opacity duration-500 ${storyIndex === 2 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}>
+            <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-50 grayscale-[30%]">
+              <source src="/distribuidores/media/Video de niños celebrando el día de las velitas con los faroles.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+            
+            <div className="absolute bottom-10 left-5 right-5 z-50 text-center">
+              <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 rounded-2xl p-5 backdrop-blur-lg mb-8">
+                <p className="text-4xl mb-2">👨‍👩‍👧‍👦</p>
+                <p className="text-lg text-white font-medium">
+                  Más de <span className="text-[#D4AF37] font-black text-2xl">800 familias</span> colombianas ya aseguraron su tradición el año pasado.
+                </p>
+              </div>
+
+              <button 
+                onClick={handleNextStep}
+                className="w-full bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black h-16 rounded-full font-black text-xl uppercase shadow-[0_0_40px_rgba(212,175,55,0.6)] flex items-center justify-center gap-2 active:scale-95 transition-transform"
+              >
+                <span>¡Quiero armar mi paquete!</span>
+                <span className="text-2xl">🛍️</span>
+              </button>
+              <p className="text-xs text-gray-400 mt-4 uppercase tracking-widest font-bold">Lote limitado • Envío Gratis</p>
+            </div>
           </div>
+
         </div>
       )}
 
