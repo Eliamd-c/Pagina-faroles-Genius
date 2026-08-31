@@ -40,4 +40,13 @@ if (fs.existsSync(ofertaSrc)) {
   console.log('=> Landing page copiada a /oferta');
 }
 
+console.log('4. Creando ruta independiente para la Landing Page V2 (/oferta-v2)...');
+const ofertaV2Root = path.join(rootDir, 'oferta-v2');
+if (!fs.existsSync(ofertaV2Root)) fs.mkdirSync(ofertaV2Root, { recursive: true });
+const ofertaV2Src = path.join(outDir, 'oferta-v2', 'index.html');
+if (fs.existsSync(ofertaV2Src)) {
+  fs.copyFileSync(ofertaV2Src, path.join(ofertaV2Root, 'index.html'));
+  console.log('=> Landing page V2 copiada a /oferta-v2');
+}
+
 console.log('¡Sincronización completada!');
