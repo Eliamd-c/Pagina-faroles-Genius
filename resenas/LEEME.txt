@@ -1,0 +1,14 @@
+FOTOS DE RESEÑAS — Faroles Genius
+=================================
+
+Guarda aquí las fotos de las reseñas de Google, con estos nombres exactos:
+
+   sandra.jpg    -> los cuatro faroles con las velas y el rosario (Sandra Prada)
+   lorena.jpg    -> la niña sentada entre los faroles (Lorena Cerquera)
+   mariangelica.jpg  -> si consigues una de ella (opcional)
+
+Cualquier formato sirve (.jpg .png .webp); lo que importa es el nombre.
+
+PENDIENTE DE PERMISO:
+- lorena.jpg muestra a una menor identificable. Antes de publicarla hace falta
+  permiso expreso y por escrito de la madre (Ley 1098 de 2006).

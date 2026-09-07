@@ -1,0 +1,680 @@
+<title>Recorrido · Fiesta de Velitas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --crema:#FFF6E6; --crema2:#FBEED6; --tarjeta:#FFFFFF;
+  --tinta:#33261A; --sub:#7A6A52; --linea:#EADFC6;
+  --naranja:#F0891F; --naranja-d:#C96C12; --rojo:#C7362E; --azul:#2E6FB0; --verde:#3E8A5A;
+  --wa:#128C4B; --noche:#20160E; --navy:#1F3A6B; --amarillo:#F6C544;
+  --disp:"Fredoka",system-ui,sans-serif; --ui:"Archivo",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--ui);color:var(--tinta);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;border:none;background:none;cursor:pointer}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--rojo);outline-offset:2px}
+
+.stage{min-height:100dvh;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(80% 60% at 50% 0%,#F3E4C0,#E7D5AC)}
+.phone{position:relative;width:100%;height:100dvh;overflow:hidden;display:flex;flex-direction:column;
+  background:radial-gradient(130% 60% at 50% 3%,#FFFCF3 0%,var(--crema) 46%,var(--crema2) 100%)}
+@media(min-width:700px){
+  .stage{padding:28px}
+  .phone{width:392px;height:824px;max-height:94dvh;border-radius:40px;
+    box-shadow:0 40px 90px rgba(51,38,26,.4)}
+}
+
+/* ── chrome ── */
+.top{position:relative;z-index:20;flex:0 0 auto}
+.pico{width:100%;height:30px;display:block}
+.barra{display:flex;align-items:center;gap:11px;padding:10px 18px 7px}
+.back{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--tinta);
+  font-size:16px;display:none;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(51,38,26,.14)}
+.back.show{display:inline-flex}
+.bars{display:flex;gap:4px;flex:1}
+.bar{height:3px;flex:1;background:#E7D3A2;border-radius:2px;transition:background .3s}
+.bar.on{background:var(--rojo)}
+.skip{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--naranja-d)}
+
+/* ── slides ── */
+.slides{position:relative;flex:1 1 auto;overflow:hidden}
+.slide{position:absolute;inset:0;display:none;flex-direction:column}
+.slide.on{display:flex;animation:fade .5s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.desliza{flex:1;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;
+  padding:14px 20px 16px;scrollbar-width:none;display:flex;flex-direction:column}
+.desliza::-webkit-scrollbar{display:none}
+.slide.on .eyebrow{animation:rise .45s .05s both cubic-bezier(.2,.8,.3,1)}
+.slide.on .frase{animation:rise .5s .13s both cubic-bezier(.2,.8,.3,1)}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+
+.eyebrow{align-self:flex-start;font-family:var(--disp);font-weight:600;font-size:14px;
+  color:var(--naranja-d);background:#FCE7C4;padding:4px 12px;border-radius:100px;margin-bottom:11px}
+.frase{font-family:var(--disp);font-weight:600;font-size:27px;line-height:1.1;letter-spacing:-.01em;text-wrap:balance}
+.frase em{font-style:normal;color:var(--rojo)}
+.slide[data-s="4"] .frase em{color:var(--azul)}
+
+/* ── hero: desfile ── */
+.parade{display:flex;flex-direction:column;gap:9px;margin:2px -20px 16px;position:relative;overflow:hidden}
+.parade::before,.parade::after{content:"";position:absolute;top:0;bottom:0;width:28px;z-index:2;pointer-events:none}
+.parade::before{left:0;background:linear-gradient(90deg,var(--crema),transparent)}
+.parade::after{right:0;background:linear-gradient(270deg,var(--crema2),transparent)}
+.fila-far{display:flex;gap:9px;width:max-content;padding-left:9px}
+.fila-far.a{animation:desf 44s linear infinite}
+.fila-far.b{animation:desf 52s linear infinite reverse}
+.fila-far.c{animation:desf 48s linear infinite}
+@keyframes desf{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.arcoT{flex:0 0 auto;width:98px}
+.arcoT .arco{width:98px;height:122px;border-radius:49px 49px 10px 10px;overflow:hidden;
+  background:var(--noche);border:2px solid #fff;box-shadow:0 8px 18px rgba(240,137,31,.28)}
+.arcoT img{width:100%;height:100%;object-fit:cover}
+@media(prefers-reduced-motion:reduce){.fila-far{animation:none}.parade{overflow-x:auto}}
+
+.promesa{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--sub)}
+.promesa::before,.promesa::after{content:"";height:1px;width:24px;background:var(--linea)}
+.chips{display:flex;gap:9px;margin-top:12px}
+.chip{flex:1;background:#fff;border:1px solid var(--linea);border-radius:16px;padding:14px 6px 13px;text-align:center;
+  box-shadow:0 7px 18px rgba(51,38,26,.13);display:flex;flex-direction:column;align-items:center;gap:7px}
+.chip .ic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.chip .ic svg{width:20px;height:20px}
+.chip.v .ic{background:#E4F0EA;color:var(--verde)} .chip.v b{color:var(--verde)}
+.chip.a .ic{background:#E4EEF7;color:var(--azul)} .chip.a b{color:var(--azul)}
+.chip.n .ic{background:#FBEBD3;color:var(--naranja-d)} .chip.n b{color:var(--naranja-d)}
+.chip b{font-family:var(--disp);font-weight:600;font-size:13px;line-height:1.1}
+.chip .sub{font-size:9px;letter-spacing:.05em;text-transform:uppercase;color:var(--sub);line-height:1.2}
+
+/* ── tarjetas / pasos ── */
+.card{background:#fff;border-radius:16px;border:1px solid var(--linea);box-shadow:0 6px 16px rgba(51,38,26,.1);margin-top:13px}
+.card.centro{display:flex;justify-content:center;padding:12px}
+.card.ficha{flex:1 1 auto;min-height:0;align-items:center}
+.card.ficha img{max-height:100%;max-width:100%;object-fit:contain}
+.paso{display:flex;gap:11px;align-items:flex-start;padding:11px 14px}
+.paso+.paso{border-top:1px solid var(--linea)}
+.paso .n{flex:0 0 24px;height:24px;border-radius:50%;color:#fff;font-family:var(--disp);font-weight:600;
+  font-size:13px;display:grid;place-items:center}
+.paso b{display:block;font-family:var(--disp);font-weight:600;font-size:13.5px;line-height:1.2}
+.paso em{font-style:normal;display:block;font-size:12.5px;color:var(--sub);line-height:1.4;margin-top:2px}
+.refuerzo{padding:12px 15px;font-size:13px;line-height:1.5;color:var(--sub)}
+.refuerzo b{font-family:var(--disp);font-weight:600;color:var(--tinta)}
+
+/* ── advocaciones ── */
+.intro4{font-size:13px;line-height:1.45;color:var(--sub);margin:6px 0 2px}
+.intro4 b{font-family:var(--disp);font-weight:600;color:var(--tinta)}
+.grupo{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--naranja-d);margin:16px 0 3px;display:flex;align-items:center;gap:8px}
+.grupo .gn{margin-left:auto;font-size:9.5px;letter-spacing:.03em;color:#fff;background:var(--naranja-d);
+  border-radius:20px;padding:2px 8px}
+.grupo-sub{font-size:11.5px;color:var(--sub);margin:0 0 8px;line-height:1.35}
+.grupo:first-of-type{margin-top:14px}
+.riel{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.adv{text-align:center;cursor:pointer}
+.adv .arco{width:100%;aspect-ratio:7/9;border-radius:26px 26px 7px 7px;overflow:hidden;background:var(--noche);
+  border:2px solid #fff;box-shadow:0 5px 12px rgba(51,38,26,.16);transition:border-color .2s,transform .2s}
+.adv img{width:100%;height:100%;object-fit:cover}
+.adv p{font-family:var(--disp);font-weight:600;font-size:9.5px;color:var(--tinta);margin:4px 0 0;line-height:1.05}
+.adv p span{display:block;font-family:var(--ui);font-weight:400;font-size:8px;color:var(--sub);
+  letter-spacing:.02em;margin-top:2px;line-height:1.15}
+.adv.fav .arco{border-color:var(--azul);transform:translateY(-3px);box-shadow:0 8px 16px rgba(46,111,176,.32)}
+.adv.fav p{color:var(--azul)}
+.tocaHint{align-self:center;display:none;align-items:center;gap:8px;margin-top:14px;padding:8px 15px;
+  background:var(--azul);color:#fff;border-radius:100px;font-family:var(--disp);font-weight:600;font-size:12px;
+  box-shadow:0 6px 16px rgba(46,111,176,.35)}
+.tocaHint.ver{display:inline-flex}
+.tocaHint::before{content:"";width:7px;height:7px;border-radius:50%;background:#fff;animation:latir 1.6s ease-in-out infinite}
+@keyframes latir{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+@media(prefers-reduced-motion:reduce){.tocaHint::before{animation:none}}
+
+/* ── voces ── */
+.coment{background:#fff;border-radius:15px;overflow:hidden;border:1px solid var(--linea);
+  box-shadow:0 5px 14px rgba(51,38,26,.09);margin-top:13px}
+.coment .tira img{width:100%;height:120px;object-fit:cover}
+.coment .txt{padding:12px 14px 14px}
+.coment q{quotes:none;font-family:var(--disp);font-weight:500;font-size:14px;line-height:1.4;color:var(--tinta);display:block}
+.coment cite{display:block;font-style:normal;font-family:var(--disp);font-weight:600;font-size:11px;color:var(--rojo);margin-top:8px}
+.coment cite span{color:var(--sub);font-weight:400}
+
+/* ── dock ── */
+.dock{flex:0 0 auto;padding:12px 18px 16px;z-index:10}
+.cta{width:100%;border-radius:14px;padding:15px;background:var(--rojo);color:#fff;
+  font-family:var(--disp);font-size:15.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 9px 22px rgba(199,54,46,.3);transition:transform .12s}
+.cta:active{transform:translateY(1px)}
+.pie{text-align:center;font-size:11.5px;color:var(--sub);margin-top:9px}
+.pie b{color:var(--tinta);font-weight:600}
+
+/* ══════ TIENDA (checkout festivo) ══════ */
+.tienda{position:absolute;inset:0;z-index:70;display:none;flex-direction:column;
+  background:radial-gradient(130% 55% at 50% 3%,#FFFCF3,var(--crema) 46%,var(--crema2))}
+.tienda.on{display:flex;animation:fade .5s ease}
+.tienda .pico{height:30px;flex:0 0 auto}
+.t-top{flex:0 0 auto;display:flex;align-items:center;gap:12px;padding:10px 18px}
+.t-back{width:34px;height:34px;flex:0 0 34px;background:#fff;border-radius:50%;color:var(--tinta);font-size:17px;
+  display:grid;place-items:center;box-shadow:0 3px 10px rgba(51,38,26,.12)}
+.t-dots{flex:1;display:flex;gap:5px}
+.t-dots i{flex:1;height:3px;border-radius:2px;background:var(--rojo)}
+.t-body{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:6px 20px 118px;scrollbar-width:none}
+.t-body::-webkit-scrollbar{display:none}
+.t-enc .k{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--naranja-d);
+  background:#FCE7C4;display:inline-block;padding:4px 12px;border-radius:100px}
+.t-enc h2{font-family:var(--disp);font-weight:600;font-size:23px;margin:10px 0 0;line-height:1.1}
+.t-enc p{color:var(--sub);font-size:13px;margin:7px 0 0}
+.t-card{background:#fff;border-radius:16px;box-shadow:0 6px 18px rgba(51,38,26,.1);border:1px solid var(--linea);
+  overflow:hidden;margin-top:14px}
+.t-card .foto{width:100%;aspect-ratio:700/282;object-fit:cover;background:var(--noche)}
+.t-card .in{padding:14px 16px}
+.t-card .nom{font-family:var(--disp);font-weight:600;font-size:16px}
+.t-card .meta{color:var(--sub);font-size:11px;letter-spacing:.03em;text-transform:uppercase;margin-top:3px}
+.t-card .fila{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+.t-card .pr b{font-family:var(--disp);color:var(--naranja-d);font-size:16px}
+.t-card .pr span{display:block;color:var(--sub);font-size:11.5px}
+.t-step{display:flex;align-items:center;gap:14px}
+.t-step button{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--linea);background:var(--crema2);
+  color:var(--tinta);font-size:22px;display:grid;place-items:center;transition:transform .12s}
+.t-step button:active{transform:scale(.9)}
+.t-step button.mas{border-color:var(--naranja);color:var(--naranja-d);background:#FCEBCF}
+.t-step b{min-width:24px;text-align:center;font-family:var(--disp);font-weight:600;font-size:19px}
+.t-nudge{display:flex;align-items:center;gap:8px;margin:8px 0 4px;padding:11px 14px;background:#FCEBCF;
+  border-radius:13px;color:var(--naranja-d);font-size:13px;line-height:1.35;max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .3s,opacity .3s,margin .3s}
+.t-nudge.ver{max-height:80px;opacity:1;margin:14px 0 2px}
+.t-nudge b{font-family:var(--disp);font-weight:600}
+.t-rubro{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--sub);margin:18px 0 8px}
+.t-pagos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+.t-pago{background:#fff;border:1.5px solid var(--linea);border-radius:13px;padding:11px 9px;text-align:left;
+  display:flex;flex-direction:column;gap:4px;box-shadow:0 3px 10px rgba(51,38,26,.06);transition:border-color .2s,background .2s;position:relative}
+.t-pago .tt{font-family:var(--disp);font-weight:600;font-size:12px}
+.t-pago .e{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub)}
+.t-pago .v{font-family:var(--disp);font-weight:600;font-size:13px;margin-top:2px}
+.t-pago .ck{position:absolute;top:9px;right:9px;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--linea)}
+.t-pago.sel{border-color:var(--naranja);background:#FCEBCF}
+.t-pago.sel .v{color:var(--naranja-d)}
+.t-pago.sel .ck{border-color:var(--naranja);background:var(--naranja)}
+.t-total{background:var(--noche);border-radius:16px;padding:18px;color:#F1E7D3;position:relative;overflow:hidden;margin-top:18px}
+.t-total::before{content:"";position:absolute;right:-30px;top:-30px;width:150px;height:150px;
+  background:radial-gradient(circle,rgba(240,137,31,.4),transparent 70%)}
+.t-total .l{font-family:var(--disp);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#B9A88A}
+.t-total .n{font-family:var(--disp);font-weight:600;font-size:34px;color:var(--naranja);line-height:1;margin:4px 0 0}
+.t-total .d{font-size:12.5px;color:#CDBD9F;margin-top:6px}
+.t-total .d b{color:var(--naranja);font-weight:600}
+.t-cierre{position:absolute;left:0;right:0;bottom:0;padding:12px 20px calc(12px + env(safe-area-inset-bottom));
+  background:linear-gradient(180deg,transparent,var(--crema2) 24%)}
+.t-cta{width:100%;border-radius:14px;padding:16px;background:var(--wa);color:#fff;font-family:var(--disp);
+  font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:9px;
+  box-shadow:0 9px 22px rgba(18,140,75,.32);transition:transform .12s}
+.t-cta:active{transform:translateY(1px)}
+.t-cta[disabled]{background:var(--linea);color:var(--sub);box-shadow:none}
+.t-pie{text-align:center;font-size:11.5px;color:var(--sub);margin-top:8px}
+.t-pie b{color:var(--tinta);font-weight:600}
+/* ── checkout guiado (3 pasos) ── */
+.t-steps{flex:1;display:flex;gap:5px}
+.t-steps span{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;
+  font-family:var(--disp);font-weight:600;font-size:10.5px;color:var(--sub)}
+.t-steps i{width:19px;height:19px;border-radius:50%;background:#E7D3A2;color:#fff;display:grid;place-items:center;font-size:11px}
+.t-steps span.on{color:var(--tinta)} .t-steps span.on i{background:var(--rojo)}
+.t-steps span.done i{background:var(--verde)}
+.t-coach{font-family:var(--disp);font-weight:500;font-size:13.5px;line-height:1.35;color:var(--naranja-d);
+  background:#FCE7C4;border-radius:13px;padding:11px 14px;margin:8px 0 8px;display:flex;gap:10px;align-items:center}
+.t-coach::before{content:"";flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--naranja)}
+.t-mini{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:12px;border-top:1px solid var(--linea)}
+.t-mini span{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--sub)}
+.t-mini b{font-family:var(--disp);font-weight:600;font-size:17px;color:var(--naranja-d)}
+#tstep2{display:flex;flex-direction:column;gap:10px;margin-top:2px}
+#tstep2[hidden]{display:none}
+.t-pago{display:flex;flex-direction:row;align-items:center;gap:12px;width:100%;background:#fff;border:1.5px solid var(--linea);
+  border-radius:14px;padding:14px;text-align:left;box-shadow:0 3px 10px rgba(51,38,26,.06);transition:border-color .2s,background .2s}
+.t-pago .ck{position:static;flex:0 0 18px;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--linea);display:grid;place-items:center;margin:0}
+.t-pago .ck::after{content:"";width:8px;height:8px;border-radius:50%;background:transparent;transition:background .2s}
+.t-pago .tx{flex:1;display:flex;flex-direction:column;gap:2px}
+.t-pago .tx b{font-family:var(--disp);font-weight:600;font-size:14px}
+.t-pago .tx em{font-style:normal;font-size:11.5px;color:var(--sub)}
+.t-pago .v{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--naranja-d)}
+.t-pago.sel{border-color:var(--naranja);background:#FCEBCF}
+.t-pago.sel .ck{border-color:var(--naranja)} .t-pago.sel .ck::after{background:var(--naranja)}
+.t-resumen .rr{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--linea);font-size:13px;color:var(--sub)}
+.t-resumen .rr:first-child{border-top:none}
+.t-resumen .rr b{font-family:var(--disp);font-weight:600;color:var(--tinta)}
+.t-seguro{font-size:12px;color:var(--sub);text-align:center;margin-top:14px;line-height:1.45}
+.t-seguro b{color:var(--tinta);font-weight:600}
+.t-cta{background:var(--rojo);box-shadow:0 9px 22px rgba(199,54,46,.3)}
+.t-cta.wa{background:var(--wa);box-shadow:0 9px 22px rgba(18,140,75,.32)}
+/* ── infografía pantalla 2 (estilo marca) ── */
+.slide[data-s="2"] .eyebrow{background:none;color:var(--tinta);position:relative;z-index:0}
+.slide[data-s="2"] .eyebrow::before{content:"";position:absolute;inset:-3px -7px;z-index:-1;background:var(--amarillo);
+  border-radius:16px 22px 13px 22px/18px 13px 22px 14px;transform:rotate(-1.6deg)}
+.slide[data-s="2"] .frase{color:var(--navy)}
+.slide[data-s="2"] .frase em{color:var(--rojo)}
+.infografia2{margin:2px 0 4px}
+.infografia2 img{display:block;width:100%;height:auto;border-radius:16px}
+.partes3{display:flex;gap:8px;margin-top:16px}
+.parte{flex:1;background:#fff;border:1px solid var(--linea);border-radius:15px;padding:14px 6px 10px;
+  display:flex;flex-direction:column;align-items:center;gap:5px;box-shadow:0 5px 14px rgba(51,38,26,.1);position:relative}
+.parte .pn{position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:23px;height:23px;border-radius:50%;
+  background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;font-size:12px;display:grid;place-items:center;
+  box-shadow:0 2px 7px rgba(31,58,107,.4)}
+.parte .pm{height:46px;max-width:50px;width:auto;object-fit:contain;margin:5px 0 2px}
+.parte b{font-family:var(--disp);font-weight:600;font-size:10.5px;line-height:1.12;color:var(--navy);text-align:center}
+.card.farolreal{position:relative;display:flex;justify-content:center;align-items:center;padding:18px 16px;background:radial-gradient(120% 90% at 50% 30%,#FFFDF7 0%,#F3ECDD 100%)}
+.card.farolreal img{max-height:224px;width:auto;filter:drop-shadow(0 12px 20px rgba(31,58,107,.28))}
+.card.farolreal .med{position:absolute;font-family:var(--disp);font-weight:600;font-size:12px;color:var(--azul);
+  background:#fff;border:1px solid #CFE1F2;border-radius:100px;padding:3px 11px;box-shadow:0 3px 9px rgba(31,58,107,.14);white-space:nowrap}
+.card.farolreal .med::before{color:var(--navy);margin-right:5px;font-weight:700}
+.card.farolreal .med.alto{left:8px;top:50%;transform:translateY(-50%)}
+.card.farolreal .med.alto::before{content:"↕"}
+.card.farolreal .med.ancho{left:50%;bottom:8px;transform:translateX(-50%)}
+.card.farolreal .med.ancho::before{content:"↔"}
+.card.vasofeat{display:flex;gap:13px;align-items:center;padding:12px 14px;background:#EAF4FB;border-color:#CFE1F2}
+.card.vasofeat img{flex:0 0 68px;height:92px;width:68px;object-fit:contain}
+.card.vasofeat p{margin:0;font-size:12.5px;line-height:1.4;color:var(--tinta)}
+.card.vasofeat p b{font-family:var(--disp);font-weight:600;color:var(--navy)}
+.minihead{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--navy);margin:20px 0 10px;display:flex;align-items:center;gap:9px}
+.minihead::before{content:"";flex:0 0 8px;width:8px;height:8px;border-radius:50%;background:var(--amarillo)}
+.pasos-arm{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pa{background:#fff;border:1px solid var(--linea);border-radius:12px;padding:10px 11px;display:flex;gap:9px;box-shadow:0 3px 10px rgba(51,38,26,.07)}
+.pa .pn{flex:0 0 20px;width:20px;height:20px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--disp);font-weight:700;font-size:11px;display:grid;place-items:center}
+.pa p{margin:0;font-size:11.5px;line-height:1.3;color:var(--tinta)}
+.pa p b{font-family:var(--disp);font-weight:600;color:var(--navy)}
+.card.armado-foto{margin-top:12px;overflow:hidden;padding:0}
+.card.armado-foto img{width:100%;height:158px;object-fit:cover;display:block}
+.card.armado-foto .cap{display:block;font-size:11px;color:var(--sub);text-align:center;padding:9px 12px;font-family:var(--disp);font-weight:500}
+.dims-cap{text-align:center;font-family:var(--ui);font-size:12.5px;color:var(--sub);margin:9px 0 2px;letter-spacing:.02em}
+.dims-cap b{font-family:var(--disp);font-weight:600;color:var(--navy)}
+.datos3{display:flex;flex-direction:column;gap:9px;margin-top:12px}
+.dato{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--linea);border-radius:14px;
+  padding:12px 14px;box-shadow:0 4px 12px rgba(51,38,26,.07)}
+.dato .di{flex:0 0 34px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+  box-shadow:0 3px 8px rgba(51,38,26,.18)}
+.dato .di svg{width:19px;height:19px}
+.dato p{margin:0;font-size:13px;line-height:1.42;color:var(--sub)}
+.dato p b{font-family:var(--disp);font-weight:600;color:var(--tinta)}
+</style>
+
+<div class="stage"><div class="phone">
+
+  <div class="top">
+    <svg class="pico" viewBox="0 0 440 30" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="barra">
+      <button class="back" id="back" aria-label="Volver">&#8592;</button>
+      <div class="bars" id="bars" role="progressbar" aria-label="Avance del recorrido" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"></div>
+      <button class="skip" id="skip">Precios</button>
+    </div>
+  </div>
+
+  <div class="slides">
+
+    <!-- 1 · BIENVENIDA -->
+    <section class="slide on" data-s="1">
+      <div class="desliza">
+        <div class="parade">
+          <div class="fila-far a" data-far="0"></div>
+          <div class="fila-far b" data-far="1"></div>
+          <div class="fila-far c" data-far="2"></div>
+        </div>
+        <span class="eyebrow">Este 7 de diciembre</span>
+        <p class="frase">Ilumina tu hogar en honor a la <em>Virgen Mar&iacute;a.</em></p>
+        <div class="promesa">Compra con confianza</div>
+        <div class="chips">
+          <div class="chip v"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h10v8H3z"/><path d="M13 10h4l3 3v2h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span><b>Env&iacute;o gratis</b><span class="sub">Sin m&iacute;nimo</span></div>
+          <div class="chip a"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5h.01M18 14.5h.01"/></svg></span><b>Pagas al recibir</b><span class="sub">Si prefieres</span></div>
+          <div class="chip n"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-10.5a6.5 6.5 0 0 0-13 0C5.5 15 12 21 12 21z"/><circle cx="12" cy="10.5" r="2.4"/></svg></span><b>Toda Colombia</b><span class="sub">Nivel nacional</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · POR QUÉ NO SE QUEMAN -->
+    <section class="slide" data-s="2">
+      <div class="desliza">
+        <div class="infografia2">
+          <img src="{{infografia2}}" alt="Que nada apague lo que le pediste. El farol mide 35 cm de alto por 17 cm de ancho y trae tres partes: (1) el farol, (2) el vaso con arena, piedras y vela, y (3) la base. Se arma en 4 pasos: prepara la base en un lugar estable, pon el vaso con piedras dentro del farol, a&ntilde;ade la vela en el centro del vaso y ubica el farol sobre la base. &iexcl;Listo!">
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · HECHOS A MANO -->
+    <section class="slide" data-s="3">
+      <div class="desliza">
+        <span class="eyebrow">Uno por uno, a mano</span>
+        <p class="frase">Faroles artesanales, <em>hechos a mano.</em></p>
+        <div class="card ficha centro"><img src="{{medidas}}" alt="Farol de 17 cm de ancho por 35 cm de alto, hecho a mano en cart&oacute;n de ca&ntilde;a de az&uacute;car"></div>
+        <div class="datos3">
+          <div class="dato">
+            <span class="di" style="background:var(--amarillo)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/><circle cx="12" cy="12" r="3.2" fill="#fff" stroke="none"/></svg></span>
+            <p>Cart&oacute;n de <b>ca&ntilde;a de az&uacute;car</b> y <b>papel seda</b>: un efecto de <b>vitral</b> espectacular en la noche.</p>
+          </div>
+          <div class="dato">
+            <span class="di" style="background:var(--navy)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l4-4 12 12-4 4z"/><path d="M8 8l1.5 1.5M11 5l1.5 1.5M14 8l1.5 1.5M11 11l1.5 1.5"/></svg></span>
+            <p>Miden <b>35 cm de alto</b> &times; <b>17 cm de ancho</b>.</p>
+          </div>
+          <div class="dato">
+            <span class="di" style="background:var(--rojo)"><svg viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.8 6.3 20.4 8 13.8 2.8 9.4l6.8-.5z"/></svg></span>
+            <p><b>8 advocaciones</b> en <b>2 paquetes</b> de 4 faroles cada uno.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 · ADVOCACIONES -->
+    <section class="slide" data-s="4">
+      <div class="desliza">
+        <span class="eyebrow" id="favHint">Cada familia, su Madre</span>
+        <p class="frase">Elige a qui&eacute;n le encomiendas <em>tu hogar.</em></p>
+        <p class="intro4">8 advocaciones en <b>2 paquetes de 4 faroles</b>. As&iacute; se conforma cada uno:</p>
+        <p class="grupo">Colecci&oacute;n 1 &middot; Devoci&oacute;n y Tradici&oacute;n <span class="gn">4 faroles</span></p>
+        <p class="grupo-sub">Inmaculada &middot; Guadalupe &middot; Del Carmen &middot; De F&aacute;tima</p>
+        <div class="riel" id="riel1"></div>
+        <p class="grupo">Colecci&oacute;n 2 &middot; Fe y Esperanza <span class="gn">4 faroles</span></p>
+        <p class="grupo-sub">Sagrado Coraz&oacute;n &middot; De la Candelaria &middot; De Chiquinquir&aacute; &middot; De Lourdes</p>
+        <div class="riel" id="riel2"></div>
+        <div class="tocaHint" id="tocaHint">Toca la advocaci&oacute;n de tu hogar</div>
+      </div>
+    </section>
+
+    <!-- 5 · VOCES -->
+    <section class="slide" data-s="5">
+      <div class="desliza">
+        <span class="eyebrow">Familias como la tuya</span>
+        <p class="frase">As&iacute; vivieron <em>su Noche de Velitas.</em></p>
+        <div class="coment">
+          <div class="tira"><img src="{{rsandra}}" alt="Cuatro faroles encendidos con velas y un rosario, foto de Sandra Prada"></div>
+          <div class="txt"><q>Hermos&iacute;simos, el detalle y la delicadeza del dise&ntilde;o muy originales te evocan esa reverencia y admiraci&oacute;n&hellip;</q>
+            <cite>Sandra Prada <span>&middot; 8 dic 2024</span></cite></div>
+        </div>
+        <div class="coment">
+          <div class="tira"><img src="{{rlorena}}" alt="Faroles encendidos en la entrada de una casa, foto de Lorena Cerquera"></div>
+          <div class="txt"><q>Nos recuerdan el amor y la devoci&oacute;n por nuestra mamita Mar&iacute;a. S&uacute;per recomendados por su calidad y rapidez de entrega.</q>
+            <cite>Lorena Cerquera <span>&middot; 8 dic 2024</span></cite></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="dock">
+    <button class="cta" id="cta">&iquest;Por qu&eacute; no se queman?</button>
+    <p class="pie" id="pie">Ocho advocaciones &middot; Desde <b>$7.500</b> por farol</p>
+  </div>
+
+  <!-- CHECKOUT -->
+  <div class="tienda" id="tienda" aria-hidden="true">
+    <svg class="pico" viewBox="0 0 440 30" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="t-top">
+      <button class="t-back" id="tback" aria-label="Volver">&#8592;</button>
+      <div class="t-steps" id="tsteps">
+        <span data-k="1"><i>1</i>Cantidad</span>
+        <span data-k="2"><i>2</i>Pago</span>
+        <span data-k="3"><i>3</i>Confirma</span>
+      </div>
+    </div>
+    <div class="t-body">
+      <p class="t-coach" id="tcoach"></p>
+
+      <div id="tstep1">
+        <div class="t-card">
+          <img class="foto" src="{{paquete1}}" alt="Los cuatro faroles de la colecci&oacute;n Devoci&oacute;n y Tradici&oacute;n">
+          <div class="in">
+            <p class="nom">Devoci&oacute;n y Tradici&oacute;n</p>
+            <p class="meta">Colecci&oacute;n 1 &middot; 4 faroles</p>
+            <div class="fila">
+              <div class="pr"><b id="tpua">$30.000</b><span>por paquete</span></div>
+              <div class="t-step">
+                <button data-t="a" data-d="-1" aria-label="Quitar un paquete de Devoci&oacute;n y Tradici&oacute;n">&minus;</button>
+                <b id="tqa">0</b>
+                <button class="mas" data-t="a" data-d="1" aria-label="Agregar un paquete de Devoci&oacute;n y Tradici&oacute;n">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="t-card">
+          <img class="foto" src="{{paquete2}}" alt="Los cuatro faroles de la colecci&oacute;n Fe y Esperanza">
+          <div class="in">
+            <p class="nom">Fe y Esperanza</p>
+            <p class="meta">Colecci&oacute;n 2 &middot; 4 faroles</p>
+            <div class="fila">
+              <div class="pr"><b id="tpub">$30.000</b><span>por paquete</span></div>
+              <div class="t-step">
+                <button data-t="b" data-d="-1" aria-label="Quitar un paquete de Fe y Esperanza">&minus;</button>
+                <b id="tqb">0</b>
+                <button class="mas" data-t="b" data-d="1" aria-label="Agregar un paquete de Fe y Esperanza">+</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="t-nudge" id="tnudge"><span id="tnudgeTxt"></span></div>
+        <div class="t-mini"><span>Tu pedido</span><b id="tmini">A&uacute;n nada</b></div>
+      </div>
+
+      <div id="tstep2" hidden>
+        <button class="t-pago sel" data-p="anticipado"><span class="ck"></span><div class="tx"><b>Pago anticipado</b><em>Sugerido &middot; sin recargo</em></div><span class="v" id="tva">&mdash;</span></button>
+        <button class="t-pago" data-p="contraentrega"><span class="ck"></span><div class="tx"><b>Contra entrega</b><em>Pagas al recibir &middot; +5%</em></div><span class="v" id="tvb">&mdash;</span></button>
+        <button class="t-pago" data-p="separe"><span class="ck"></span><div class="tx"><b>Asegurar hoy</b><em>Aparta y pagas el resto luego</em></div><span class="v">$2.000</span></button>
+      </div>
+
+      <div id="tstep3" hidden>
+        <div class="t-resumen" id="tresumen"></div>
+        <div class="t-total"><div class="l">Total</div><div class="n" id="tn">$0</div><div class="d" id="td"></div></div>
+        <p class="t-seguro">Te responde <b>una persona</b>, no un bot &middot; Env&iacute;o gratis a toda Colombia</p>
+      </div>
+    </div>
+    <div class="t-cierre">
+      <button class="t-cta" id="tcta" disabled>
+        <svg id="tctaIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.7 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.2Z"/></svg>
+        <span id="tctaTxt">Toca + para empezar</span>
+      </button>
+      <p class="t-pie" id="tpie">Env&iacute;o gratis a toda Colombia &middot; Te responde <b>una persona</b></p>
+    </div>
+  </div>
+
+</div></div>
+
+<script>
+var VIRGENES=[
+ ["inmaculada","Inmaculada",1,"La pureza que celebramos el 7"],
+ ["guadalupe","Guadalupe",1,"Patrona de América"],
+ ["carmen","Del Carmen",1,"Protectora de las familias"],
+ ["fatima","De Fátima",1,"Mensajera de la paz"],
+ ["corazon","Sagrado Corazón",2,"El amor de Madre"],
+ ["candelaria","De la Candelaria",2,"Luz y presentación del Señor"],
+ ["chiquinquira","De Chiquinquirá",2,"Reina y Patrona de Colombia"],
+ ["lourdes","De Lourdes",2,"Consuelo de los enfermos"]];
+var IMG={{IMGMAP}};
+var WA="573001112233"; /* PLACEHOLDER: reemplazar por el WhatsApp real */
+
+var PANTALLAS=5, TOTAL=6, CALC=6;
+var LABELS=["¿Por qué no se queman?","Mira cómo los hacemos","Elige tu advocación",
+            "Mira quién ya los encendió","Arma tu pedido"];
+var PIES=["Ocho advocaciones · Desde <b>$7.500</b> por farol",
+          "Hay clientas que van por su <b>tercer diciembre</b> con los mismos faroles",
+          "No lo dejes encendido sin supervisión · El Espinal y Bogotá",
+          "Ocho advocaciones · Dos colecciones de cuatro",
+          "Reseñas verificadas en Google · Diciembre 2024"];
+
+var s=1,qa=0,qb=0,pay="anticipado",fav=0;
+
+var bars=document.getElementById("bars");
+for(var i=0;i<TOTAL;i++)bars.insertAdjacentHTML("beforeend",'<div class="bar"></div>');
+
+function unit(q){if(q<=1)return 30000;if(q===2)return 28000;if(q===3)return 26000;
+  if(q===4)return 25000;if(q<=7)return 24000;if(q<=10)return 22000;if(q===11)return 21000;return 20000;}
+function next(q){if(q<2)return[2,28000];if(q===2)return[3,26000];if(q===3)return[4,25000];
+  if(q===4)return[5,24000];if(q<8)return[8,22000];if(q<11)return[11,21000];if(q===11)return[12,20000];return null;}
+function envio(q){if(q<=0)return 0;if(q<=6)return 18500;if(q<=10)return 26500;return 30500;}
+function co(n){return "$"+n.toLocaleString("es-CO");}
+
+/* ── galería de advocaciones (pantalla 4) ── */
+function riel(id,g){
+  document.getElementById(id).innerHTML=VIRGENES.filter(function(v){return v[2]===g;})
+    .map(function(v){return '<div class="adv" data-g="'+v[2]+'"><div class="arco">'+
+      '<img src="'+IMG[v[0]]+'" alt="Virgen '+v[1]+'"></div><p>'+v[1]+
+      '<span>'+v[3]+'</span></p></div>';}).join("");}
+riel("riel1",1);riel("riel2",2);
+document.querySelectorAll(".adv").forEach(function(a){
+  a.onclick=function(){
+    var era=a.classList.contains("fav");
+    document.querySelectorAll(".adv").forEach(function(x){x.classList.remove("fav");});
+    fav=era?0:+a.dataset.g; if(!era)a.classList.add("fav");
+    document.getElementById("favHint").textContent=fav?"Ya es tuya":"Cada familia, su Madre";updateHints();};});
+
+/* ── la tienda ── */
+var tsub=1;
+var COACH={1:"Empecemos por tus paquetes. Cada uno trae 4 faroles.",
+           2:"Elige cómo pagar. Todas con envío gratis.",
+           3:"¡Listo! Revisa tu pedido y te atiende una persona."};
+function tShow(){
+  document.getElementById("tstep1").hidden=tsub!==1;
+  document.getElementById("tstep2").hidden=tsub!==2;
+  document.getElementById("tstep3").hidden=tsub!==3;
+  document.getElementById("tcoach").textContent=COACH[tsub];
+  document.querySelectorAll("#tsteps span").forEach(function(sp){var k=+sp.dataset.k;
+    sp.classList.toggle("on",k===tsub);sp.classList.toggle("done",k<tsub);});
+}
+function tGo(dir){
+  if(dir>0){ if(tsub===1&&qa+qb===0)return; if(tsub<3)tsub++; else return cerrar(); }
+  else { if(tsub>1)tsub--; else return retroceder(); }
+  tRender(); var b=document.querySelector(".t-body"); if(b)b.scrollTop=0;
+}
+var PAGONM={anticipado:"anticipado",contraentrega:"contra entrega (+5%)",separe:"asegurar hoy"};
+function tRender(){
+  var q=qa+qb,pu=unit(q),sb=q*pu;
+  var tot=pay==="separe"?2000:(pay==="contraentrega"?Math.round(sb*1.05):sb);
+  document.getElementById("tqa").textContent=qa;
+  document.getElementById("tqb").textContent=qb;
+  document.getElementById("tpua").textContent=co(pu);
+  document.getElementById("tpub").textContent=co(pu);
+  var nx=next(q),nu=document.getElementById("tnudge");
+  if(q>0&&nx){document.getElementById("tnudgeTxt").innerHTML="Agrega "+(nx[0]-q)+
+    " y cada paquete queda en <b>"+co(nx[1])+"</b>";nu.classList.add("ver");}
+  else nu.classList.remove("ver");
+  document.getElementById("tmini").textContent=q?((q*4)+" faroles · "+co(sb)):"Aún nada";
+  document.getElementById("tva").textContent=q?co(sb):"—";
+  document.getElementById("tvb").textContent=q?co(Math.round(sb*1.05)):"—";
+  document.querySelectorAll(".t-pago").forEach(function(o){o.classList.toggle("sel",o.dataset.p===pay);});
+  var av=q*(30000-pu)+envio(q),r="";
+  if(qa)r+='<div class="rr"><span>'+qa+' × Devoción y Tradición</span><b>'+co(qa*pu)+'</b></div>';
+  if(qb)r+='<div class="rr"><span>'+qb+' × Fe y Esperanza</span><b>'+co(qb*pu)+'</b></div>';
+  r+='<div class="rr"><span>Pago '+PAGONM[pay]+'</span><b>'+(pay==="contraentrega"?"+"+co(Math.round(sb*.05)):(pay==="separe"?co(2000)+" hoy":"sin recargo"))+'</b></div>';
+  r+='<div class="rr"><span>Envío a toda Colombia</span><b>Gratis</b></div>';
+  document.getElementById("tresumen").innerHTML=r;
+  document.getElementById("tn").textContent=co(tot);
+  document.getElementById("td").innerHTML=q?((q*4)+" faroles"+(av>0?' · <b>Te ahorras '+co(av)+'</b>':'')):"";
+  var cta=document.getElementById("tcta"),txt=document.getElementById("tctaTxt"),pie=document.getElementById("tpie");
+  var icon=document.getElementById("tctaIcon"); if(icon)icon.style.display=tsub===3?"":"none";
+  cta.classList.remove("wa");
+  if(tsub===1){cta.disabled=!q;txt.textContent="Continuar";
+    pie.innerHTML=q?((q*4)+" faroles · <b>"+co(pu/4)+"</b> cada uno"):"Toca + para agregar tus paquetes";}
+  else if(tsub===2){cta.disabled=false;txt.textContent="Continuar";
+    pie.innerHTML="Todas con envío gratis a toda Colombia";}
+  else{cta.disabled=false;cta.classList.add("wa");txt.textContent="Hablar con mi asesor";
+    pie.innerHTML="Total <b>"+co(tot)+"</b> · te responde una persona";}
+  tShow(); guardar();
+}
+
+function updateHints(){var t=document.getElementById("tocaHint");if(t)t.classList.toggle("ver",s===4&&!fav);}
+function render(){
+  var u=s;
+  for(var i=0;i<TOTAL;i++)bars.children[i].classList.toggle("on",i<u);
+  bars.setAttribute('aria-valuenow',u);
+  document.querySelectorAll(".slide").forEach(function(el){el.classList.toggle("on",+el.dataset.s===s);});
+  document.getElementById("back").classList.toggle("show",s>1&&s<CALC);
+  document.getElementById("skip").style.visibility=s>=CALC?"hidden":"";
+  document.getElementById("skip").textContent=((qa+qb)>0&&s<CALC)?"Tu cotización":"Precios";
+
+  var tienda=document.getElementById("tienda");
+  if(s>=CALC){ tienda.classList.add("on"); tienda.setAttribute("aria-hidden","false"); tRender(); }
+  else{ tienda.classList.remove("on"); tienda.setAttribute("aria-hidden","true"); }
+
+  var cta=document.getElementById("cta"),pie=document.getElementById("pie");
+  if(s<=PANTALLAS){cta.textContent=LABELS[s-1];pie.innerHTML=PIES[s-1];}
+  updateHints();
+}
+
+function entrar(){if(qa===0&&qb===0&&fav){if(fav===1)qa=1;else qb=1;}}
+function avanzar(){ if(s<CALC){s++;if(s===CALC){entrar();tsub=1;}empujar();render();
+    document.querySelectorAll(".desliza").forEach(function(d){d.scrollTop=0;});} }
+function retroceder(){ if(s>1){s--;render();
+    document.querySelectorAll(".desliza").forEach(function(d){d.scrollTop=0;});} }
+
+function cerrar(){
+  var q=qa+qb; if(q===0)return;
+  var pu=unit(q),sb=q*pu;
+  var tot=pay==="separe"?2000:(pay==="contraentrega"?Math.round(sb*1.05):sb);
+  var msg="Hola, quiero encender mi Noche de Velitas. Mi pedido: "+
+    (qa?qa+" de Devoción y Tradición ":"")+(qb?(qa?"y ":"")+qb+" de Fe y Esperanza ":"")+
+    "("+(q*4)+" faroles) · pago "+pay+" · total "+co(tot)+" con envío gratis.";
+  window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
+}
+
+document.querySelectorAll(".t-step button").forEach(function(b){
+  b.onclick=function(){var d=+b.dataset.d;
+    if(b.dataset.t==="a")qa=Math.max(0,qa+d);else qb=Math.max(0,qb+d);tRender();};});
+document.querySelectorAll(".t-pago").forEach(function(o){
+  o.onclick=function(){pay=o.dataset.p;tRender();};});
+document.getElementById("tcta").onclick=function(){tGo(1);};
+document.getElementById("tback").onclick=function(){tGo(-1);};
+
+document.getElementById("cta").onclick=avanzar;
+document.getElementById("back").onclick=retroceder;
+document.getElementById("skip").onclick=function(){s=CALC;entrar();tsub=1;empujar();render();};
+
+var CLAVE="fg.cotizacion.v1";
+function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify({qa:qa,qb:qb,pay:pay,fav:fav}));}catch(e){}}
+function cargar(){try{var v=localStorage.getItem(CLAVE);return v?JSON.parse(v):null;}catch(e){return null;}}
+
+function empujar(){try{history.pushState({s:s},"");}catch(e){}}
+window.addEventListener("popstate",function(ev){
+  var st=ev.state;
+  if(st&&st.s){s=st.s;render();}
+  else if(s>1){s=1;render();}
+});
+try{history.replaceState({s:1},"");}catch(e){}
+
+(function(){
+  var ini=null, cont=document.querySelector(".slides");
+  cont.addEventListener("touchstart",function(e){
+    var t=e.changedTouches[0];ini={x:t.clientX,y:t.clientY,t:Date.now()};},{passive:true});
+  cont.addEventListener("touchend",function(e){
+    if(!ini)return;var t=e.changedTouches[0];
+    var dx=t.clientX-ini.x,dy=t.clientY-ini.y,dt=Date.now()-ini.t;ini=null;
+    if(dt>700||Math.abs(dx)>52||Math.abs(dy)<64)return;
+    var d=document.querySelector(".slide.on .desliza");
+    if(d&&d.scrollHeight>d.clientHeight+2){
+      if(dy<0&&d.scrollTop+d.clientHeight<d.scrollHeight-2)return;
+      if(dy>0&&d.scrollTop>2)return;
+    }
+    if(dy<0)avanzar(); else retroceder();
+  },{passive:true});
+})();
+
+var prev=cargar();
+if(prev){qa=prev.qa|0;qb=prev.qb|0;pay=prev.pay||"anticipado";fav=prev.fav|0;
+  if(fav){var c=document.querySelector('.adv[data-g="'+fav+'"]');
+    if(c){c.classList.add("fav");document.getElementById("favHint").textContent="Ya es tuya";}}}
+render();
+</script>
+
+<script>
+/* papel picado + desfile de faroles */
+(function(){
+  var cols=["#F0891F","#C7362E","#2E6FB0","#3E8A5A"],cream="#FFF6E6";
+  document.querySelectorAll(".pico").forEach(function(svg){
+    var W=440,n=10,gap=4,fw=(W-gap*(n+1))/n;
+    var out='<line x1="0" y1="4" x2="440" y2="4" stroke="#C9B48C" stroke-width="1.3"/>';
+    for(var i=0;i<n;i++){var x=gap+i*(fw+gap),c=cols[i%4],b=22,tw=fw/4;
+      var p='M'+x+' 4 H'+(x+fw)+' V'+b;
+      for(var t=0;t<4;t++){var xa=x+fw-t*tw;p+=' L'+(xa-tw/2)+' '+(b+7)+' L'+(xa-tw)+' '+b;}
+      out+='<path d="'+p+' Z" fill="'+c+'"/>';
+      var cx=x+fw/2;
+      out+='<circle cx="'+cx+'" cy="11" r="3" fill="'+cream+'"/>';
+      out+='<circle cx="'+(cx-fw*0.27)+'" cy="18" r="1.9" fill="'+cream+'"/>';
+      out+='<circle cx="'+(cx+fw*0.27)+'" cy="18" r="1.9" fill="'+cream+'"/>';
+    }
+    svg.innerHTML=out;
+  });
+  var K=VIRGENES.map(function(v){return v[0];});
+  document.querySelectorAll('[data-far]').forEach(function(el,idx){
+    var arr=idx%2?K.slice().reverse():K;
+    el.innerHTML=arr.concat(arr).map(function(k){return '<div class="arcoT"><div class="arco"><img src="'+IMG[k]+'" alt=""></div></div>';}).join("");
+  });
+})();
+</script>

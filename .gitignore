@@ -22,3 +22,6 @@ retry*.js
 verify*.js
 build*.js
 find*.js
+
+# Entorno local de Claude Code
+.claude/
