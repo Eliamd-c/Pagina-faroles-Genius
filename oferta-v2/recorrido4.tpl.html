@@ -167,8 +167,12 @@ img{display:block;max-width:100%}
 .t-card .nom{font-family:var(--disp);font-weight:600;font-size:16px}
 .t-card .meta{color:var(--sub);font-size:11px;letter-spacing:.03em;text-transform:uppercase;margin-top:3px}
 .t-card .fila{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
-.t-card .pr b{font-family:var(--disp);color:var(--naranja-d);font-size:16px}
-.t-card .pr span{display:block;color:var(--sub);font-size:11.5px}
+.t-card .pr b{font-family:var(--disp);font-weight:700;color:var(--naranja-d);font-size:26px;line-height:1}
+.t-card .pr span{display:block;color:var(--sub);font-size:11.5px;margin-top:3px}
+.t-card .pr span em{font-style:normal;color:var(--tinta);font-weight:600}
+.t-reason{display:flex;align-items:center;gap:8px;margin-top:14px;padding:11px 14px;background:#EAF6EF;
+  border-radius:13px;color:#2C6E49;font-size:12.5px;line-height:1.35}
+.t-reason svg{flex:0 0 15px}
 .t-step{display:flex;align-items:center;gap:14px}
 .t-step button{width:42px;height:42px;border-radius:50%;border:1.5px solid var(--linea);background:var(--crema2);
   color:var(--tinta);font-size:22px;display:grid;place-items:center;transition:transform .12s}
@@ -417,7 +421,7 @@ img{display:block;max-width:100%}
             <p class="nom">Devoci&oacute;n y Tradici&oacute;n</p>
             <p class="meta">Colecci&oacute;n 1 &middot; 4 faroles</p>
             <div class="fila">
-              <div class="pr"><b id="tpua">$30.000</b><span>por paquete</span></div>
+              <div class="pr"><b id="tpua">$7.500</b><span>cada farol &middot; <em id="tppa">$30.000</em> el paquete</span></div>
               <div class="t-step">
                 <button data-t="a" data-d="-1" aria-label="Quitar un paquete de Devoci&oacute;n y Tradici&oacute;n">&minus;</button>
                 <b id="tqa">0</b>
@@ -432,7 +436,7 @@ img{display:block;max-width:100%}
             <p class="nom">Fe y Esperanza</p>
             <p class="meta">Colecci&oacute;n 2 &middot; 4 faroles</p>
             <div class="fila">
-              <div class="pr"><b id="tpub">$30.000</b><span>por paquete</span></div>
+              <div class="pr"><b id="tpub">$7.500</b><span>cada farol &middot; <em id="tppb">$30.000</em> el paquete</span></div>
               <div class="t-step">
                 <button data-t="b" data-d="-1" aria-label="Quitar un paquete de Fe y Esperanza">&minus;</button>
                 <b id="tqb">0</b>
@@ -441,8 +445,7 @@ img{display:block;max-width:100%}
             </div>
           </div>
         </div>
-        <div class="t-nudge" id="tnudge"><span id="tnudgeTxt"></span></div>
-        <div class="t-mini"><span>Tu pedido</span><b id="tmini">A&uacute;n nada</b></div>
+        <p class="t-reason"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--wa)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Env&iacute;o gratis siempre &middot; puedes cambiar la cantidad cuando quieras.</span></p>
       </div>
 
       <div id="tstep2" hidden>
@@ -518,9 +521,9 @@ document.querySelectorAll(".adv").forEach(function(a){
 
 /* ── la tienda ── */
 var tsub=1;
-var COACH={1:"Empecemos por tus paquetes. Cada uno trae 4 faroles.",
-           2:"Elige cómo pagar. Todas con envío gratis.",
-           3:"¡Listo! Revisa tu pedido y te atiende una persona."};
+var COACH={1:"Elige tus paquetes 👇",
+           2:"¿Cómo prefieres pagar?",
+           3:"Revisa y confírmalo con tu asesor 👇"};
 function tShow(){
   document.getElementById("tstep1").hidden=tsub!==1;
   document.getElementById("tstep2").hidden=tsub!==2;
@@ -540,13 +543,10 @@ function tRender(){
   var tot=pay==="separe"?2000:(pay==="contraentrega"?Math.round(sb*1.05):sb);
   document.getElementById("tqa").textContent=qa;
   document.getElementById("tqb").textContent=qb;
-  document.getElementById("tpua").textContent=co(pu);
-  document.getElementById("tpub").textContent=co(pu);
-  var nx=next(q),nu=document.getElementById("tnudge");
-  if(q>0&&nx){document.getElementById("tnudgeTxt").innerHTML="Agrega "+(nx[0]-q)+
-    " y cada paquete queda en <b>"+co(nx[1])+"</b>";nu.classList.add("ver");}
-  else nu.classList.remove("ver");
-  document.getElementById("tmini").textContent=q?((q*4)+" faroles · "+co(sb)):"Aún nada";
+  document.getElementById("tpua").textContent=co(pu/4);
+  document.getElementById("tpub").textContent=co(pu/4);
+  document.getElementById("tppa").textContent=co(pu);
+  document.getElementById("tppb").textContent=co(pu);
   document.getElementById("tva").textContent=q?co(sb):"—";
   document.getElementById("tvb").textContent=q?co(Math.round(sb*1.05)):"—";
   document.querySelectorAll(".t-pago").forEach(function(o){o.classList.toggle("sel",o.dataset.p===pay);});
