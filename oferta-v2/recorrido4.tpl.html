@@ -259,7 +259,17 @@ img{display:block;max-width:100%}
 .t-resumen .rr b{font-family:var(--disp);font-weight:600;color:var(--tinta)}
 .t-seguro{font-size:12px;color:var(--sub);text-align:center;margin-top:14px;line-height:1.45}
 .t-seguro b{color:var(--tinta);font-weight:600}
+.t-next{margin-top:18px}
+.t-next-h{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--sub);margin-bottom:12px;text-align:center}
+.t-next-list{list-style:none;display:flex;flex-direction:column;gap:12px;padding:0;margin:0}
+.t-next-list li{display:flex;align-items:flex-start;gap:12px}
+.t-next-list li span{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--naranja);color:#fff;
+  font-family:var(--disp);font-weight:700;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 8px rgba(240,137,31,.35)}
+.t-next-list li p{margin:0;font-size:13.5px;line-height:1.4;color:var(--sub);padding-top:3px}
+.t-next-list li p b{font-family:var(--disp);font-weight:600;color:var(--tinta)}
 .t-cta{background:var(--rojo);box-shadow:0 9px 22px rgba(199,54,46,.3)}
+.t-cta.wa{font-size:15px;white-space:nowrap}
 .t-cta.wa{background:var(--wa);box-shadow:0 9px 22px rgba(18,140,75,.32)}
 /* ── infografía pantalla 2 (estilo marca) ── */
 .slide[data-s="2"] .eyebrow{background:none;color:var(--tinta);position:relative;z-index:0}
@@ -467,7 +477,15 @@ img{display:block;max-width:100%}
       <div id="tstep3" hidden>
         <div class="t-resumen" id="tresumen"></div>
         <div class="t-total"><div class="l">Total</div><div class="n" id="tn">$0</div><div class="d" id="td"></div></div>
-        <p class="t-seguro">Te responde <b>una persona</b>, no un bot &middot; Env&iacute;o gratis a toda Colombia</p>
+        <div class="t-next">
+          <p class="t-next-h">&iquest;Qu&eacute; sigue?</p>
+          <ol class="t-next-list">
+            <li><span>1</span><p>Se abre <b>WhatsApp</b> con tu pedido ya escrito. Solo lo env&iacute;as.</p></li>
+            <li><span>2</span><p>Una persona te saluda y <b>coordina el env&iacute;o</b> a tu ciudad.</p></li>
+            <li><span>3</span><p>Recibes tus faroles y enciendes tu <b>Noche de Velitas</b>. 🕯️</p></li>
+          </ol>
+          <p class="t-seguro">Te responde <b>una persona</b>, no un bot &middot; Sin compromiso hasta que confirmes.</p>
+        </div>
       </div>
     </div>
     <div class="t-cierre">
@@ -485,7 +503,7 @@ img{display:block;max-width:100%}
       </div>
       <button class="t-cta wa" id="tcta" hidden>
         <svg id="tctaIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.7 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.2Z"/></svg>
-        <span id="tctaTxt">Hablar con mi asesor</span>
+        <span id="tctaTxt">Confirmar compra con un asesor</span>
       </button>
       <p class="t-pie" id="tpie">Env&iacute;o gratis a toda Colombia &middot; Te responde <b>una persona</b></p>
     </div>
