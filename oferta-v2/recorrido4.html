@@ -210,6 +210,23 @@ img{display:block;max-width:100%}
 .t-total .d b{color:var(--naranja);font-weight:600}
 .t-cierre{position:absolute;left:0;right:0;bottom:0;padding:12px 20px calc(12px + env(safe-area-inset-bottom));
   background:linear-gradient(180deg,transparent,var(--crema2) 24%)}
+[hidden]{display:none!important}
+.t-totbar{display:flex;align-items:baseline;justify-content:center;gap:7px;margin-bottom:9px}
+.t-totbar span{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sub)}
+.t-totbar b{font-family:var(--disp);font-weight:700;font-size:23px;color:var(--tinta);line-height:1}
+.t-totbar em{font-style:normal;font-size:12.5px;color:var(--sub)}
+.t-pays{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.t-paybtn{display:flex;flex-direction:column;align-items:center;gap:2px;padding:13px 10px;border-radius:14px;
+  font-family:var(--disp);transition:transform .12s,filter .12s;line-height:1.1}
+.t-paybtn:active{transform:translateY(1px)}
+.t-paybtn[disabled]{opacity:.45;filter:grayscale(.3)}
+.t-paybtn .pl{font-weight:600;font-size:14px}
+.t-paybtn .pl em{font-style:normal;font-size:10px;opacity:.85}
+.t-paybtn .pv{font-family:var(--disp);font-weight:700;font-size:18px;margin-top:2px}
+.t-paybtn.contado{background:var(--wa);color:#fff;box-shadow:0 8px 20px rgba(18,140,75,.3)}
+.t-paybtn.contra{background:#fff;color:var(--tinta);border:1.5px solid var(--linea)}
+.t-paybtn.contra .pv{color:var(--naranja-d)}
+.t-hint{text-align:center;font-size:12.5px;color:var(--sub);padding:6px 0}
 .t-cta{width:100%;border-radius:14px;padding:16px;background:var(--wa);color:#fff;font-family:var(--disp);
   font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:9px;
   box-shadow:0 9px 22px rgba(18,140,75,.32);transition:transform .12s}
@@ -413,9 +430,8 @@ img{display:block;max-width:100%}
     <div class="t-top">
       <button class="t-back" id="tback" aria-label="Volver">&#8592;</button>
       <div class="t-steps" id="tsteps">
-        <span data-k="1"><i>1</i>Cantidad</span>
-        <span data-k="2"><i>2</i>Pago</span>
-        <span data-k="3"><i>3</i>Confirma</span>
+        <span data-k="1"><i>1</i>Tu pedido</span>
+        <span data-k="2"><i>2</i>Confirma</span>
       </div>
     </div>
     <div class="t-body">
@@ -455,12 +471,6 @@ img{display:block;max-width:100%}
         <p class="t-reason"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="var(--wa)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Env&iacute;o gratis siempre &middot; puedes cambiar la cantidad cuando quieras.</span></p>
       </div>
 
-      <div id="tstep2" hidden>
-        <button class="t-pago sel" data-p="anticipado"><span class="ck"></span><div class="tx"><b>Pago anticipado</b><em>Sugerido &middot; sin recargo</em></div><span class="v" id="tva">&mdash;</span></button>
-        <button class="t-pago" data-p="contraentrega"><span class="ck"></span><div class="tx"><b>Contra entrega</b><em>Pagas al recibir &middot; +5%</em></div><span class="v" id="tvb">&mdash;</span></button>
-        <button class="t-pago" data-p="separe"><span class="ck"></span><div class="tx"><b>Asegurar hoy</b><em>Aparta y pagas el resto luego</em></div><span class="v">$2.000</span></button>
-      </div>
-
       <div id="tstep3" hidden>
         <div class="t-resumen" id="tresumen"></div>
         <div class="t-total"><div class="l">Total</div><div class="n" id="tn">$0</div><div class="d" id="td"></div></div>
@@ -468,9 +478,21 @@ img{display:block;max-width:100%}
       </div>
     </div>
     <div class="t-cierre">
-      <button class="t-cta" id="tcta" disabled>
+      <div id="tpay1">
+        <div class="t-totbar" id="ttotbar" hidden><span>Total</span><b id="tbar">$0</b><em id="tbarsub"></em></div>
+        <div class="t-pays">
+          <button class="t-paybtn contado" id="tbcontado" data-p="anticipado" disabled>
+            <span class="pl">Pago de contado</span><span class="pv" id="tpc">$0</span>
+          </button>
+          <button class="t-paybtn contra" id="tbcontra" data-p="contraentrega" disabled>
+            <span class="pl">Contra entrega <em>+5%</em></span><span class="pv" id="tpce">$0</span>
+          </button>
+        </div>
+        <p class="t-hint" id="thint">Toca <b>+</b> para agregar tus paquetes</p>
+      </div>
+      <button class="t-cta wa" id="tcta" hidden>
         <svg id="tctaIcon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.7 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.2Z"/></svg>
-        <span id="tctaTxt">Toca + para empezar</span>
+        <span id="tctaTxt">Hablar con mi asesor</span>
       </button>
       <p class="t-pie" id="tpie">Env&iacute;o gratis a toda Colombia &middot; Te responde <b>una persona</b></p>
     </div>
@@ -528,50 +550,54 @@ document.querySelectorAll(".adv").forEach(function(a){
 
 /* ── la tienda ── */
 var tsub=1;
-var COACH={1:"Elige tus paquetes 👇",
-           2:"¿Cómo prefieres pagar?",
-           3:"Revisa y confírmalo con tu asesor 👇"};
+var COACH={1:"Arma tu pedido y elige cómo pagar 👇",
+           2:"Revisa y confírmalo con tu asesor 👇"};
 function tShow(){
   document.getElementById("tstep1").hidden=tsub!==1;
-  document.getElementById("tstep2").hidden=tsub!==2;
-  document.getElementById("tstep3").hidden=tsub!==3;
+  document.getElementById("tstep3").hidden=tsub!==2;
+  document.getElementById("tpay1").hidden=tsub!==1;
+  document.getElementById("tcta").hidden=tsub!==2;
   document.getElementById("tcoach").textContent=COACH[tsub];
   document.querySelectorAll("#tsteps span").forEach(function(sp){var k=+sp.dataset.k;
     sp.classList.toggle("on",k===tsub);sp.classList.toggle("done",k<tsub);});
 }
 function tGo(dir){
-  if(dir>0){ if(tsub===1&&qa+qb===0)return; if(tsub<3)tsub++; else return cerrar(); }
-  else { if(tsub>1)tsub--; else return retroceder(); }
-  tRender(); var b=document.querySelector(".t-body"); if(b)b.scrollTop=0;
+  if(dir<0){ if(tsub>1)tsub--; else return retroceder();
+    tRender(); var b=document.querySelector(".t-body"); if(b)b.scrollTop=0; }
 }
-var PAGONM={anticipado:"anticipado",contraentrega:"contra entrega (+5%)",separe:"asegurar hoy"};
+function elegirPago(p){
+  if(qa+qb===0)return; pay=p; tsub=2; tRender();
+  var b=document.querySelector(".t-body"); if(b)b.scrollTop=0;
+}
+var PAGONM={anticipado:"de contado (sin recargo)",contraentrega:"contra entrega (+5%)"};
 function tRender(){
-  var q=qa+qb,pu=unit(q),sb=q*pu;
-  var tot=pay==="separe"?2000:(pay==="contraentrega"?Math.round(sb*1.05):sb);
+  var q=qa+qb,pu=unit(q),sb=q*pu,ce=Math.round(sb*1.05);
+  var tot=pay==="contraentrega"?ce:sb;
   document.getElementById("tqa").textContent=qa;
   document.getElementById("tqb").textContent=qb;
   document.getElementById("tpua").textContent=co(pu);
   document.getElementById("tpub").textContent=co(pu);
-  document.getElementById("tva").textContent=q?co(sb):"—";
-  document.getElementById("tvb").textContent=q?co(Math.round(sb*1.05)):"—";
-  document.querySelectorAll(".t-pago").forEach(function(o){o.classList.toggle("sel",o.dataset.p===pay);});
+  /* barra de total + botones de pago (paso 1) */
+  document.getElementById("ttotbar").hidden=!q;
+  document.getElementById("thint").hidden=!!q;
+  document.getElementById("tbar").textContent=co(sb);
+  document.getElementById("tbarsub").textContent=q?" · "+(q*4)+" faroles":"";
+  document.getElementById("tpc").textContent=co(sb);
+  document.getElementById("tpce").textContent=co(ce);
+  document.getElementById("tbcontado").disabled=!q;
+  document.getElementById("tbcontra").disabled=!q;
+  /* resumen (paso 2) */
   var av=q*(30000-pu)+envio(q),r="";
   if(qa)r+='<div class="rr"><span>'+qa+' × Devoción y Tradición</span><b>'+co(qa*pu)+'</b></div>';
   if(qb)r+='<div class="rr"><span>'+qb+' × Fe y Esperanza</span><b>'+co(qb*pu)+'</b></div>';
-  r+='<div class="rr"><span>Pago '+PAGONM[pay]+'</span><b>'+(pay==="contraentrega"?"+"+co(Math.round(sb*.05)):(pay==="separe"?co(2000)+" hoy":"sin recargo"))+'</b></div>';
+  r+='<div class="rr"><span>Pago '+PAGONM[pay]+'</span><b>'+(pay==="contraentrega"?"+"+co(Math.round(sb*.05)):"sin recargo")+'</b></div>';
   r+='<div class="rr"><span>Envío a toda Colombia</span><b>Gratis</b></div>';
   document.getElementById("tresumen").innerHTML=r;
   document.getElementById("tn").textContent=co(tot);
   document.getElementById("td").innerHTML=q?((q*4)+" faroles"+(av>0?' · <b>Te ahorras '+co(av)+'</b>':'')):"";
-  var cta=document.getElementById("tcta"),txt=document.getElementById("tctaTxt"),pie=document.getElementById("tpie");
-  var icon=document.getElementById("tctaIcon"); if(icon)icon.style.display=tsub===3?"":"none";
-  cta.classList.remove("wa");
-  if(tsub===1){cta.disabled=!q;txt.textContent="Continuar";
-    pie.innerHTML=q?((q*4)+" faroles · Total <b>"+co(sb)+"</b>"):"Toca + para agregar tus paquetes";}
-  else if(tsub===2){cta.disabled=false;txt.textContent="Continuar";
-    pie.innerHTML="Todas con envío gratis a toda Colombia";}
-  else{cta.disabled=false;cta.classList.add("wa");txt.textContent="Hablar con mi asesor";
-    pie.innerHTML="Total <b>"+co(tot)+"</b> · te responde una persona";}
+  var pie=document.getElementById("tpie");
+  if(tsub===1)pie.innerHTML="Env&iacute;o gratis a toda Colombia &middot; Te responde <b>una persona</b>";
+  else pie.innerHTML="Total <b>"+co(tot)+"</b> &middot; pago "+PAGONM[pay];
   tShow(); guardar();
 }
 
@@ -613,9 +639,9 @@ function cerrar(){
 document.querySelectorAll(".t-step button").forEach(function(b){
   b.onclick=function(){var d=+b.dataset.d;
     if(b.dataset.t==="a")qa=Math.max(0,qa+d);else qb=Math.max(0,qb+d);tRender();};});
-document.querySelectorAll(".t-pago").forEach(function(o){
-  o.onclick=function(){pay=o.dataset.p;tRender();};});
-document.getElementById("tcta").onclick=function(){tGo(1);};
+document.getElementById("tbcontado").onclick=function(){elegirPago("anticipado");};
+document.getElementById("tbcontra").onclick=function(){elegirPago("contraentrega");};
+document.getElementById("tcta").onclick=cerrar;
 document.getElementById("tback").onclick=function(){tGo(-1);};
 
 document.getElementById("cta").onclick=avanzar;
