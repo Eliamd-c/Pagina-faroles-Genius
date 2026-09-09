@@ -428,7 +428,7 @@ img{display:block;max-width:100%}
             <p class="nom">Devoci&oacute;n y Tradici&oacute;n</p>
             <p class="meta">Colecci&oacute;n 1 &middot; 4 faroles</p>
             <div class="fila">
-              <div class="pr"><b id="tpua">$7.500</b><span>cada farol &middot; <em id="tppa">$30.000</em> el paquete</span></div>
+              <div class="pr"><b id="tpua">$30.000</b><span>el paquete &middot; 4 faroles</span></div>
               <div class="t-step">
                 <button data-t="a" data-d="-1" aria-label="Quitar un paquete de Devoci&oacute;n y Tradici&oacute;n">&minus;</button>
                 <b id="tqa">0</b>
@@ -443,7 +443,7 @@ img{display:block;max-width:100%}
             <p class="nom">Fe y Esperanza</p>
             <p class="meta">Colecci&oacute;n 2 &middot; 4 faroles</p>
             <div class="fila">
-              <div class="pr"><b id="tpub">$7.500</b><span>cada farol &middot; <em id="tppb">$30.000</em> el paquete</span></div>
+              <div class="pr"><b id="tpub">$30.000</b><span>el paquete &middot; 4 faroles</span></div>
               <div class="t-step">
                 <button data-t="b" data-d="-1" aria-label="Quitar un paquete de Fe y Esperanza">&minus;</button>
                 <b id="tqb">0</b>
@@ -550,10 +550,8 @@ function tRender(){
   var tot=pay==="separe"?2000:(pay==="contraentrega"?Math.round(sb*1.05):sb);
   document.getElementById("tqa").textContent=qa;
   document.getElementById("tqb").textContent=qb;
-  document.getElementById("tpua").textContent=co(pu/4);
-  document.getElementById("tpub").textContent=co(pu/4);
-  document.getElementById("tppa").textContent=co(pu);
-  document.getElementById("tppb").textContent=co(pu);
+  document.getElementById("tpua").textContent=co(pu);
+  document.getElementById("tpub").textContent=co(pu);
   document.getElementById("tva").textContent=q?co(sb):"—";
   document.getElementById("tvb").textContent=q?co(Math.round(sb*1.05)):"—";
   document.querySelectorAll(".t-pago").forEach(function(o){o.classList.toggle("sel",o.dataset.p===pay);});
@@ -569,7 +567,7 @@ function tRender(){
   var icon=document.getElementById("tctaIcon"); if(icon)icon.style.display=tsub===3?"":"none";
   cta.classList.remove("wa");
   if(tsub===1){cta.disabled=!q;txt.textContent="Continuar";
-    pie.innerHTML=q?((q*4)+" faroles · <b>"+co(pu/4)+"</b> cada uno"):"Toca + para agregar tus paquetes";}
+    pie.innerHTML=q?((q*4)+" faroles · Total <b>"+co(sb)+"</b>"):"Toca + para agregar tus paquetes";}
   else if(tsub===2){cta.disabled=false;txt.textContent="Continuar";
     pie.innerHTML="Todas con envío gratis a toda Colombia";}
   else{cta.disabled=false;cta.classList.add("wa");txt.textContent="Hablar con mi asesor";
