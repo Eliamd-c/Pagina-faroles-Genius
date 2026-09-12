@@ -389,16 +389,16 @@ img{display:block;max-width:100%}
     <!-- 4 · ADVOCACIONES -->
     <section class="slide" data-s="4">
       <div class="desliza">
-        <span class="eyebrow" id="favHint">Cada familia, su Madre</span>
-        <p class="frase">Elige a qui&eacute;n le encomiendas <em>tu hogar.</em></p>
-        <p class="intro4">8 advocaciones en <b>2 paquetes de 4 faroles</b>. As&iacute; se conforma cada uno:</p>
+        <span class="eyebrow" id="favHint">Qu&eacute; trae cada paquete</span>
+        <p class="frase">As&iacute; se compone <em>cada paquete.</em></p>
+        <p class="intro4">Son <b>8 advocaciones</b> repartidas en <b>2 paquetes de 4 faroles</b>. Estas son las que trae cada colecci&oacute;n:</p>
         <p class="grupo">Colecci&oacute;n 1 &middot; Devoci&oacute;n y Tradici&oacute;n <span class="gn">4 faroles</span></p>
         <p class="grupo-sub">Inmaculada &middot; Guadalupe &middot; Del Carmen &middot; De F&aacute;tima</p>
         <div class="riel" id="riel1"></div>
         <p class="grupo">Colecci&oacute;n 2 &middot; Fe y Esperanza <span class="gn">4 faroles</span></p>
         <p class="grupo-sub">Sagrado Coraz&oacute;n &middot; De la Candelaria &middot; De Chiquinquir&aacute; &middot; De Lourdes</p>
         <div class="riel" id="riel2"></div>
-        <div class="tocaHint" id="tocaHint">Toca la advocaci&oacute;n de tu hogar</div>
+        <div class="tocaHint" id="tocaHint">Toca un farol para conocer su advocaci&oacute;n</div>
       </div>
     </section>
 
@@ -557,7 +557,7 @@ document.querySelectorAll(".adv").forEach(function(a){
     var era=a.classList.contains("fav");
     document.querySelectorAll(".adv").forEach(function(x){x.classList.remove("fav");});
     fav=era?0:+a.dataset.g; if(!era)a.classList.add("fav");
-    document.getElementById("favHint").textContent=fav?"Ya es tuya":"Cada familia, su Madre";updateHints();};});
+    document.getElementById("favHint").textContent=fav?"Tu preferida ✓":"Qué trae cada paquete";updateHints();};});
 
 /* ── la tienda ── */
 var tsub=1;
