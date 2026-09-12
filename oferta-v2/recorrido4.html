@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+/* Meta Pixel Faroles Genius - solo dispara en produccion */
+(function(){
+  if(!/(^|\.)farolesgenius\.com$/.test(location.hostname)){window.PX=function(){};return;}
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,
+  'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','4218954695068961');fbq('track','PageView');
+  window.PX=function(ev,params,custom){try{fbq(custom?'trackCustom':'track',ev,params||{});}catch(e){}};
+})();
+</script>
 <title>Recorrido · Fiesta de Velitas</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&display=swap">
 <style>
@@ -547,6 +560,10 @@ var PIES=["Ocho advocaciones · Desde <b>$7.500</b> por farol",
           "Reseñas verificadas en Google · Diciembre 2024"];
 
 var s=1,qa=0,qb=0,pay="anticipado",fav=0;
+/* ── embudo Meta Pixel ── */
+window.PX=window.PX||function(){};
+var _seen={};
+function TP(k,ev,p){if(_seen[k])return;_seen[k]=1;PX(ev,p);}
 
 var bars=document.getElementById("bars");
 for(var i=0;i<TOTAL;i++)bars.insertAdjacentHTML("beforeend",'<div class="bar"></div>');
@@ -591,6 +608,8 @@ function tGo(dir){
 }
 function elegirPago(p){
   if(qa+qb===0)return; pay=p; tsub=2; tRender();
+  var q=qa+qb,pu=unit(q),sb=q*pu,tot=p==="contraentrega"?Math.round(sb*1.05):sb;
+  TP('initcheckout','InitiateCheckout',{value:tot,currency:'COP',num_items:q*4,content_name:'Pago '+(p==="contraentrega"?'contra entrega':'de contado')});
   var b=document.querySelector(".t-body"); if(b)b.scrollTop=0;
 }
 var PAGONM={anticipado:"de contado (sin recargo)",contraentrega:"contra entrega (+5%)"};
@@ -641,6 +660,8 @@ function render(){
 
   var cta=document.getElementById("cta"),pie=document.getElementById("pie");
   if(s<=PANTALLAS){document.getElementById("ctaTxt").textContent=LABELS[s-1];pie.innerHTML=PIES[s-1];}
+  if(s<=PANTALLAS)TP('paso'+s,'ViewContent',{content_name:'Paso '+s+' de '+PANTALLAS});
+  if(s>=CALC)TP('checkout','ViewContent',{content_name:'Checkout · Arma tu pedido'});
   updateHints();
 }
 
@@ -657,12 +678,15 @@ function cerrar(){
   var msg="Hola, quiero encender mi Noche de Velitas. Mi pedido: "+
     (qa?qa+" de Devoción y Tradición ":"")+(qb?(qa?"y ":"")+qb+" de Fe y Esperanza ":"")+
     "("+(q*4)+" faroles) · pago "+pay+" · total "+co(tot)+" con envío gratis.";
+  PX('Lead',{value:tot,currency:'COP',num_items:q*4,content_name:'Confirmar por WhatsApp',payment:pay});
   window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
 }
 
 document.querySelectorAll(".t-step button").forEach(function(b){
   b.onclick=function(){var d=+b.dataset.d;
-    if(b.dataset.t==="a")qa=Math.max(0,qa+d);else qb=Math.max(0,qb+d);tRender();};});
+    if(b.dataset.t==="a")qa=Math.max(0,qa+d);else qb=Math.max(0,qb+d);
+    if(d>0){var q=qa+qb;PX('AddToCart',{content_name:(b.dataset.t==="a"?'Devoción y Tradición':'Fe y Esperanza'),value:unit(q),currency:'COP'});}
+    tRender();};});
 document.getElementById("tbcontado").onclick=function(){elegirPago("anticipado");};
 document.getElementById("tbcontra").onclick=function(){elegirPago("contraentrega");};
 document.getElementById("tcta").onclick=cerrar;
