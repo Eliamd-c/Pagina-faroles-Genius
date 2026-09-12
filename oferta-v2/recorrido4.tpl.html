@@ -658,7 +658,7 @@ function cerrar(){
   var msg="Hola, quiero encender mi Noche de Velitas. Mi pedido: "+
     (qa?qa+" de Devoción y Tradición ":"")+(qb?(qa?"y ":"")+qb+" de Fe y Esperanza ":"")+
     "("+(q*4)+" faroles) · pago "+pay+" · total "+co(tot)+" con envío gratis.";
-  PX('Lead',{value:tot,currency:'COP',num_items:q*4,content_name:'Confirmar por WhatsApp',payment:pay});
+  PX('Contact',{value:tot,currency:'COP',num_items:q*4,content_name:'Confirmar por WhatsApp',payment:pay});
   window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
 }
 
