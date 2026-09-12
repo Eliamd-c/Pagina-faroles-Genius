@@ -141,6 +141,12 @@ img{display:block;max-width:100%}
   font-family:var(--disp);font-size:15.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;
   box-shadow:0 9px 22px rgba(199,54,46,.3);transition:transform .12s}
 .cta:active{transform:translateY(1px)}
+.cta{animation:ctaLatido 2.6s ease-in-out infinite}
+.cta-ar{font-size:19px;line-height:1;display:inline-block;animation:ctaFlecha 1.3s ease-in-out infinite}
+@keyframes ctaFlecha{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@keyframes ctaLatido{0%,100%{box-shadow:0 9px 22px rgba(199,54,46,.3)}
+  50%{box-shadow:0 9px 30px rgba(199,54,46,.55)}}
+@media(prefers-reduced-motion:reduce){.cta,.cta-ar{animation:none}}
 .pie{text-align:center;font-size:11.5px;color:var(--sub);margin-top:9px}
 .pie b{color:var(--tinta);font-weight:600}
 
@@ -423,7 +429,7 @@ img{display:block;max-width:100%}
   </div>
 
   <div class="dock">
-    <button class="cta" id="cta">&iquest;Por qu&eacute; no se queman?</button>
+    <button class="cta" id="cta"><span id="ctaTxt">&iquest;Por qu&eacute; no se queman?</span><span class="cta-ar" aria-hidden="true">&rarr;</span></button>
     <p class="pie" id="pie">Ocho advocaciones &middot; Desde <b>$7.500</b> por farol</p>
   </div>
 
@@ -525,7 +531,7 @@ var IMG={{IMGMAP}};
 var WA="573133288298"; /* WhatsApp oficial Faroles Genius */
 
 var PANTALLAS=5, TOTAL=6, CALC=6;
-var LABELS=["¿Por qué no se queman?","Mira cómo los hacemos","Elige tu advocación",
+var LABELS=["¿Por qué no se queman?","Mira cómo los hacemos","Conoce cada paquete",
             "Mira quién ya los encendió","Arma tu pedido"];
 var PIES=["Ocho advocaciones · Desde <b>$7.500</b> por farol",
           "Hay clientas que van por su <b>tercer diciembre</b> con los mismos faroles",
@@ -627,7 +633,7 @@ function render(){
   else{ tienda.classList.remove("on"); tienda.setAttribute("aria-hidden","true"); }
 
   var cta=document.getElementById("cta"),pie=document.getElementById("pie");
-  if(s<=PANTALLAS){cta.textContent=LABELS[s-1];pie.innerHTML=PIES[s-1];}
+  if(s<=PANTALLAS){document.getElementById("ctaTxt").textContent=LABELS[s-1];pie.innerHTML=PIES[s-1];}
   updateHints();
 }
 
