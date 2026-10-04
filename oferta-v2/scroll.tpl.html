@@ -1,0 +1,331 @@
+<title>Faroles Genius · 7 de Diciembre</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --crema:#FFF6E6; --crema2:#FBEED6; --tarjeta:#FFFFFF;
+  --tinta:#33261A; --sub:#7A6A52; --linea:#EADFC6;
+  --naranja:#F0891F; --naranja-d:#C96C12; --rojo:#C7362E; --azul:#2E6FB0;
+  --verde:#3E8A5A; --wa:#128C4B; --noche:#20160E; --navy:#1F3A6B; --amarillo:#F6C544;
+  --disp:"Fredoka",system-ui,sans-serif; --ui:"Archivo",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{font-family:var(--ui);color:var(--tinta);background:var(--crema);
+  -webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden;padding-bottom:84px}
+img{max-width:100%;display:block}
+.wrap{max-width:460px;margin:0 auto;background:var(--crema);
+  box-shadow:0 0 60px rgba(51,38,26,.12);min-height:100vh}
+.picado{height:22px;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='22'><path d='M2 0 L22 0 L12 18 Z' fill='%23F0891F'/><path d='M26 0 L46 0 L36 18 Z' fill='%23C7362E'/><path d='M50 0 L70 0 L60 18 Z' fill='%231F3A6B'/><path d='M74 0 L94 0 L84 18 Z' fill='%233E8A5A'/><path d='M98 0 L118 0 L108 18 Z' fill='%23F6C544'/></svg>") repeat-x top;
+  background-size:auto 22px}
+
+/* ── HERO ── */
+.hero{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;
+  color:#fff;overflow:hidden;background:var(--noche)}
+.hero .bg{position:absolute;inset:0}
+.hero .bg img{width:100%;height:100%;object-fit:cover;opacity:.92}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(10,6,3,.95) 0%,rgba(10,6,3,.55) 42%,rgba(10,6,3,.25) 72%,rgba(10,6,3,.5) 100%)}
+.hero .in{position:relative;z-index:2;padding:0 26px 34px}
+.eyebrow{display:inline-block;font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.04em;
+  color:var(--tinta);background:var(--amarillo);padding:6px 14px;border-radius:100px;margin-bottom:16px}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:40px;line-height:1.06;text-wrap:balance;
+  text-shadow:0 4px 30px rgba(0,0,0,.6)}
+.hero h1 em{color:var(--amarillo);font-style:normal}
+.hero .lead{font-size:15.5px;color:#F1E7D3;margin-top:14px;max-width:26em}
+.trust{display:flex;gap:8px;margin-top:22px;flex-wrap:wrap}
+.trust span{font-family:var(--disp);font-weight:500;font-size:12px;color:#fff;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
+  padding:7px 12px;border-radius:100px;backdrop-filter:blur(4px)}
+.hero .cta{margin-top:24px}
+
+/* ── botones ── */
+a{text-decoration:none;color:inherit}
+.cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  border-radius:15px;padding:17px;font-family:var(--disp);font-weight:600;font-size:17px;text-decoration:none;
+  background:var(--wa);color:#fff;box-shadow:0 10px 26px rgba(18,140,75,.4);transition:transform .12s}
+.cta:active{transform:translateY(1px)}
+.cta svg{width:22px;height:22px;fill:currentColor;flex:0 0 22px}
+.cta.rojo{background:var(--rojo);box-shadow:0 10px 26px rgba(199,54,46,.35)}
+.cta .ar{font-size:19px;animation:fle 1.3s ease-in-out infinite}
+@keyframes fle{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+@media(prefers-reduced-motion:reduce){.cta .ar{animation:none}.reveal{opacity:1!important;transform:none!important}}
+
+/* ── secciones ── */
+section{padding:48px 24px}
+.kicker{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--naranja-d);margin-bottom:10px}
+h2{font-family:var(--disp);font-weight:700;font-size:28px;line-height:1.12;text-wrap:balance;color:var(--tinta)}
+h2 em{font-style:normal;color:var(--rojo)}
+.p{font-size:15px;color:var(--sub);margin-top:12px}
+.p b{color:var(--tinta);font-weight:600}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.on{opacity:1;transform:none}
+
+/* momento */
+.momento{background:var(--noche);color:#F1E7D3;text-align:center}
+.momento .foto{border-radius:18px;overflow:hidden;margin-bottom:22px;box-shadow:0 18px 40px rgba(0,0,0,.4)}
+.momento h2{color:#fff}
+.momento h2 em{color:var(--amarillo)}
+.momento .p{color:#D8C8AC}
+
+/* galeria */
+.galeria{background:var(--crema2)}
+.grupo{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--naranja-d);margin:22px 0 12px;display:flex;align-items:center;gap:8px}
+.grupo .gn{margin-left:auto;font-size:10px;color:#fff;background:var(--naranja-d);border-radius:20px;padding:2px 9px}
+.gal{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.adv{background:var(--noche);border-radius:16px;overflow:hidden;border:2px solid #fff;
+  box-shadow:0 8px 20px rgba(51,38,26,.16)}
+.adv img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.adv p{font-family:var(--disp);font-weight:600;font-size:13.5px;color:#fff;background:var(--noche);
+  padding:9px 10px 5px;text-align:center}
+.adv span{display:block;font-family:var(--ui);font-weight:400;font-size:10.5px;color:#C9B892;
+  background:var(--noche);padding:0 8px 10px;text-align:center}
+.bondades-chip{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:24px}
+.bondades-chip span{font-size:12px;color:var(--tinta);background:#fff;border:1px solid var(--linea);
+  border-radius:100px;padding:8px 13px;font-family:var(--disp);font-weight:500}
+
+/* bondades */
+.bond .foto{border-radius:18px;overflow:hidden;margin-bottom:22px;box-shadow:0 14px 34px rgba(51,38,26,.16)}
+.blist{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+.bitem{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--linea);
+  border-radius:15px;padding:15px;box-shadow:0 5px 14px rgba(51,38,26,.07)}
+.bitem .ic{flex:0 0 38px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  box-shadow:0 4px 10px rgba(51,38,26,.18)}
+.bitem .ic svg{width:21px;height:21px}
+.bitem b{font-family:var(--disp);font-weight:600;font-size:15px;color:var(--tinta)}
+.bitem p{margin:3px 0 0;font-size:13px;color:var(--sub);line-height:1.4}
+
+/* tranquilidad */
+.tranqui{background:var(--crema2)}
+.tranqui .foto{border-radius:18px;overflow:hidden;box-shadow:0 10px 26px rgba(51,38,26,.12);margin-top:18px}
+
+/* resenas */
+.coment{background:#fff;border:1px solid var(--linea);border-radius:18px;overflow:hidden;
+  margin-top:16px;box-shadow:0 8px 20px rgba(51,38,26,.08)}
+.coment .tira img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.coment .tx{padding:16px 18px}
+.coment q{font-size:14.5px;color:var(--tinta);font-style:italic;display:block}
+.coment cite{display:block;margin-top:10px;font-family:var(--disp);font-weight:600;font-size:13px;
+  color:var(--rojo);font-style:normal}
+.coment cite span{color:var(--sub);font-weight:400}
+.estrellas{color:var(--amarillo);font-size:15px;letter-spacing:2px;margin-bottom:6px}
+
+/* paquetes */
+.precio{background:var(--noche);color:#F1E7D3}
+.precio h2{color:#fff}.precio h2 em{color:var(--amarillo)}
+.pack{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;
+  overflow:hidden;margin-top:16px}
+.pack img{width:100%;aspect-ratio:700/300;object-fit:cover}
+.pack .pin{padding:16px 18px}
+.pack .nom{font-family:var(--disp);font-weight:600;font-size:17px;color:#fff}
+.pack .meta{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#C9B892;margin-top:3px}
+.pack .pr{display:flex;align-items:baseline;gap:8px;margin-top:10px}
+.pack .pr b{font-family:var(--disp);font-weight:700;font-size:26px;color:var(--amarillo)}
+.pack .pr s{font-size:13px;color:#9b8c70}
+.pack .pr em{font-style:normal;font-size:12px;color:#C9B892}
+.precio .nota{text-align:center;font-size:12.5px;color:#C9B892;margin-top:18px}
+.precio .nota b{color:#fff}
+
+/* cierre */
+.cierre{text-align:center}
+.pasos{display:flex;flex-direction:column;gap:13px;margin:22px 0 26px;text-align:left}
+.pa{display:flex;gap:13px;align-items:flex-start}
+.pa .n{flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:var(--naranja);color:#fff;
+  font-family:var(--disp);font-weight:700;font-size:14px;display:grid;place-items:center;box-shadow:0 3px 8px rgba(240,137,31,.35)}
+.pa p{margin:0;font-size:14px;color:var(--sub);padding-top:3px}
+.pa p b{color:var(--tinta);font-weight:600}
+.seguro{font-size:12.5px;color:var(--sub);margin-top:16px}
+.seguro b{color:var(--tinta)}
+
+/* footer */
+.foot{text-align:center;padding:26px 24px 34px;color:var(--sub);font-size:12px;background:var(--crema2)}
+
+/* barra pegajosa */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,246,230,.96);
+  backdrop-filter:blur(8px);border-top:1px solid var(--linea);padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  box-shadow:0 -6px 20px rgba(51,38,26,.1)}
+.sticky .row{max-width:460px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.sticky .precio-mini{flex:0 0 auto;line-height:1.1}
+.sticky .precio-mini small{display:block;font-size:10px;color:var(--sub);text-transform:uppercase;letter-spacing:.04em}
+.sticky .precio-mini b{font-family:var(--disp);font-weight:700;font-size:17px;color:var(--naranja-d)}
+.sticky .cta{flex:1;margin:0;padding:14px;font-size:15px}
+</style>
+
+<div class="wrap">
+  <div class="picado"></div>
+
+  <!-- ░░ HERO ░░ -->
+  <header class="hero" data-ev="Hero">
+    <div class="bg"><img src="{{scrollhero}}" alt="Farol artesanal de la Virgen encendido de noche con efecto vitral"></div>
+    <div class="in">
+      <span class="eyebrow">Este 7 de diciembre</span>
+      <h1>Ilumina tu hogar en honor a la <em>Virgen Mar&iacute;a.</em></h1>
+      <p class="lead">Faroles artesanales que encienden tu Noche de Velitas con un efecto de <b style="color:#fff">vitral</b> que no vas a olvidar.</p>
+      <div class="trust">
+        <span>&#128666; Env&iacute;o gratis</span>
+        <span>&#128179; Pagas al recibir</span>
+        <span>&#128205; Toda Colombia</span>
+      </div>
+      <a class="cta wa-cta" data-loc="hero" href="#" data-wa>
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.7 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.2Z"/></svg>
+        P&iacute;delos por WhatsApp <span class="ar">&rarr;</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ░░ EL MOMENTO ░░ -->
+  <section class="momento" data-ev="Momento">
+    <div class="foto reveal"><img src="{{scrollhero2}}" alt="Faroles encendidos durante la Noche de las Velitas"></div>
+    <h2 class="reveal">El 7 de diciembre, cada vela <em>es una oraci&oacute;n.</em></h2>
+    <p class="p reveal">Es la noche en que Colombia se ilumina por la Virgen. Que tu hogar brille por quien m&aacute;s amas, con un farol hecho para durar <b style="color:#fff">a&ntilde;o tras a&ntilde;o</b>.</p>
+  </section>
+
+  <!-- ░░ GALERÍA 8 DISEÑOS ░░ -->
+  <section class="galeria" data-ev="Galeria">
+    <div class="kicker reveal">Hechos a mano, uno por uno</div>
+    <h2 class="reveal">Ocho advocaciones, <em>ocho obras de arte.</em></h2>
+    <p class="p reveal">Cada farol es una pieza artesanal en cart&oacute;n de ca&ntilde;a de az&uacute;car y papel seda. As&iacute; brillan de noche:</p>
+
+    <p class="grupo reveal">Colecci&oacute;n 1 &middot; Devoci&oacute;n y Tradici&oacute;n <span class="gn">4 faroles</span></p>
+    <div class="gal reveal">
+      <div class="adv"><img src="{{adv_inmaculada}}" alt="Farol Virgen Inmaculada encendido"><p>Inmaculada<span>La pureza del 7</span></p></div>
+      <div class="adv"><img src="{{adv_guadalupe}}" alt="Farol Virgen de Guadalupe encendido"><p>Guadalupe<span>Patrona de Am&eacute;rica</span></p></div>
+      <div class="adv"><img src="{{adv_carmen}}" alt="Farol Virgen del Carmen encendido"><p>Del Carmen<span>Protectora de las familias</span></p></div>
+      <div class="adv"><img src="{{adv_fatima}}" alt="Farol Virgen de F&aacute;tima encendido"><p>De F&aacute;tima<span>Mensajera de la paz</span></p></div>
+    </div>
+
+    <p class="grupo reveal">Colecci&oacute;n 2 &middot; Fe y Esperanza <span class="gn">4 faroles</span></p>
+    <div class="gal reveal">
+      <div class="adv"><img src="{{adv_corazon}}" alt="Farol Sagrado Coraz&oacute;n encendido"><p>Sagrado Coraz&oacute;n<span>El amor de Madre</span></p></div>
+      <div class="adv"><img src="{{adv_candelaria}}" alt="Farol Virgen de la Candelaria encendido"><p>De la Candelaria<span>Luz del Se&ntilde;or</span></p></div>
+      <div class="adv"><img src="{{adv_chiquinquira}}" alt="Farol Virgen de Chiquinquir&aacute; encendido"><p>De Chiquinquir&aacute;<span>Patrona de Colombia</span></p></div>
+      <div class="adv"><img src="{{adv_lourdes}}" alt="Farol Virgen de Lourdes encendido"><p>De Lourdes<span>Consuelo de los enfermos</span></p></div>
+    </div>
+
+    <div class="bondades-chip reveal">
+      <span>&#9986;&#65039; Hechos a mano</span>
+      <span>&#10024; Efecto vitral</span>
+      <span>&#128207; 35 &times; 17 cm</span>
+    </div>
+  </section>
+
+  <!-- ░░ BONDADES ░░ -->
+  <section class="bond" data-ev="Bondades">
+    <div class="foto reveal"><img src="{{scrolldetalle}}" alt="Detalle del papel seda a contraluz con efecto de vitral"></div>
+    <div class="kicker reveal">Por qu&eacute; son especiales</div>
+    <h2 class="reveal">No es decoraci&oacute;n. <em>Es una obra.</em></h2>
+    <div class="blist">
+      <div class="bitem reveal"><span class="ic" style="background:var(--amarillo)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/><circle cx="12" cy="12" r="3" fill="#fff" stroke="none"/></svg></span><div><b>Cart&oacute;n de ca&ntilde;a y papel seda</b><p>El material que crea ese efecto de vitral espectacular cuando la vela se enciende.</p></div></div>
+      <div class="bitem reveal"><span class="ic" style="background:var(--rojo)"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.6 6.3 6.8.5-5.2 4.4 1.7 6.6L12 16.8 6.3 20.4 8 13.8 2.8 9.4l6.8-.5z"/></svg></span><div><b>Hechos a mano, uno por uno</b><p>No hay dos exactamente iguales. Encender una vela no es decorar: es orar.</p></div></div>
+      <div class="bitem reveal"><span class="ic" style="background:var(--navy)"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8l4-4 12 12-4 4z"/><path d="M8 8l1.5 1.5M11 5l1.5 1.5M14 8l1.5 1.5"/></svg></span><div><b>35 cm de alto &times; 17 de ancho</b><p>Tama&ntilde;o ideal para la entrada, el altar o la ventana de tu casa.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ░░ TRANQUILIDAD ░░ -->
+  <section class="tranqui" data-ev="Tranquilidad">
+    <div class="kicker reveal">Toda la noche encendidos</div>
+    <h2 class="reveal">Que nada apague <em>lo que le pediste.</em></h2>
+    <p class="p reveal">La vela va al fondo de un vaso con arena o piedritas: el peso queda abajo, <b>el farol no se voltea y la llama nunca alcanza el papel</b>. Se arma f&aacute;cil en 4 pasos.</p>
+    <div class="foto reveal"><img src="{{infografia2}}" alt="Infograf&iacute;a: medidas, componentes y 4 pasos de armado del farol"></div>
+  </section>
+
+  <!-- ░░ PRUEBA SOCIAL ░░ -->
+  <section data-ev="Resenas">
+    <div class="kicker reveal">Familias como la tuya</div>
+    <h2 class="reveal">As&iacute; vivieron <em>su Noche de Velitas.</em></h2>
+    <div class="coment reveal">
+      <div class="tira"><img src="{{rsandra}}" alt="Cuatro faroles encendidos con un rosario, foto de Sandra Prada"></div>
+      <div class="tx"><div class="estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>Hermos&iacute;simos, el detalle y la delicadeza del dise&ntilde;o muy originales te evocan esa reverencia y admiraci&oacute;n&hellip;</q>
+        <cite>Sandra Prada <span>&middot; 8 dic 2024</span></cite></div>
+    </div>
+    <div class="coment reveal">
+      <div class="tira"><img src="{{rlorena}}" alt="Faroles encendidos en la entrada de una casa, foto de Lorena Cerquera"></div>
+      <div class="tx"><div class="estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <q>Nos recuerdan el amor y la devoci&oacute;n por nuestra mamita Mar&iacute;a. S&uacute;per recomendados por su calidad y rapidez de entrega.</q>
+        <cite>Lorena Cerquera <span>&middot; 8 dic 2024</span></cite></div>
+    </div>
+  </section>
+
+  <!-- ░░ PAQUETES Y PRECIO ░░ -->
+  <section class="precio" data-ev="Precio">
+    <div class="kicker reveal" style="color:var(--amarillo)">La oferta</div>
+    <h2 class="reveal">Dos colecciones, <em>ocho faroles.</em></h2>
+    <p class="p reveal" style="color:#D8C8AC">Elige tu colecci&oacute;n (4 faroles cada una) o ll&eacute;vate las dos. <b style="color:#fff">Env&iacute;o gratis a toda Colombia</b> y puedes pagar al recibir.</p>
+
+    <div class="pack reveal">
+      <img src="{{paquete1}}" alt="Los cuatro faroles de la colecci&oacute;n Devoci&oacute;n y Tradici&oacute;n">
+      <div class="pin"><div class="nom">Devoci&oacute;n y Tradici&oacute;n</div><div class="meta">Colecci&oacute;n 1 &middot; 4 faroles</div>
+        <div class="pr"><b>$30.000</b><em>el paquete de 4</em></div></div>
+    </div>
+    <div class="pack reveal">
+      <img src="{{paquete2}}" alt="Los cuatro faroles de la colecci&oacute;n Fe y Esperanza">
+      <div class="pin"><div class="nom">Fe y Esperanza</div><div class="meta">Colecci&oacute;n 2 &middot; 4 faroles</div>
+        <div class="pr"><b>$30.000</b><em>el paquete de 4</em></div></div>
+    </div>
+    <p class="nota reveal">&iquest;Llevas varias? <b>Entre m&aacute;s paquetes, menos cuesta cada farol.</b> Tu asesor te arma el mejor precio.</p>
+  </section>
+
+  <!-- ░░ CIERRE ░░ -->
+  <section class="cierre" data-ev="Cierre">
+    <div class="kicker reveal">&iquest;Lista para encender tu hogar?</div>
+    <h2 class="reveal">Pide los tuyos <em>hoy mismo.</em></h2>
+    <div class="pasos reveal">
+      <div class="pa"><span class="n">1</span><p>Escr&iacute;benos por <b>WhatsApp</b> &mdash; te saluda una persona, no un bot.</p></div>
+      <div class="pa"><span class="n">2</span><p>Eliges tus faroles y <b>coordinamos el env&iacute;o</b> a tu ciudad.</p></div>
+      <div class="pa"><span class="n">3</span><p>Recibes y enciendes tu <b>Noche de Velitas</b>. &#128367;&#65039;</p></div>
+    </div>
+    <a class="cta wa-cta" data-loc="cierre" href="#" data-wa>
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.7 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.2Z"/></svg>
+      Hablar con mi asesor
+    </a>
+    <p class="seguro reveal">Te responde <b>una persona</b> &middot; Sin compromiso hasta que confirmes.</p>
+  </section>
+
+  <div class="foot">Faroles Genius &middot; Hechos a mano en Colombia &middot; El Espinal y Bogot&aacute;</div>
+</div>
+
+<!-- barra pegajosa -->
+<div class="sticky">
+  <div class="row">
+    <div class="precio-mini"><small>Desde</small><b>$7.500</b></div>
+    <a class="cta wa-cta" data-loc="sticky" href="#" data-wa>
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.8 14.2c-.2.7-1.2 1.3-1.7 1.3-.5.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6 0-1.2.6-1.8.9-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.4.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.6-.1 1.2Z"/></svg>
+      P&iacute;delos por WhatsApp
+    </a>
+  </div>
+</div>
+
+<script>
+window.PX=window.PX||function(){};
+var WA="573133288298";
+var MSG="Hola 🙏 Vi la oferta de los faroles para el 7 de diciembre y quiero pedir / más información.";
+var waURL="https://wa.me/"+WA+"?text="+encodeURIComponent(MSG);
+
+/* CTAs WhatsApp */
+document.querySelectorAll("[data-wa]").forEach(function(a){
+  a.setAttribute("href",waURL); a.setAttribute("target","_blank"); a.setAttribute("rel","noopener");
+  a.addEventListener("click",function(){
+    PX('Contact',{content_name:'WhatsApp',source:a.dataset.loc||'cta'});
+  });
+});
+
+/* reveal al hacer scroll */
+var revs=document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+  var ro=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add("on");ro.unobserve(e.target);}});},{threshold:.15});
+  revs.forEach(function(el){ro.observe(el);});
+}else{revs.forEach(function(el){el.classList.add("on");});}
+
+/* embudo: ViewContent por seccion (una vez) */
+var seen={};
+if("IntersectionObserver" in window){
+  var fo=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){var k=e.target.dataset.ev; if(k&&!seen[k]){seen[k]=1;
+      PX('ViewContent',{content_name:k});} }});},{threshold:.4});
+  document.querySelectorAll("[data-ev]").forEach(function(s){fo.observe(s);});
+}
+</script>
