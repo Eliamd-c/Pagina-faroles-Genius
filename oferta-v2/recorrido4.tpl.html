@@ -544,6 +544,8 @@ var s=1,qa=0,qb=0,pay="anticipado",fav=0;
 window.PX=window.PX||function(){};
 var _seen={};
 function TP(k,ev,p){if(_seen[k])return;_seen[k]=1;PX(ev,p);}
+window.EMB=window.EMB||{paso:function(){},accion:function(){},convirtio:function(){}};
+var NOMBRES=["Portada","NoSeQueman","ComoSeHacen","Paquetes","Resenas"];
 
 var bars=document.getElementById("bars");
 for(var i=0;i<TOTAL;i++)bars.insertAdjacentHTML("beforeend",'<div class="bar"></div>');
@@ -583,12 +585,14 @@ function tShow(){
     sp.classList.toggle("on",k===tsub);sp.classList.toggle("done",k<tsub);});
 }
 function tGo(dir){
-  if(dir<0){ if(tsub>1)tsub--; else return retroceder();
+  if(dir<0){ EMB.accion('VolvioEnTienda',{desde:tsub===1?'6_Tienda':'7_EligioPago'});
+    if(tsub>1)tsub--; else return retroceder();
     tRender(); var b=document.querySelector(".t-body"); if(b)b.scrollTop=0; }
 }
 function elegirPago(p){
   if(qa+qb===0)return; pay=p; tsub=2; tRender();
   var q=qa+qb,pu=unit(q),sb=q*pu,tot=p==="contraentrega"?Math.round(sb*1.05):sb;
+  EMB.paso(7,'EligioPago',{pago:p,faroles:q*4,total:tot});
   TP('initcheckout','InitiateCheckout',{value:tot,currency:'COP',num_items:q*4,content_name:'Pago '+(p==="contraentrega"?'contra entrega':'de contado')});
   var b=document.querySelector(".t-body"); if(b)b.scrollTop=0;
 }
@@ -640,6 +644,8 @@ function render(){
 
   var cta=document.getElementById("cta"),pie=document.getElementById("pie");
   if(s<=PANTALLAS){document.getElementById("ctaTxt").textContent=LABELS[s-1];pie.innerHTML=PIES[s-1];}
+  if(s<=PANTALLAS)EMB.paso(s,NOMBRES[s-1]);
+  if(s>=CALC)EMB.paso(6,'Tienda');
   if(s<=PANTALLAS)TP('paso'+s,'ViewContent',{content_name:'Paso '+s+' de '+PANTALLAS});
   if(s>=CALC)TP('checkout','ViewContent',{content_name:'Checkout · Arma tu pedido'});
   updateHints();
@@ -648,7 +654,7 @@ function render(){
 function entrar(){if(qa===0&&qb===0&&fav){if(fav===1)qa=1;else qb=1;}}
 function avanzar(){ if(s<CALC){s++;if(s===CALC){entrar();tsub=1;}empujar();render();
     document.querySelectorAll(".desliza").forEach(function(d){d.scrollTop=0;});} }
-function retroceder(){ if(s>1){s--;render();
+function retroceder(){ if(s>1){EMB.accion('Retrocedio',{desde:s});s--;render();
     document.querySelectorAll(".desliza").forEach(function(d){d.scrollTop=0;});} }
 
 function cerrar(){
@@ -658,6 +664,7 @@ function cerrar(){
   var msg="Hola, quiero encender mi Noche de Velitas. Mi pedido: "+
     (qa?qa+" de Devoción y Tradición ":"")+(qb?(qa?"y ":"")+qb+" de Fe y Esperanza ":"")+
     "("+(q*4)+" faroles) · pago "+pay+" · total "+co(tot)+" con envío gratis.";
+  EMB.paso(8,'WhatsApp',{pago:pay,faroles:q*4,total:tot}); EMB.convirtio();
   PX('Contact',{value:tot,currency:'COP',num_items:q*4,content_name:'Confirmar por WhatsApp',payment:pay});
   window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
 }
@@ -674,7 +681,7 @@ document.getElementById("tback").onclick=function(){tGo(-1);};
 
 document.getElementById("cta").onclick=avanzar;
 document.getElementById("back").onclick=retroceder;
-document.getElementById("skip").onclick=function(){s=CALC;entrar();tsub=1;empujar();render();};
+document.getElementById("skip").onclick=function(){EMB.accion("SaltoAPrecios",{desde:s});s=CALC;entrar();tsub=1;empujar();render();};
 
 var CLAVE="fg.cotizacion.v1";
 function guardar(){try{localStorage.setItem(CLAVE,JSON.stringify({qa:qa,qb:qb,pay:pay,fav:fav}));}catch(e){}}
@@ -683,7 +690,7 @@ function cargar(){try{var v=localStorage.getItem(CLAVE);return v?JSON.parse(v):n
 function empujar(){try{history.pushState({s:s},"");}catch(e){}}
 window.addEventListener("popstate",function(ev){
   var st=ev.state;
-  if(st&&st.s){s=st.s;render();}
+  if(st&&st.s){if(st.s<s)EMB.accion('Retrocedio',{desde:s,boton:'navegador'});s=st.s;render();}
   else if(s>1){s=1;render();}
 });
 try{history.replaceState({s:1},"");}catch(e){}

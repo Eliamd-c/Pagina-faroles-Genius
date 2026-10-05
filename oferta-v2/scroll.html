@@ -6,7 +6,10 @@
 <script>
 /* Meta Pixel Faroles Genius - solo dispara en produccion */
 (function(){
-  if(!/(^|\.)farolesgenius\.com$/.test(location.hostname)){window.PX=function(){};return;}
+  if(!/(^|\.)farolesgenius\.com$/.test(location.hostname)){
+    /* fuera de produccion: no envia nada; con ?debug_pixel=1 muestra los eventos en consola */
+    var dbg=/[?&]debug_pixel=1/.test(location.search);
+    window.PX=function(ev,params){if(dbg)console.log('[pixel]',ev,params||{});};return;}
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
@@ -14,6 +17,28 @@
   'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init','4218954695068961');fbq('track','PageView');
   window.PX=function(ev,params,custom){try{fbq(custom?'trackCustom':'track',ev,params||{});}catch(e){}};
+})();
+/* Embudo personalizado: un evento con nombre propio por paso (Scroll_N_Nombre),
+   acciones sueltas (Scroll_Accion) y el ultimo paso visto al salir (Scroll_Salio_en_N_Nombre) */
+window.EMB=(function(){
+  var V='Scroll',t0=Date.now(),tPaso=t0,ultimo='',hechos={},salidas={},listo=false;
+  function seg(t){return Math.round((Date.now()-t)/1000);}
+  function ev(nombre,p){p=p||{};p.version=V;p.seg_total=seg(t0);PX(V+'_'+nombre,p,true);}
+  function salir(){
+    if(listo||!ultimo||salidas[ultimo])return; salidas[ultimo]=1;
+    ev('Salio_en_'+ultimo,{seg_en_paso:seg(tPaso)});
+  }
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')salir();});
+  window.addEventListener('pagehide',salir);
+  return {
+    paso:function(n,nombre,p){
+      var k=n+'_'+nombre; if(hechos[k])return; hechos[k]=1;
+      p=p||{}; p.paso=n; p.seg_paso_anterior=seg(tPaso); if(ultimo)p.desde=ultimo;
+      ev(k,p); ultimo=k; tPaso=Date.now();
+    },
+    accion:function(nombre,p){ev(nombre,p);},
+    convirtio:function(){listo=true;}
+  };
 })();
 </script>
 <title>Faroles Genius · 7 de Diciembre</title>
@@ -320,6 +345,8 @@ h2 em{font-style:normal;color:var(--rojo)}
 
 <script>
 window.PX=window.PX||function(){};
+window.EMB=window.EMB||{paso:function(){},accion:function(){},convirtio:function(){}};
+var SECCIONES=["Hero","Momento","Galeria","Bondades","Tranquilidad","Resenas","Precio","Cierre"];
 var WA="573133288298";
 var MSG="Hola 🙏 Vi la oferta de los faroles para el 7 de diciembre y quiero pedir / más información.";
 var waURL="https://wa.me/"+WA+"?text="+encodeURIComponent(MSG);
@@ -328,6 +355,7 @@ var waURL="https://wa.me/"+WA+"?text="+encodeURIComponent(MSG);
 document.querySelectorAll("[data-wa]").forEach(function(a){
   a.setAttribute("href",waURL); a.setAttribute("target","_blank"); a.setAttribute("rel","noopener");
   a.addEventListener("click",function(){
+    EMB.paso(9,'WhatsApp',{boton:a.dataset.loc||'cta'}); EMB.accion('ClicWA_'+(a.dataset.loc||'cta')); EMB.convirtio();
     PX('Contact',{content_name:'WhatsApp',source:a.dataset.loc||'cta'});
   });
 });
@@ -345,6 +373,7 @@ var seen={};
 if("IntersectionObserver" in window){
   var fo=new IntersectionObserver(function(es){es.forEach(function(e){
     if(e.isIntersecting){var k=e.target.dataset.ev; if(k&&!seen[k]){seen[k]=1;
+      EMB.paso(SECCIONES.indexOf(k)+1,k);
       PX('ViewContent',{content_name:k});} }});},{threshold:.4});
   document.querySelectorAll("[data-ev]").forEach(function(s){fo.observe(s);});
 }
