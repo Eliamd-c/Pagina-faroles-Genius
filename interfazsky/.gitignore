@@ -1,0 +1,17 @@
+# Credenciales
+.env
+
+# Sesión de WhatsApp (contiene tu cuenta: nunca subir)
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Dependencias y temporales
+node_modules/
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Salidas de trabajo
+*.pdf
+impresas.json

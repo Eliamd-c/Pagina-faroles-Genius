@@ -1,0 +1,15 @@
+# Silencio Dorado
+
+**Filosofía:** la marca no se anuncia; se deja encontrar.
+
+Una guía de envío es un objeto de trabajo. Nació para ser leída por una máquina, manipulada por manos apuradas, pegada sobre cartón y descartada. Esa dureza es precisamente lo que vuelve conmovedora cualquier señal de cuidado: un gesto delicado sobre una superficie utilitaria se percibe como atención, no como publicidad. La identidad aquí no compite con la función; vive en los márgenes que la función dejó libres, y los habita con una precisión que delata horas de ajuste milimétrico.
+
+**Espacio y forma.** El principio rector es la deferencia. Las zonas de lectura mecánica —barras, código QR, cifras de ruta— son territorio intocable, y el diseño las rodea con la reverencia con que un restaurador bordea una firma. La marca ocupa únicamente el vacío real de la hoja: ese rectángulo inferior que la transportadora nunca usa. La silueta se coloca a una escala contenida, nunca dominante, de modo que el ojo la descubra después de haber leído lo que debía leer. Un solo elemento, perfectamente situado, pesa más que cualquier acumulación.
+
+**Color y materia.** Una sola tinta. La impresión térmica y el monocromo imponen una economía que se abraza como virtud: el dorado se traduce en un gris de bajísima densidad, entre el ocho y el quince por ciento, el umbral exacto donde la figura existe sin disputar contraste a la tipografía oficial. Es el tono de una filigrana en un billete, de una marca al agua en papel de algodón: visible al inclinar la hoja, invisible al escanearla. Esa calibración no es casual; es el resultado de pruebas pacientes hasta dar con el valor justo.
+
+**Escala y ritmo.** La repetición queda prohibida. Nada de mosaicos ni de tramas que invadan la hoja: un solo emblema, una sola línea de texto, un solo filete. La jerarquía se invierte respecto a la publicidad —primero el destinatario, después la transportadora, por último la casa que envía—, y en esa humildad reside la elegancia. El nombre de la marca se susurra en versalitas de un cuerpo diminuto, con un interletrado amplio, trabajado letra por letra hasta que la línea respira.
+
+**Composición y equilibrio.** La silueta mariana se reduce a su arco esencial: la ojiva que la enmarca, el manto que cae, el eje vertical. Esa abstracción es más fiel que el detalle, porque sobrevive a la impresión más pobre y conserva la dignidad de la figura. Bajo ella, un filete fino de un tercio de punto ancla la composición y separa el territorio de la transportadora del territorio de la casa. Entre un elemento y otro, aire: el silencio es el material más caro de esta pieza.
+
+**El criterio final.** Si alguien nota la marca antes que la dirección del cliente, el diseño fracasó. Si el repartidor la ve al dejar el paquete y percibe que quien lo envió cuidó cada detalle, el diseño cumplió. Es una pieza que se juzga por su discreción, y lograr esa discreción exige el oficio más exigente: el de quitar hasta que solo quede lo necesario, y después pulir eso que queda hasta que parezca inevitable.
